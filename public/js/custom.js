@@ -1,3 +1,9 @@
+//화면에 처음 들어온 경우
+
+
+
+
+// a 태그를 클릭할 경우
 $('a').click(function (e) {
     // custom handling here
     e.preventDefault();
@@ -6,4 +12,13 @@ $('a').click(function (e) {
 
     var href = $(this).attr('href');
     history.pushState("", "", href);
+
+    refresh(href);
 });
+
+
+// 자체 새로고침 
+function refresh(url)
+{
+    $('#main_content').load("/view"+url);
+}
