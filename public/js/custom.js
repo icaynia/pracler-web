@@ -20,5 +20,9 @@ $('a').click(function (e) {
 // 자체 새로고침 
 function refresh(url)
 {
-    $('#main_content').load("/view"+url);
+    var tn = url;
+    if (url.indexOf('#') == -1)
+    {
+        $('#main_content').load("/view"+url);
+    }
 }
