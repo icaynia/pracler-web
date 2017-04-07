@@ -4,7 +4,7 @@
 
 
 // a 태그를 클릭할 경우
-$('a').click(function (e) {
+$('a, button').click(function (e) {
     // custom handling here
     e.preventDefault();
 
@@ -20,7 +20,7 @@ $('a').click(function (e) {
 // 자체 새로고침 
 function refresh(url)
 {
-    var tn = url;
+    if (url != null)
     if (url.indexOf('#') == -1)
     {
         $('#main_content').load("/view"+url);
