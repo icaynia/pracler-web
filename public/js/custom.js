@@ -23,6 +23,7 @@ function refresh(url)
     if (url != null)
     if (url.indexOf('#') == -1)
     {
+        alert(url);
         $('#main_content').load("/view"+url);
     }
 }
