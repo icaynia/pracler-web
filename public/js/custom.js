@@ -16,6 +16,10 @@ $('a, button').click(function (e) {
     refresh(href);
 });
 
+window.onpopstate = function(event) { 
+        //alert("event" + location.pathname );
+        refresh(location.pathname);
+}
 
 // 자체 새로고침 
 function refresh(url)
@@ -23,7 +27,7 @@ function refresh(url)
     if (url != null)
     if (url.indexOf('#') == -1)
     {
-        alert(url);
+        //alert(url);
         $('#main_content').load("/view"+url);
     }
 }
