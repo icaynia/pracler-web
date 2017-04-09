@@ -1,27 +1,66 @@
-.jumbotron {
+.song-info {
   background: #2e2835;
   color: white;
-  padding-bottom: 80px; }
-  .jumbotron p {
-    color: #d9ccee;
-    max-width: 75%;
-    margin: 1em auto 2em; }
+  padding-top: 120px;
+  padding-bottom: 30px; }
 
-  .jumbotron h1 {
+.song-info p {
+  color: #d9ccee;
+  max-width: 75%;
+  margin: 1em auto 2em; }
+
+.song-info h1 {
   color: #d9ccee; }
 
-  .navbar + .jumbotron {
-    margin-top: -20px; }
+.song-info h2 {
+  color: #d9ccee; }
 
-  .jumbotron .lang-logo {
-    display: block;
-    background: #B01302;
-    border-radius: 50%;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-    border: 2px solid white; }
-    .jumbotron .lang-logo img {
-      max-width: 100%; }
+.song-info h4 {
+  color: #d9ccee; }
 
+.navbar + .song-info {
+  margin-top: -20px; }
+
+.song-info .lang-logo {
+  display: block;
+  background: #B01302;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 2px solid white; }
+
+.song-info .lang-logo img {
+  max-width: 100%; }
+
+
+.song-stats {
+  background: #171423;}
+
+.song-stats div {
+  vertical-align: middle;
+  height: 100%;
+}
+
+.song-stats .stat {
+  color: #d9ccee;
+  margin: 0; 
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px; }
+
+.song-stats .stat .stat-name {
+  color: #d9ccee;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold; }
+
+.song-stats .stat .stat-value {
+  color: #d9ccee;
+  margin: 0; 
+  margin-top: -5px;
+  font-size: 17px;
+  font-weight: bold; }

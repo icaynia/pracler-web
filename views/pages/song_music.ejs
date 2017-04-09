@@ -1,7 +1,43 @@
-parameter가 music까지 온 것.
+<div class="song-info">
+  <div class="container">
+    <div>
+      <div style="float:left">
+        <div style="width:150px; height:150px; background-color:white;"></div>
+      </div>
+      <div style="float:left">
+        <div style="margin-left: 30px">
+          <h4><%= param.artist %> <%= param.album %></h4>
+          <h2><%= param.music %></h2>
+        </div>
+      </div>
+    </div>
 
-</br>
+    </br>
 
-<%= param.artist %>
-<%= param.album %>
-<%= param.music %>
+  </div>
+</div>
+<div class="song-stats">
+  <div class="container">
+    <div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">재생 회수</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">듣는 사람</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">좋아요</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">오늘</h6>
+          <p class="stat-value">10</h6>
+      </div>
+    </div>
+
+    </br>
+
+  </div>
+</div>

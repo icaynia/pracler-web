@@ -1,3 +1,5 @@
+//require('../utils/strings.js');
+
 module.exports = function(app)
 {
     
@@ -17,8 +19,9 @@ module.exports = function(app)
     });
 
     app.get('/song/:artist/:album/:title', function(req, res) {
+        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title)
         res.render('./layouts/layout', {
-            param: "/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title
+            param: string
         });
     });
 
@@ -46,7 +49,7 @@ module.exports = function(app)
     app.get('/view/song/:artist/:album/:music', function (req, res) {
         //compute data here
         res.render('./pages/song_music', {
-            param:req.params
+            param: req.params
         });
     });
 
@@ -85,4 +88,9 @@ module.exports = function(app)
 
     
 
+}
+
+function fetch(str)
+{
+    return str.replace(/ /gi, '+');
 }
