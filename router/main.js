@@ -25,6 +25,13 @@ module.exports = function(app)
         });
     });
 
+    app.get('/song/:artist/:album', function(req, res) {
+        var string = fetch("/song/"+req.params.artist+"/"+req.params.album)
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
+
     app.get('/song/search/:search', function(req, res) {
         res.render('./layouts/layout', {
             param: "/song/search/"+req.params.search
@@ -45,13 +52,30 @@ module.exports = function(app)
         res.render('./pages/home', {title: "home"});
     });
 
-    // song (/song/a/b/c) overview
+    // song (/song/a) overview - ARTIST
+    app.get('/view/song/:artist', function (req, res) {
+        //compute data here
+        res.render('./pages/song_artist', {
+            param: req.params
+        });
+    });
+
+    // song (/song/a/b) overview - ALBUM
+    app.get('/view/song/:artist/:album', function (req, res) {
+        //compute data here
+        res.render('./pages/song_album', {
+            param: req.params
+        });
+    });
+
+    // song (/song/a/b/c) overview - MUSIC
     app.get('/view/song/:artist/:album/:music', function (req, res) {
         //compute data here
         res.render('./pages/song_music', {
             param: req.params
         });
     });
+
 
     // song search (/song/a/b/c)
     app.get('/view/song/search/:search', function (req, res) {

@@ -1,8 +1,8 @@
 .song-info {
   background: #2e2835;
   color: white;
-  padding-top: 120px;
-  padding-bottom: 30px; }
+  padding-top: 140px;
+  padding-bottom: 20px; }
 
 .song-info p {
   color: #d9ccee;
@@ -36,7 +36,7 @@
 
 
 .song-stats {
-  background: #171423;}
+  background: #27222d;}
 
 .song-stats div {
   vertical-align: middle;
@@ -64,3 +64,12 @@
   margin-top: -5px;
   font-size: 17px;
   font-weight: bold; }
+
+.song-stats .nav > li > a {
+  position: relative;
+  display: block;
+  padding: 11px 15px;
+}
+
+.youtube {position:relative;padding-bottom:52.25%;padding-top:30px;height:0;overflow:hidden;} 
+.youtube iframe,.youtube object,.youtube embed{position:absolute;top:0;left:0;width:100%;height:100%;} 
