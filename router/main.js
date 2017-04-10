@@ -1,9 +1,9 @@
 //require('../utils/strings.js');
 
+var request = require('request');
+
 module.exports = function(app)
 {
-    
-
     /** Main Layout
      *  
      */
@@ -19,7 +19,14 @@ module.exports = function(app)
     });
 
     app.get('/song/:artist/:album/:title', function(req, res) {
-        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title)
+        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title);
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
+
+    app.get('/edit/:artist/:album/:title', function(req, res) {
+        var string = fetch("/edit/"+req.params.artist+"/"+req.params.album+"/"+req.params.title);
         res.render('./layouts/layout', {
             param: string
         });
@@ -67,13 +74,36 @@ module.exports = function(app)
     // song (/song/a/b/c) overview - MUSIC
     app.get('/view/song/:artist/:album/:music', function (req, res) {
         //compute data here
+        var artist_encode = encodeURIComponent(req.params.artist);
+        var album_encode = encodeURIComponent(req.params.album);
+        var title_encode = encodeURIComponent(req.params.music);
+
+        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        
+        request("http://localhost:3000/song/"+string , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                console.log(body) // Print the google web page.
+                res.render('./pages/song_music', {
+                    param: req.params
+                });
+            }
+            else
+            {
+                //없는 경우
+                console.log(error) 
+            }
+        })
+        
+    });
+
+    app.get('/view/edit/:artist/:album/:music', function (req, res) {
+        //compute data here
         res.render('./pages/song_music', {
             param: req.params
         });
     });
 
-
-    // song search (/song/a/b/c)
     app.get('/view/song/search/:search', function (req, res) {
         //compute data here
         res.render('./pages/home', {
