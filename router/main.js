@@ -47,10 +47,6 @@ module.exports = function(app)
     // home (/)
 
 
-    app.get('/view/', function (req, res) {
-        //compute data here
-        res.render('./pages/home', {title: "home"});
-    });
 
     // song (/song/a) overview - ARTIST
     app.get('/view/song/:artist', function (req, res) {
@@ -105,7 +101,7 @@ module.exports = function(app)
         res.render('./pages/404');
     });
 
-    app.get('/view/:v', function (req, res) {
+    app.get('/view/*', function (req, res) {
         //compute data here
         res.render('./pages/404');
     });
