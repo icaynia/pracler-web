@@ -174,14 +174,11 @@ module.exports = function(app)
         var title_encode = encodeURIComponent(req.params.music);
 
         var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
-        
+        console.log("Attributes : " + req.body.music_image_url);
         request({ 
-            url: "https://localhost:3000/song/"+string, 
+            url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: req.body
+            form: req.body
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우

@@ -21,6 +21,12 @@ window.onpopstate = function(event) {
         refresh(location.pathname);
 }
 
+function goto(url)
+{
+    history.pushState("", "", href);
+    refresh(url);
+}
+
 // 자체 새로고침 
 function refresh(url)
 {

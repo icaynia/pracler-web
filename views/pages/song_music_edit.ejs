@@ -107,15 +107,14 @@
       $.ajax({
         url: url,
         type: 'PUT',
-        beforeSend : function(xhr){
-            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        dataType: 'json',
+        data: {
+          "music_image_url": $('#music_image_url').val(), 
+          "youtube_code": $('#youtube_code').val(), 
+          "description": $('#description').val() 
         },
-        data: { 
-        "music_image_url": $('#music_image_url').val(), 
-        "youtube_code": $('#youtube_code').val(), 
-        "description": $('#description').val() },
         success: function(result) {
-          alert(url+'success \n' + result);
+          goto(url);
         }
       });
     })	
