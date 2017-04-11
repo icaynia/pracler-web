@@ -31,8 +31,8 @@ module.exports = function(app)
         });
     });
 
-    app.get('/edit/:artist/:album/:title', function(req, res) {
-        var string = fetch("/edit/"+req.params.artist+"/"+req.params.album+"/"+req.params.title);
+    app.get('/song/:artist/:album/:title/edit', function(req, res) {
+        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"/edit");
         res.render('./layouts/layout', {
             param: string
         });
@@ -98,20 +98,37 @@ module.exports = function(app)
             else
             {
                 //없는 경우
-                res.render('./pages/404', {
-                    param: req.params,
-                    data: JSON.parse(unfetch(body))
-                });
+                console.log(string);
+                res.render('./pages/404');
             }
         })
         
     });
 
-    app.get('/view/edit/:artist/:album/:music', function (req, res) {
+    app.get('/view/song/:artist/:album/:music/edit', function (req, res) {
         //compute data here
-        res.render('./pages/song_music', {
-            param: req.params
-        });
+        var artist_encode = encodeURIComponent(req.params.artist);
+        var album_encode = encodeURIComponent(req.params.album);
+        var title_encode = encodeURIComponent(req.params.music);
+
+        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        
+        request("http://localhost:3000/song/"+string , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                console.log(unfetch(body)) // Print the google web page.
+                res.render('./pages/song_music_edit', {
+                    param: req.params,
+                    data: JSON.parse(unfetch(body))
+                });
+            }
+            else
+            {
+                //없는 경우
+                console.log(string);
+                res.render('./pages/404');
+            }
+        })
     });
 
     app.get('/view/song/search/:search', function (req, res) {
@@ -148,6 +165,37 @@ module.exports = function(app)
         });
     });
     
+
+
+    app.put('/song/:artist/:album/:music', function (req, res) {
+        //compute data here
+        var artist_encode = encodeURIComponent(req.params.artist);
+        var album_encode = encodeURIComponent(req.params.album);
+        var title_encode = encodeURIComponent(req.params.music);
+
+        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        
+        request({ 
+            url: "https://localhost:3000/song/"+string, 
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                console.log("ok");
+                res.send({result:1});
+            }
+            else
+            {
+                //없는 경우
+                console.log("no");
+                res.send({result:0});
+            }
+        });
+    });
 
 }
 

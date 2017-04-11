@@ -1,0 +1,124 @@
+<div class="song-info">
+  <div class="container">
+    <div style="white-space: nowrap;">
+      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
+      </div>
+      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+        <div style="margin-left: 30px">
+          <h4 style="word-break: keep-all;"><%= data.artist %>
+          <% if (data.album != '_') { %>
+          &nbsp; ー&nbsp; <%= data.album %>
+          <% } %></h4>
+          <h2 style="word-break: keep-all;"><%= data.title %></h2>
+        </div>
+      </div>
+    </div>
+
+    </br>
+
+  </div>
+</div>
+<div class="song-stats">
+  <div class="container">
+    <div>
+      <div style="float:left; float: bottom;">
+          <ul class="nav nav-tabs">
+            
+            <li class="active">
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
+            </li>
+          </ul>
+      </div>
+      <!--<div class="stat" style="float:left">
+          <p class="stat-name">재생 회수</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">듣는 사람</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">좋아요</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">오늘</h6>
+          <p class="stat-value">10</h6>
+      </div>-->
+    </div>
+
+    </br>
+
+  </div>
+</div>
+<form id="form" title="" method="post">
+  <div class="container" style="margin-top:30px;">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="bs-component">
+          <div class="content-tabs">
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="info">
+                
+                <h3>정보</h3>
+                <div class="form-group has-error">
+                  <label class="control-label" for="focusedInput">곡 이미지 링크</label>
+                  <input class="form-control" id="music_image_url" type="text" value="<%= data.music_image_url %>" >
+                </div>
+                <div class="form-group has-error">
+                  <label class="control-label" for="focusedInput">Youtube 링크</label>
+                  <input class="form-control" id="youtube_code" type="text" value="https://www.youtube.com/watch?v=<%= data.youtube_code %>" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="focusedInput">노트</label>
+                  <textarea class="form-control" rows="3" id="description"><%= data.description %></textarea>
+                  <label class="control-label" for="focusedInput"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <input type="submit" id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">수정</a>
+          
+          
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">편집규정</h3>
+            </div>
+            <div class="panel-body">
+              이 곡의 정보를 수정하면 저작자표시-비영리-동일조건변경허락 2.0 대한민국으로 배포하는 것에 동의하는 것입니다. 이 동의는 철회할 수 없습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  $(function(){ 
+    $("#btn_save").click(function(){ 
+      event.preventDefault();
+      var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        beforeSend : function(xhr){
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        },
+        data: { 
+        "music_image_url": $('#music_image_url').val(), 
+        "youtube_code": $('#youtube_code').val(), 
+        "description": $('#description').val() },
+        success: function(result) {
+          alert(url+'success \n' + result);
+        }
+      });
+    })	
+  })
+
+</script>
