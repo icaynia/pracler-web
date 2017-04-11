@@ -34,6 +34,42 @@
 .song-info .lang-logo img {
   max-width: 100%; }
 
+.home-info {
+  background: #2e2835;
+  color: white;
+  padding-top: 140px;
+  padding-bottom: 140px; }
+
+.home-info p {
+  color: #d9ccee;
+  max-width: 75%;
+  margin: 1em auto 2em; }
+
+.home-info h1 {
+  color: #d9ccee; }
+
+.home-info h2 {
+  color: #d9ccee; }
+
+.home-info h4 {
+  color: #d9ccee; }
+
+.navbar + .home-info {
+  margin-top: -20px; }
+
+.home-info .lang-logo {
+  display: block;
+  background: #B01302;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 2px solid white; }
+
+.song-info .lang-logo img {
+  max-width: 100%; }
+
 
 .song-stats {
   background: #27222d;}

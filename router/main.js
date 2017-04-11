@@ -9,6 +9,12 @@ module.exports = function(app)
      */
 
     // now
+
+    app.get('/', function(req, res) {
+        res.render('./layouts/layout', {param: "/"});
+    });
+
+
     app.get('/now', function(req, res) {
         res.render('./layouts/layout', {param: "/now"});
     });
@@ -83,15 +89,19 @@ module.exports = function(app)
         request("http://localhost:3000/song/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log(body) // Print the google web page.
+                console.log(unfetch(body)) // Print the google web page.
                 res.render('./pages/song_music', {
-                    param: req.params
+                    param: req.params,
+                    data: JSON.parse(unfetch(body))
                 });
             }
             else
             {
                 //없는 경우
-                console.log(error) 
+                res.render('./pages/404', {
+                    param: req.params,
+                    data: JSON.parse(unfetch(body))
+                });
             }
         })
         
@@ -133,9 +143,10 @@ module.exports = function(app)
 
     app.get('/view/*', function (req, res) {
         //compute data here
-        res.render('./pages/404');
+        res.render('./pages/home', {
+            param: req.params
+        });
     });
-
     
 
 }
@@ -143,4 +154,9 @@ module.exports = function(app)
 function fetch(str)
 {
     return str.replace(/ /gi, '+');
+}
+
+function unfetch(str)
+{
+    return str.replace('+', ' ');
 }
