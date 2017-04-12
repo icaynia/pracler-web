@@ -223,6 +223,57 @@ module.exports = function(app)
         });
     });
 
+    app.put('/song/:artist/:album', function (req, res) {
+        //compute data here
+        var artist_encode = encodeURIComponent(req.params.artist);
+        var album_encode = encodeURIComponent(req.params.album);
+
+        var string = fetch(artist_encode+"/"+album_encode);
+        console.log("Attributes : " + req.body.music_image_url);
+        request({ 
+            url: "http://localhost:3000/song/"+string, 
+            method: 'PUT', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                console.log("ok");
+                res.send({result:1});
+            }
+            else
+            {
+                //없는 경우
+                console.log("no");
+                res.send({result:0});
+            }
+        });
+    });
+
+    app.put('/song/:artist', function (req, res) {
+        //compute data here
+        var artist_encode = encodeURIComponent(req.params.artist);
+
+        var string = fetch(artist_encode);
+        console.log("Attributes : " + req.body.artist_image_url);
+        request({ 
+            url: "http://localhost:3000/song/"+string, 
+            method: 'PUT', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                console.log("error");
+                res.send({result:1});
+            }
+            else
+            {
+                //없는 경우
+                console.log("no");
+                res.send({result:0});
+            }
+        });
+    });
+
 }
 
 function fetch(str)

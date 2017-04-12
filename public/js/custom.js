@@ -8,9 +8,7 @@ $(function(){
     $('a, button').click(function (e) {
         // custom handling here
         e.preventDefault();
-
-        alert($(this).attr('href') );
-
+        alert('click');
         var href = $(this).attr('href');
         history.pushState("", "", href);
 
