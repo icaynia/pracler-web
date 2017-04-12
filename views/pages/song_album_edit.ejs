@@ -103,7 +103,7 @@
   $(function(){ 
     $("#btn_save").click(function(){ 
       event.preventDefault();
-      var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
+      var url = "/song/<%= param.artist %>/<%= param.album %>";
       var youtube = $('#youtube_code').val();
       var youtube_code = getUrlVars(youtube).v;
 

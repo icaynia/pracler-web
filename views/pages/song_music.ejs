@@ -2,7 +2,7 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img style="width:150px; height:150px; background-image:white;" src="https://3.bp.blogspot.com/-9AbnOUbYaks/V-MeorSHh0I/AAAAAAAACC0/C4f87VCYQXciS2VIM3kM3szlYv5az9rewCLcB/s1600/%25E6%2581%258B%2B-%2B%25E6%2598%259F%25E9%2587%258E%2B%25E6%25BA%2590%2B-%2B%25E6%25AD%258C%25E8%25A9%259E.jpg"></div>
+        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
@@ -69,7 +69,7 @@
            <div id="myTabContent" class="tab-content">   
             <div class="tab-pane fade active in" id="info">
               <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/pCkwZWmc9og" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/<%= data.youtube_code %>" frameborder="0" allowfullscreen></iframe>
               </div>
               <h3>정보</h3>
               <blockquote>
@@ -93,7 +93,7 @@
     </div>
     <div class="col-lg-4">
       <div class="bs-component">
-        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>/edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
+        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
         
         
@@ -102,10 +102,17 @@
             <h3 class="panel-title">정보</h3>
           </div>
           <div class="panel-body">
-            「恋」（こい）は、日本のシンガーソングライター星野源の楽曲。この楽曲は9枚目のシングルとして2016年10月5日にSPEEDSTAR RECORDSより発売され、自身が出演したTBS系テレビドラマ『逃げるは恥だが役に立つ』の主題歌としても使用された。
+            <%= data.description %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script language="javascript">
+  document.title = "<%= data.title %> - <%= data.artist %>" ;
+</script>
+
+
+<script src="/js/custom.js"></script>

@@ -109,3 +109,32 @@
 
 .youtube {position:relative;padding-bottom:52.25%;padding-top:30px;height:0;overflow:hidden;} 
 .youtube iframe,.youtube object,.youtube embed{position:absolute;top:0;left:0;width:100%;height:100%;} 
+
+.navbar-fix-top {
+  height:35px;
+  width:100%;
+  color: #555;
+  font-size:12px;
+  position:fixed;
+  z-index:999;
+  top:0px;
+  left:0px;
+  background-color:#fff;    
+  opacity: 0.9;
+}
+
+.navbar-fix-bottom {
+  height:35px;
+  width:100%;
+  color: #555;
+  font-size:12px;
+  position:fixed;
+  z-index:999;
+  bottom:0px;
+  left:0px;
+  opacity: 0.97;
+}
+
+.main_content {  
+  padding-bottom: 35px; 
+}

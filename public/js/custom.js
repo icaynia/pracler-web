@@ -4,18 +4,19 @@
 
 
 // a 태그를 클릭할 경우
-$('a, button').click(function (e) {
-    // custom handling here
-    e.preventDefault();
+$(function(){ 
+    $('a, button').click(function (e) {
+        // custom handling here
+        e.preventDefault();
 
-    //alert($(this).attr('href') );
+        alert($(this).attr('href') );
 
-    var href = $(this).attr('href');
-    history.pushState("", "", href);
+        var href = $(this).attr('href');
+        history.pushState("", "", href);
 
-    refresh(href);
+        refresh(href);
+    });
 });
-
 window.onpopstate = function(event) { 
         //alert("event" + location.pathname );
         refresh(location.pathname);
@@ -23,8 +24,21 @@ window.onpopstate = function(event) {
 
 function goto(url)
 {
-    history.pushState("", "", href);
+    history.pushState("", "", url);
     refresh(url);
+}
+
+function getUrlVars(url)
+{
+    var vars = [], hash;
+    var hashes = url.slice(url.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
 }
 
 // 자체 새로고침 
