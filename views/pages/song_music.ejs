@@ -6,9 +6,9 @@
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
-          <h4 style="word-break: keep-all;"><%= data.artist %>
+          <h4 style="word-break: keep-all;"><a href="/song/<%= data.artist %>"><%= data.artist %></a>
           <% if (data.album != '_') { %>
-          &nbsp; ー&nbsp; <%= data.album %>
+          &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
           <% } %></h4>
           <h2 style="word-break: keep-all;"><%= data.title %></h2>
         </div>
