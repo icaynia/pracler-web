@@ -165,6 +165,7 @@ module.exports = function(app)
     });
 
     app.get('/view/search/:search', function (req, res) {
+        req.params.search = unfetch(req.params.search);
         //compute data here
         res.render('./pages/search', {
             title: "search : " + req.params.search,
