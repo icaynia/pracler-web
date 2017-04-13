@@ -8,7 +8,7 @@ $(function(){
     $('a, button').click(function (e) {
         // custom handling here
         e.preventDefault();
-        alert('click');
+        //alert('click');
         var href = $(this).attr('href');
         history.pushState("", "", href);
 
@@ -48,4 +48,14 @@ function refresh(url)
         //alert(url);
         $('#main_content').load("/view"+url);
     }
+}
+
+function fetch(str)
+{
+    return str.replace(/ /gi, '+');
+}
+
+function unfetch(str)
+{
+    return str.replace('+', ' ');
 }

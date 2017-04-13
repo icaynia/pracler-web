@@ -19,6 +19,9 @@ module.exports = function(app)
         res.render('./layouts/layout', {param: "/now"});
     });
 
+    app.get('/cast', function(req, res) {
+        res.render('./layouts/layout', {param: "/cast"});
+    });
     // login
     app.get('/login', function(req, res) {
         res.render('./layouts/layout', {param: "/login"});
@@ -176,7 +179,14 @@ module.exports = function(app)
 
     app.get('/view/login', function (req, res) {
         //compute data here
-        res.render('./pages/home', {
+        res.render('./pages/login', {
+            title: "login"
+        });
+    });
+
+    app.get('/view/cast', function (req, res) {
+        //compute data here
+        res.render('./pages/cast', {
             title: "login"
         });
     });

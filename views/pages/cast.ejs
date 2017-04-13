@@ -2,15 +2,12 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
+        <img style="width:150px; height:150px; background-image:white;" src=""></div>
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
-          <h4 style="word-break: keep-all;"><a href="/song/<%= param.artist %>"><%= data.artist %></a>
-          <% if (data.album != '_') { %>
-          &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
-          <% } %></h4>
-          <h2 style="word-break: keep-all;"><%= data.title %></h2>
+          <h4 style="word-break: keep-all;"></h4>
+          <h2 style="word-break: keep-all;"></h2>
         </div>
       </div>
     </div>
@@ -26,7 +23,7 @@
           <ul class="nav nav-tabs">
             
             <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br>- </a>
             </li>
             <li class="">
               <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
@@ -66,15 +63,15 @@
     <div class="col-lg-8">
       <div class="bs-component">
         <div class="content-tabs">
-           <div id="myTabContent" class="tab-content">   
+          <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="info">
+
               <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/<%= data.youtube_code %>" frameborder="0" allowfullscreen></iframe>
-              </div>
+                  준비중인 서비스입니다.
+            </div>
               <h3>정보</h3>
               <blockquote>
-                <p>
-                   </p>
+                  fewfwef
                 <small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>
               </blockquote>
             </div>
@@ -93,34 +90,16 @@
     </div>
     <div class="col-lg-4">
       <div class="bs-component">
-        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
-        <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
-        
-        
+        <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px"> ▶&nbsp;&nbsp; Youtube에서 보기</a>
         <div class="panel panel-success">
           <div class="panel-heading">
-            <h3 class="panel-title">정보</h3>
+            <h3 class="panel-title">Panel success</h3>
           </div>
           <div class="panel-body">
-            <%= data.description %>
-          </div>
-        </div>
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <h3 class="panel-title">가사</h3>
-          </div>
-          <div class="panel-body">
-            <%= data.lyrics %>
+            Panel content
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<script language="javascript">
-  document.title = "<%= data.title %> - <%= data.artist %>" ;
-</script>
-
-
-<script src="/js/custom.js"></script>

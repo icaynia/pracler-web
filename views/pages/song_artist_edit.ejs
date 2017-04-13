@@ -6,7 +6,7 @@
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
-          <h2 style="word-break: keep-all;"><%= param.artist %></h2>
+          <h2 style="word-break: keep-all;"><%= data.artist %></h2>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
           <ul class="nav nav-tabs">
             
             <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.artist %></a>
             </li>
           </ul>
       </div>
@@ -75,9 +75,7 @@
       <div class="col-lg-4">
         <div class="bs-component">
           <a id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">수정</a>
-          
-          
-          <div class="panel panel-success">
+          <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title">편집규정</h3>
             </div>
