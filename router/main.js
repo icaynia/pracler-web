@@ -11,6 +11,7 @@ module.exports = function(app)
     // now
 
     app.get('/', function(req, res) {
+        console.log("파라미터도 없고 뷰도 없음 : 메인");
         res.render('./layouts/layout', {param: "/"});
     });
 
@@ -49,11 +50,11 @@ module.exports = function(app)
     });
  
     app.get('/search/:search', function(req, res) {
+        var string = fetch("/search/"+req.params.search)
         res.render('./layouts/layout', {
-            param: "/song/search/"+req.params.search
+            param: string
         });
     });
-
     
     /** View
      *  
@@ -163,10 +164,11 @@ module.exports = function(app)
         
     });
 
-    app.get('/view/song/search/:search', function (req, res) {
+    app.get('/view/search/:search', function (req, res) {
         //compute data here
         res.render('./pages/search', {
-            title: "search : " + req.params.search
+            title: "search : " + req.params.search,
+            search: req.params.search
         });
     });
 
@@ -193,18 +195,15 @@ module.exports = function(app)
 
     // etc
     app.get('/view/404', function (req, res) {
+        console.log("뷰 : 아무것도 없음 : 404");
         //compute data here
         res.render('./pages/404');
     });
 
-    app.get('/view/*', function (req, res) {
+    app.get('/view', function (req, res) {
         //compute data here
-        res.render('./pages/home', {
-            param: req.params
-        });
+        res.render('./pages/home');
     });
-    
-
 
     app.put('/song/:artist/:album/:music', function (req, res) {
         //compute data here

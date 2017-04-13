@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 
 app.use(function (req,res) {
-    res.render('./layouts/layout', {param:req.url});
+    res.status(404).render('./layouts/layout', {param:'/404'});
 });
 
 app.listen(app.get('port'), function() {
