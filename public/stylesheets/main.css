@@ -138,3 +138,9 @@
 .main_content {  
   padding-bottom: 35px; 
 }
+
+.footer {
+  background-color: #eee;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

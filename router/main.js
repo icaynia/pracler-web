@@ -165,7 +165,7 @@ module.exports = function(app)
 
     app.get('/view/song/search/:search', function (req, res) {
         //compute data here
-        res.render('./pages/home', {
+        res.render('./pages/search', {
             title: "search : " + req.params.search
         });
     });
