@@ -291,7 +291,11 @@ function fetch(str)
     return str.replace(/ /gi, '+');
 }
 
+String.prototype.replaceAll = function(org, dest) {
+    return this.split(org).join(dest);
+}
+
 function unfetch(str)
 {
-    return str.replace('+', ' ');
+    return str.replaceAll('+', ' ');
 }
