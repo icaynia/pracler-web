@@ -68,7 +68,7 @@
 
 <script>
   $(function(){ 
-    var search = "<%= search %>vv";
+    var search = "<%= search %>";
     var urlmusic = "/viewcall/search/music/"+search;
     var urlalbum = "/viewcall/search/album/"+search;
     var urlartist = "/viewcall/search/artist/"+search;
@@ -79,6 +79,7 @@
         type: 'GET',
         dataType: 'html',
         success: function(result) {
+            $('#res_music_simple').html(result);
             $('#res_music').html(result);
         }
     });	
@@ -87,6 +88,7 @@
         type: 'GET',
         dataType: 'html',
         success: function(result) {
+            $('#res_album_simple').html(result);
             $('#res_album').html(result);
         }
     });	
@@ -95,6 +97,7 @@
         type: 'GET',
         dataType: 'html',
         success: function(result) {
+            $('#res_artist_simple').html(result);
             $('#res_artist').html(result);
         }
     });	
@@ -103,6 +106,7 @@
         type: 'GET',
         dataType: 'html',
         success: function(result) {
+            $('#res_user_simple').html(result);
             $('#res_user').html(result);
         }
     });	

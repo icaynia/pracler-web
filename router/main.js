@@ -57,11 +57,25 @@ module.exports = function(app)
 
 
     app.get('/viewcall/search/music/:search', function (req, res) {
-
-        var string = fetch(req.params.search);
+        console.log(req.params.search);
+        var string = encodeURIComponent(fetch(req.params.search));
         
         req.params.search = unfetch(req.params.search);
-        res.render('./pages/search/simple_music.ejs');
+
+        request("http://localhost:3000/search/music/"+string , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.render('./pages/search/simple_music.ejs', {
+                    param: req.params,
+                    data: JSON.parse(body)
+                });
+            }
+            else
+            {
+                //없는 경우
+                res.render('./pages/404');
+            }
+        })
     });
     
     app.get('/viewcall/search/album/:search', function (req, res) {

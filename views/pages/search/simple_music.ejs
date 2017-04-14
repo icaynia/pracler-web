@@ -5,46 +5,22 @@
         <th>#</th>
         <th>아티스트</th>
         <th>앨범</th>
-        <th>이름</th>
+        <th>제목</th>
         <th>분류</th>
     </tr>
 </thead>
 <tbody>
-    <tr>
-        <td></td>
-        <td>정은지</td>
-        <td></td>
-        <td>그대란 정원</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>정은지</td>
-        <td></td>
-        <td>그대란 정원</td>
-        <td>노래방</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>정은지</td>
-        <td></td>
-        <td>그대란 정원</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>정은지</td>
-        <td></td>
-        <td>그대란 정원</td>
-        <td>노래방</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>정은지</td>
-        <td></td>
-        <td>그대란 정원</td>
-        <td>노래방</td>
-    </tr>
+
+    <% for(var i=0; i < data.length; i++) {%>
+        <tr>
+            <td></td>
+            <td><a href="/song/<%=data[i].artist %>"><%=data[i].artist %></a></td>
+            <td><a href=""><%=data[i].album %></a></td>
+            <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
+            <td>-</td>
+        </tr>
+    <% }; %>
+            
 </tbody>
 </table> 
 

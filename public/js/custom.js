@@ -43,11 +43,11 @@ function getUrlVars(url)
 function refresh(url)
 {
     if (url != null)
-    if (url.indexOf('#') == -1)
-    {
-        //alert(url);
-        $('#main_content').load("/view"+url);
-    }
+        if (url.indexOf('#') == -1)
+        {
+            //alert(url);
+            $('#main_content').load("/view"+url);
+        }
 }
 
 function fetch(str)
