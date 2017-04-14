@@ -191,7 +191,7 @@ module.exports = function(app)
 
     app.get('/view/search/:search', function (req, res) {
 
-        var string = fetch(req.params.search);
+        var string = encodeURIComponent(fetch(req.params.search));
         
         req.params.search = unfetch(req.params.search);
         request("http://localhost:3000/search/"+string , function (error, response, body) {
