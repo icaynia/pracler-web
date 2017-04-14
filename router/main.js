@@ -26,6 +26,13 @@ module.exports = function(app)
     app.get('/login', function(req, res) {
         res.render('./layouts/layout', {param: "/login"});
     });
+    
+    app.get('/add', function(req, res) {
+        var string = fetch("/add");
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
 
     app.get('/song/:artist/:album/:title', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
@@ -228,6 +235,13 @@ module.exports = function(app)
         //compute data here
         res.render('./pages/home', {
             title: "now"
+        });
+    });
+
+    app.get('/view/add', function (req, res) {
+        //compute data here
+        res.render('./pages/add/select', {
+            title: "add"
         });
     });
 
