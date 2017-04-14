@@ -11,7 +11,6 @@ module.exports = function(app)
     // now
 
     app.get('/', function(req, res) {
-        console.log("파라미터도 없고 뷰도 없음 : 메인");
         res.render('./layouts/layout', {param: "/"});
     });
 
@@ -55,7 +54,39 @@ module.exports = function(app)
             param: string
         });
     });
+
+
+    app.get('/viewcall/search/music/:search', function (req, res) {
+
+        var string = fetch(req.params.search);
+        
+        req.params.search = unfetch(req.params.search);
+        res.render('./pages/search/simple_music.ejs');
+    });
     
+    app.get('/viewcall/search/album/:search', function (req, res) {
+
+        var string = fetch(req.params.search);
+        
+        req.params.search = unfetch(req.params.search);
+        res.render('./pages/search/simple_album.ejs');
+    });
+
+    app.get('/viewcall/search/artist/:search', function (req, res) {
+
+        var string = fetch(req.params.search);
+        
+        req.params.search = unfetch(req.params.search);
+        res.render('./pages/search/simple_artist.ejs');
+    });
+
+    app.get('/viewcall/search/user/:search', function (req, res) {
+
+        var string = fetch(req.params.search);
+        
+        req.params.search = unfetch(req.params.search);
+        res.render('./pages/search/simple_user.ejs');
+    });
     /** View
      *  
      */
@@ -94,7 +125,6 @@ module.exports = function(app)
             else
             {
                 //없는 경우
-                console.log(string);
                 res.render('./pages/404');
             }
         })
@@ -112,7 +142,6 @@ module.exports = function(app)
         request("http://localhost:3000/song/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log(unfetch(body)) // Print the google web page.
                 res.render('./pages/song_album', {
                     param: req.params,
                     data: JSON.parse(unfetch(body))
@@ -120,8 +149,6 @@ module.exports = function(app)
             }
             else
             {
-                //없는 경우
-                console.log(string);
                 res.render('./pages/404');
             }
         })
@@ -156,8 +183,6 @@ module.exports = function(app)
             }
             else
             {
-                //없는 경우
-                console.log(string);
                 res.render('./pages/404');
             }
         })
@@ -165,11 +190,23 @@ module.exports = function(app)
     });
 
     app.get('/view/search/:search', function (req, res) {
+
+        var string = fetch(req.params.search);
+        
         req.params.search = unfetch(req.params.search);
-        //compute data here
-        res.render('./pages/search', {
-            title: "search : " + req.params.search,
-            search: req.params.search
+        request("http://localhost:3000/search/"+string , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.render('./pages/search', {
+                    param: req.params,
+                    data: JSON.parse(unfetch(body)),
+                    search: req.params.search
+                });
+            }
+            else
+            {
+                res.render('./pages/404');
+            }
         });
     });
 
@@ -196,8 +233,6 @@ module.exports = function(app)
 
     // etc
     app.get('/view/404', function (req, res) {
-        console.log("뷰 : 아무것도 없음 : 404");
-        //compute data here
         res.render('./pages/404');
     });
 
@@ -213,7 +248,6 @@ module.exports = function(app)
         var title_encode = encodeURIComponent(req.params.music);
 
         var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
-        console.log("Attributes : " + req.body.music_image_url);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
@@ -221,13 +255,11 @@ module.exports = function(app)
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log("ok");
                 res.send({result:1});
             }
             else
             {
                 //없는 경우
-                console.log("no");
                 res.send({result:0});
             }
         });
@@ -239,7 +271,6 @@ module.exports = function(app)
         var album_encode = encodeURIComponent(req.params.album);
 
         var string = fetch(artist_encode+"/"+album_encode);
-        console.log("Attributes : " + req.body.music_image_url);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
@@ -247,13 +278,11 @@ module.exports = function(app)
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log("ok");
                 res.send({result:1});
             }
             else
             {
                 //없는 경우
-                console.log("no");
                 res.send({result:0});
             }
         });
@@ -264,7 +293,6 @@ module.exports = function(app)
         var artist_encode = encodeURIComponent(req.params.artist);
 
         var string = fetch(artist_encode);
-        console.log("Attributes : " + req.body.artist_image_url);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
@@ -272,13 +300,11 @@ module.exports = function(app)
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log("error");
                 res.send({result:1});
             }
             else
             {
                 //없는 경우
-                console.log("no");
                 res.send({result:0});
             }
         });
