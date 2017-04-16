@@ -35,10 +35,7 @@
   max-width: 100%; }
 
 .home-info {
-  background: #2e2835;
-  color: white;
-  padding-top: 140px;
-  padding-bottom: 140px; }
+  background: #FFFFFF;}
 
 .home-info p {
   color: #d9ccee;
@@ -123,24 +120,45 @@
   opacity: 0.9;
 }
 
-.navbar-fix-bottom {
-  height:35px;
-  width:100%;
-  color: #555;
-  font-size:12px;
-  position:fixed;
-  z-index:999;
-  bottom:0px;
-  left:0px;
-  opacity: 0.97;
+html,body{height:100%;}
+
+.background 
+{
+    min-height: 100%; 
+    padding-top: 64px;
+    padding-bottom: 130px;
+    position: relative;
+    /*border: 3px solid blue;*/
+    border: 3px solid red;
 }
 
-.main_content {  
-  padding-bottom: 35px; 
+.main-content
+{
+    height: 100%;
+    min-height: 100%; 
 }
 
-.footer {
-  background-color: #eee;
-  padding-top: 30px;
-  padding-bottom: 30px;
+.main .search
+{
+    margin-top: 64px;
+    margin-bottom: 64px;
 }
+
+.footer 
+{
+    position: absolute;
+    height: 130px;
+    padding-top: 40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    background-color: #333333;
+}
+
+.container {
+    height:100%;
+    min-height: 100%; 
+    position: relative;
+}
+
