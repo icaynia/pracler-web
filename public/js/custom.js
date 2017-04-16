@@ -4,62 +4,78 @@
 
 
 // a 태그를 클릭할 경우
+
+
 $(function(){ 
-    $('a, button').click(function (e) {
-        // custom handling here
-        e.preventDefault();
-        //alert('click');
-        var href = $(this).attr('href');
-        history.pushState("", "", href);
-
-        refresh(href);
-    });
-});
-window.onpopstate = function(event) { 
-        //alert("event" + location.pathname );
-        refresh(location.pathname);
-}
-
-function goto(url)
-{
-    history.pushState("", "", url);
-    refresh(url);
-}
-
-function getUrlVars(url)
-{
-    var vars = [], hash;
-    var hashes = url.slice(url.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
+    
+    window.onpopstate = function(event) { 
+            //alert("event" + location.pathname );
+            refresh(location.pathname);
     }
-    return vars;
-}
+   
+    $(this).on('click', 'a, button',function (e) {
+            // custom handling here
+            e.preventDefault();
+            var href = $(this).attr('href');
+            history.pushState("", "", href);
+            
+            refresh(href);
+    });
 
-// 자체 새로고침 
-function refresh(url)
-{
-    if (url != null)
-        if (url.indexOf('#') == -1)
+});
+
+    function goto(url)
+    {
+        history.pushState("", "", url);
+        refresh(url);
+    }
+ 
+    function youtube_to_layout()
+    {
+        $( "div.youtube" ).appendTo("div.youtube-float");
+
+    }
+
+    function getUrlVars(url)
+    {
+        var vars = [], hash;
+        var hashes = url.slice(url.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++)
         {
-            //alert(url);
-            $('#main_content').load("/view"+url);
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
         }
-}
+        return vars;
+    }
 
-function fetch(str)
-{
-    return str.replace(/ /gi, '+');
-}
+    // 자체 새로고침 
+    function refresh(url)
+    {
+        if (url != null)
+            if (url.indexOf('#') == -1)
+            {
+                //alert(url);
+                $('#main_content').load("/view"+url);
+            }
+    }
 
-String.prototype.replaceAll = function(org, dest) {
-    return this.split(org).join(dest);
-}
+    function fetch(str)
+    {
+        return str.replace(/ /gi, '+');
+    }
 
-function unfetch(str)
-{
-    return str.replaceAll('+', ' ');
-}
+    String.prototype.replaceAll = function(org, dest) {
+        return this.split(org).join(dest);
+    }
+
+    function unfetch(str)
+    {
+        return str.replaceAll('+', ' ');
+    }
+
+
+
+
+
+

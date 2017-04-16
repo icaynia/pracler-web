@@ -129,7 +129,6 @@ html,body{height:100%;}
     padding-bottom: 130px;
     position: relative;
     /*border: 3px solid blue;*/
-    border: 3px solid red;
 }
 
 .main-content
@@ -162,3 +161,13 @@ html,body{height:100%;}
     position: relative;
 }
 
+.youtube-float {
+    position:fixed;
+    width:480px !important;
+    height:270px !important;
+    bottom: 40px;
+    right: 10px;
+}
+.youtube-float .youtube {
+  position: static;
+}
