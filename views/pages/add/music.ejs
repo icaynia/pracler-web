@@ -1,0 +1,117 @@
+<div class="container" style="padding-top:30px;">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="bs-component">
+                <div class="content-tabs">
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="info">
+                            <h3>새로운 음악 추가하기</h3>
+
+                            <h4 style="padding-top:30px;">・ 필수 정보</h4>
+                            <hr>
+
+                            <div >
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        
+                                        <div class="form-group has-error">
+                                            <label class="control-label" for="focusedInput">아티스트 이름</label>
+                                            <input class="form-control" id="regist_artist" type="text" value="" >
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div class="form-group has-error">
+                                            <label class="control-label" for="focusedInput">앨범 이름</label>
+                                            <input class="form-control" id="regist_album" type="text" value="" >
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group has-error">
+                                    <label class="control-label" for="focusedInput">음악 이름</label>
+                                    <input class="form-control" id="regist_title" type="text" value="" >
+                                </div>
+
+                            </div>
+
+                            <h4 style="padding-top:30px;">・ 부가 정보</h4>
+                            <hr>
+                            
+                            <div class="form-group">
+                                <label class="control-label" for="focusedInput">곡 이미지 링크</label>
+                                <input class="form-control" id="music_image_url" type="text" value="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="focusedInput">Youtube 링크</label>
+                                <input class="form-control" id="youtube_code" type="text" value="https://www.youtube.com/watch?v=" >
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="focusedInput">노트</label>
+                                <textarea class="form-control" rows="3" id="description"></textarea>
+                                <label class="control-label" for="focusedInput"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="bs-component">
+                <a id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">등록</a>
+                
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">편집규정</h3>
+                    </div>
+                    <div class="panel-body">
+                        1. 이 정보를 등록하면 저작자표시-비영리-동일조건변경허락 2.0 대한민국으로 배포하는 것에 동의하는 것입니다. 이 동의는 철회할 수 없습니다. </br>
+
+                        2. 등록 시 회원 아이디 정보 또는 비회원의 경우 IP주소가 남게 됩니다. </br>
+
+                        3. 비방적 표현이나 폄훼하는 내용을 등록하는 경우 형사 처벌을 받을 수 있습니다. 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+  $(function(){ 
+    $("#btn_save").click(function(){ 
+      event.preventDefault();
+
+      var youtube = $('#youtube_code').val();
+
+      var regist_artist = $('#regist_artist').val();
+      var regist_album = $('#regist_album').val();
+      var regist_title = $('#regist_title').val();
+      var music_image_url = $('#music_image_url').val();
+      var youtube_code = getUrlVars(youtube).v;
+      var description = $('#description').val();
+
+
+      var url = "/regist/"+regist_artist+"/"+regist_album+"/"+regist_title;
+      var afterUrl = "/song/"+regist_artist+"/"+regist_album+"/"+regist_title;
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "music_image_url": music_image_url, 
+          "youtube_code": youtube_code, 
+          "description": description
+        },
+        success: function(result) {
+          goto(afterUrl);
+        }
+      });
+    })	
+  })
+
+</script>

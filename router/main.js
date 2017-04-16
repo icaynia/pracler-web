@@ -33,6 +33,27 @@ module.exports = function(app)
             param: string
         });
     });
+    
+    app.get('/add/artist', function(req, res) {
+        var string = fetch("/add/artist");
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
+    
+    app.get('/add/album', function(req, res) {
+        var string = fetch("/add/album");
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
+    
+    app.get('/add/music', function(req, res) {
+        var string = fetch("/add/music");
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
 
     app.get('/song/:artist/:album/:title', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
@@ -245,6 +266,27 @@ module.exports = function(app)
         });
     });
 
+    app.get('/view/add/artist', function (req, res) {
+        //compute data here
+        res.render('./pages/add/artist', {
+            title: "add"
+        });
+    });
+
+    app.get('/view/add/music', function (req, res) {
+        //compute data here
+        res.render('./pages/add/music', {
+            title: ""
+        });
+    });
+
+    app.get('/view/add/album', function (req, res) {
+        //compute data here
+        res.render('./pages/add/album', {
+            title: "album"
+        });
+    });
+
     app.get('/view/login', function (req, res) {
         //compute data here
         res.render('./pages/login', {
@@ -269,16 +311,18 @@ module.exports = function(app)
         res.render('./pages/home');
     });
 
-    app.put('/song/:artist/:album/:music', function (req, res) {
+    app.put('/regist/:artist/:album/:music', function (req, res) {
         //compute data here
+
         var artist_encode = encodeURIComponent(req.params.artist);
         var album_encode = encodeURIComponent(req.params.album);
         var title_encode = encodeURIComponent(req.params.music);
 
         var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+
         request({ 
-            url: "http://localhost:3000/song/"+string, 
-            method: 'PUT', 
+            url: "http://localhost:3000/regist/"+string, 
+            method: 'POST', 
             form: req.body
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -288,6 +332,29 @@ module.exports = function(app)
             else
             {
                 //없는 경우
+                res.send({result:0});
+            }
+        });
+    });
+
+    app.put('/song/:artist/:album/:music', function (req, res) {
+        //compute data here
+        var artist_encode = encodeURIComponent(req.params.artist);
+        var album_encode = encodeURIComponent(req.params.album);
+        var title_encode = encodeURIComponent(req.params.music);
+        
+        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        console.log("http://localhost:3000/song/"+string);
+        request({ 
+            url: "http://localhost:3000/song/"+string, 
+            method: 'PUT', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                res.send({result:1});
+            }
+            else
+            {
                 res.send({result:0});
             }
         });
