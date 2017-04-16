@@ -35,10 +35,10 @@
         <div class="list-group" id="side-tab">
             
             <a href="#all" class="list-group-item active" data-toggle="tab">
-                <span class="badge">14</span>
-                모두 보기
+                <span class="badge"></span>
+                음악
             </a>
-            <a href="#music" class="list-group-item" data-toggle="tab">
+            <!--<a href="#music" class="list-group-item" data-toggle="tab">
                 <span class="badge">14</span>
                 음악
             </a>
@@ -50,7 +50,7 @@
             </a>
             <a href="#user" class="list-group-item" data-toggle="tab">유저
                 <span class="badge">14</span>
-            </a>
+            </a>-->
         </div>
     </div>  
 </div>
@@ -83,33 +83,33 @@
             $('#res_music').html(result);
         }
     });	
-    $.ajax({
-        url: urlalbum,
-        type: 'GET',
-        dataType: 'html',
-        success: function(result) {
-            $('#res_album_simple').html(result);
-            $('#res_album').html(result);
-        }
-    });	
-    $.ajax({
-        url: urlartist,
-        type: 'GET',
-        dataType: 'html',
-        success: function(result) {
-            $('#res_artist_simple').html(result);
-            $('#res_artist').html(result);
-        }
-    });	
-    $.ajax({
-        url: urluser,
-        type: 'GET',
-        dataType: 'html',
-        success: function(result) {
-            $('#res_user_simple').html(result);
-            $('#res_user').html(result);
-        }
-    });	
+    // $.ajax({
+    //     url: urlalbum,
+    //     type: 'GET',
+    //     dataType: 'html',
+    //     success: function(result) {
+    //         $('#res_album_simple').html(result);
+    //         $('#res_album').html(result);
+    //     }
+    // });	
+    // $.ajax({
+    //     url: urlartist,
+    //     type: 'GET',
+    //     dataType: 'html',
+    //     success: function(result) {
+    //         $('#res_artist_simple').html(result);
+    //         $('#res_artist').html(result);
+    //     }
+    // });	
+    // $.ajax({
+    //     url: urluser,
+    //     type: 'GET',
+    //     dataType: 'html',
+    //     success: function(result) {
+    //         $('#res_user_simple').html(result);
+    //         $('#res_user').html(result);
+    //     }
+    // });	
   })
 
 </script>
