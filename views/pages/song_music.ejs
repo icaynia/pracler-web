@@ -1,3 +1,4 @@
+
 <div class="song-info">
   <div class="container">
     <div style="white-space: nowrap;">
@@ -69,8 +70,8 @@
            <div id="myTabContent" class="tab-content">   
             <div class="tab-pane fade active in" id="info">
               <div class="youtube">
-                <iframe src="https://www.youtube.com/embed/<%= data.youtube_code %>?autoplay=1" frameborder="0" allowfullscreen></iframe>
-              </div>
+                <div id="contentplayer"></div>
+                </div>
               <h3>정보</h3>
               <blockquote>
                 <p>
@@ -96,6 +97,7 @@
       <div class="bs-component">
         <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
+        <a href="#" onClick=""id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
         
                             
                     <% if(data.lyrics) { %>
@@ -119,7 +121,9 @@
 <script language="javascript">
   document.title = "<%= data.title %> - <%= data.artist %>" ;
 
-  youtube_to_layout();
-
+  $(function(){ 
+    youtube_setFloatPlayer("<%= data.youtube_code %>");
+    youtube_setContentPlayer("<%= data.youtube_code %>");
+  });
   //youtube_to_layout();
 </script>

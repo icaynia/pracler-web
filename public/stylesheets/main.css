@@ -161,13 +161,13 @@ html,body{height:100%;}
     position: relative;
 }
 
-.youtube-float {
+.floatplayer {
     position:fixed;
     width:480px !important;
     height:270px !important;
     bottom: 40px;
     right: 10px;
 }
-.youtube-float .youtube {
+.floatplayer .youtube {
   position: static;
 }

@@ -7,6 +7,7 @@
         <th>앨범</th>
         <th>제목</th>
         <th>분류</th>
+        <th></th>
     </tr>
 </thead>
 <tbody>
@@ -18,6 +19,7 @@
             <td><a href=""><%=data[i].album %></a></td>
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
             <td>-</td>
+            <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
         </tr>
     <% }; %>
             
@@ -27,3 +29,12 @@
 <ul class="pager">
     <li class="next"><a href="#">더 보기 &rarr;</a></li>
 </ul>
+
+<script language="javascript">
+
+    $('.youtube-play-bt').click(function (e) {
+        
+        e.preventDefault();
+        youtube_to_layout_code($(this).attr('code'));
+    })
+</script>
