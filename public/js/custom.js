@@ -26,18 +26,21 @@ $(function(){
 
     function goto(url)
     {
+        var url = fetch(url);
         history.pushState("", "", url);
         refresh(url);
     }
  
     function youtube_to_layout()
     {
+        $( "div.youtube-float" ).html("");
         $( "div.youtube" ).appendTo("div.youtube-float");
 
     }
 
     function getUrlVars(url)
     {
+        var url = fetch(url);
         var vars = [], hash;
         var hashes = url.slice(url.indexOf('?') + 1).split('&');
         for(var i = 0; i < hashes.length; i++)
@@ -52,6 +55,7 @@ $(function(){
     // 자체 새로고침 
     function refresh(url)
     {
+        var url = fetch(url);
         if (url != null)
             if (url.indexOf('#') == -1)
             {
