@@ -105,6 +105,28 @@ module.exports = function(app)
             }
         })
     });
+
+    app.get('/viewcall/search/artist/:search', function (req, res) {
+        console.log(req.params.search);
+        var string = encodeURIComponent(fetch(req.params.search));
+        
+        req.params.search = unfetch(req.params.search);
+
+        request("http://localhost:3000/search/artist/"+string , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.render('./pages/search/simple_artist.ejs', {
+                    param: req.params,
+                    data: JSON.parse(body)
+                });
+            }
+            else
+            {
+                //없는 경우
+                res.render('./pages/404');
+            }
+        })
+    });
     
     app.get('/viewcall/search/album/:search', function (req, res) {
 
@@ -112,14 +134,6 @@ module.exports = function(app)
         
         req.params.search = unfetch(req.params.search);
         res.render('./pages/search/simple_album.ejs');
-    });
-
-    app.get('/viewcall/search/artist/:search', function (req, res) {
-
-        var string = fetch(req.params.search);
-        
-        req.params.search = unfetch(req.params.search);
-        res.render('./pages/search/simple_artist.ejs');
     });
 
     app.get('/viewcall/search/user/:search', function (req, res) {
@@ -320,6 +334,7 @@ module.exports = function(app)
 
         var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
 
+        console.log("http://localhost:3000/regist/"+string);
         request({ 
             url: "http://localhost:3000/regist/"+string, 
             method: 'POST', 

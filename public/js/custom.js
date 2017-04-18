@@ -18,22 +18,6 @@ $(function(){
 
      
 });
-
-function youtube_setFloatPlayer(code)
-{
-    FloatPlayer = new YT.Player('floatplayer', {
-            videoId: code,
-            events: {
-                'onStateChange': FloatPlayerStateChange
-            }
-    });
-}
-
-function FloatPlayerStateChange(event)
-{
-
-}
-
 function youtube_setContentPlayer(code)
 {
     ContentPlayer = new YT.Player('contentplayer', {
@@ -46,7 +30,7 @@ function youtube_setContentPlayer(code)
 
 function ContentPlayerStateChange(event)
 {
-    $("#floatplayerbox").html("");
+    $(".floatplayerbox").empty();
 }
 
 function goto(url)
@@ -56,15 +40,14 @@ function goto(url)
     refresh(url);
 }
 
-function youtube_to_layout()
+function youtube_content_to_float()
 {
-    $( "div.youtube" ).appendTo("div.youtube-float");
+    $("div.youtube").appendTo("div.floatplayerbox");
 }
 
-function youtube_to_layout_code(code)
+function youtube_setContentPlayer_autoplay(code)
 {
-    $( "div.youtube-float" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
-    $( "div.youtube" ).appendTo("div.youtube-float");
+    $( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
 }
 
 function getUrlVars(url)

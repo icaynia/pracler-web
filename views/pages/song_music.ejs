@@ -69,9 +69,9 @@
         <div class="content-tabs">
            <div id="myTabContent" class="tab-content">   
             <div class="tab-pane fade active in" id="info">
-              <div class="youtube">
+              <!--<div class="youtube">
                 <div id="contentplayer"></div>
-                </div>
+                </div>-->
               <h3>정보</h3>
               <blockquote>
                 <p>
@@ -95,9 +95,9 @@
     </div>
     <div class="col-lg-4">
       <div class="bs-component">
+        <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
+        
         <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
-        <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
-        <a href="#" onClick=""id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">Youtube에서 보기</a>
         
                             
                     <% if(data.lyrics) { %>
@@ -122,8 +122,11 @@
   document.title = "<%= data.title %> - <%= data.artist %>" ;
 
   $(function(){ 
-    youtube_setFloatPlayer("<%= data.youtube_code %>");
-    youtube_setContentPlayer("<%= data.youtube_code %>");
+    //youtube_setFloatPlayer("<%= data.youtube_code %>");
+
+    $('#youtube-play-layout').click(function (e) {
+      youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+    });
   });
   //youtube_to_layout();
 </script>

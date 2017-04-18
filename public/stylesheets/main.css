@@ -161,13 +161,23 @@ html,body{height:100%;}
     position: relative;
 }
 
-.floatplayer {
+.floatplayerbox {
     position:fixed;
-    width:480px !important;
-    height:270px !important;
+    width:480px ;
+    height:270px ;
     bottom: 40px;
     right: 10px;
 }
-.floatplayer .youtube {
+
+.floatplayer {
+    width:480px ;
+    height:270px ;
+    bottom: 40px;
+    right: 10px;
+}
+.floatplayerbox .youtube {
+    background-color: #000;
   position: static;
+    width:480px !important;
+    height:270px !important;
 }
