@@ -68,11 +68,11 @@
                 </div>
                 <div class="form-group has-error">
                   <label class="control-label" for="focusedInput">Youtube 링크</label>
-                  <input class="form-control" id="youtube_code" type="text" value="https://www.youtube.com/watch?v=<%= data.youtube_code %>" >
+                  <input class="form-control" id="youtube_code" type="text" value="<% if(data.youtube_code != 'null') { %>https://www.youtube.com/watch?v=<%= data.youtube_code %><% } %>"  >
                 </div>
                 <div class="form-group has-error">
                   <label class="control-label" for="focusedInput">SoundCloud 링크</label>
-                  <input class="form-control" id="soundcloud_code" type="text" value="https://www.youtube.com/watch?v=<%= data.soundcloud_code %>" >
+                  <input class="form-control" id="soundcloud_code" type="text" value="<% if(data.soundcloud_code != 'null') { %>https://soundcloud.com/<%= data.soundcloud_code %><% } %>" >
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="focusedInput">노트</label>
@@ -109,10 +109,9 @@
       event.preventDefault();
       var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
       var youtube = $('#youtube_code').val();
-      var youtube_code = getUrlVars(youtube).v;
+      var youtube_code = getUrlVars(youtube);
       var soundcloud = $('#soundcloud_code').val();
-      var soundcloud_code = getUrlVars(soundcloud).v;
-
+      var soundcloud_code = getUrlVars_soundcloud(soundcloud);
       $.ajax({
         url: url,
         type: 'PUT',

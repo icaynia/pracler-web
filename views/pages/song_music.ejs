@@ -125,7 +125,14 @@
     //youtube_setFloatPlayer("<%= data.youtube_code %>");
 
     $('#youtube-play-layout').click(function (e) {
-      youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+      if ("<%= data.youtube_code %>")
+      {
+        youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+      }
+      else if ("<%= data.soundcloud_code %>")
+      {
+        soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
+      }
     });
   });
   //youtube_to_layout();

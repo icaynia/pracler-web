@@ -49,6 +49,12 @@ function youtube_setContentPlayer_autoplay(code)
 {
     $( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
 }
+
+function soundcloud_setContentPlayer_autoplay(code)
+{
+    $( "div.floatplayerbox" ).html('<div class="youtube"><iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/'+code+'&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe></div>');
+}
+
 function getUrlVars(url)
 {
     var url = fetch(url);
@@ -60,8 +66,32 @@ function getUrlVars(url)
         vars.push(hash[0]);
         vars[hash[0]] = hash[1];
     }
-    return vars;
+    if (!url)
+    {
+        return "null";
+    }
+    else
+    {
+        return vars.v;
+    }
 }
+
+function getUrlVars_soundcloud(url)
+{
+    var url = fetch(url);
+    var hashes = url.split("/");
+    var va = hashes[3] + "/" + hashes[4];
+    if (hashes[3])
+    {
+        return va;
+    }
+    else
+    {
+        return "null";
+    }
+
+}
+
 
 // 자체 새로고침 
 function refresh(url)
