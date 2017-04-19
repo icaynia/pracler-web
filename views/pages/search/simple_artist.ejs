@@ -19,7 +19,7 @@
             <td><a href=""><%=data[i].album %></a></td>
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
             <td>-</td>
-            <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
+            <td class="play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
         </tr>
     <% }; %>
             
@@ -32,9 +32,10 @@
 
 <script language="javascript">
 
-    $('.youtube-play-bt').click(function (e) {
+    $('.play-bt').click(function (e) {
         
         e.preventDefault();
+        
         youtube_setContentPlayer_autoplay($(this).attr('code'));
     })
 </script>

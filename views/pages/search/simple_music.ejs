@@ -24,8 +24,10 @@
             <% } %>
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
             <td>-</td>
-            <% if (data[i].youtube_code) { %>
-                <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
+            <% if (data[i].youtube_code != "null") { %>
+                <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
+            <% } else if (data[i].soundcloud_code != "null" ){ %>
+                <td class="soundcloud-play-bt" code="<%= data[i].soundcloud_code %>"><a href="#">재생(soundcloud)</a></td>
             <% } else { %>
                 <td></td>
             <% } %>
@@ -42,8 +44,12 @@
 <script language="javascript">
 
     $('.youtube-play-bt').click(function (e) {
-        
         e.preventDefault();
         youtube_setContentPlayer_autoplay($(this).attr('code'));
+    });
+
+    $('.soundcloud-play-bt').click(function (e) {
+        e.preventDefault();
+        soundcloud_setContentPlayer_autoplay($(this).attr('code'));
     })
 </script>
