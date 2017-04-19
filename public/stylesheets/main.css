@@ -104,7 +104,7 @@
   padding: 11px 15px;
 }
 
-.youtube {position:relative;padding-bottom:52.25%;padding-top:30px;height:0;overflow:hidden;} 
+.youtube {position:relative;padding-bottom:52.25%;height:0;overflow:hidden;} 
 .youtube iframe,.youtube object,.youtube embed{position:absolute;top:0;left:0;width:100%;height:100%;} 
 
 .navbar-fix-top {
@@ -178,7 +178,7 @@ html,body{height:100%;}
 
 .floatplayerbox .youtube {
     background-color: #000;
-  position: static;
+    position: static;
     width:480px !important;
     height:270px !important;
 }
