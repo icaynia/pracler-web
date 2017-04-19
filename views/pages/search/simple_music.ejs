@@ -7,7 +7,7 @@
         <th>앨범</th>
         <th>제목</th>
         <th>분류</th>
-        <th></th>
+        <th>재생</th>
     </tr>
 </thead>
 <tbody>
@@ -16,14 +16,18 @@
         <tr>
             <td></td>
             <td><a href="/song/<%=data[i].artist %>"><%=data[i].artist %></a></td>
-            <td><a href=""><%=data[i].album %></a></td>
+
+            <% if (data[i].album != "_") { %>
+                <td><a href=""><%=data[i].album %></a></td>
+            <% } else { %>
+                <td></td>
+            <% } %>
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
             <td>-</td>
             <% if (data[i].youtube_code) { %>
-            <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
+                <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생</a></td>
             <% } else { %>
-            
-            <td></td>
+                <td></td>
             <% } %>
         </tr>
     <% }; %>

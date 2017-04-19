@@ -72,7 +72,11 @@ function refresh(url)
         if (url.indexOf('#') == -1)
         {
             //alert(url);
-            $('#main_content').load("/view"+url);
+            $('#main_content').load("/view"+url, function(responseText, statusText, xhr)
+            {
+                    if(statusText == "error")
+                            $('#main_content').load("/view/404");
+            });
         }
 }
 

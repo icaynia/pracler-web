@@ -70,6 +70,10 @@
                   <label class="control-label" for="focusedInput">Youtube 링크</label>
                   <input class="form-control" id="youtube_code" type="text" value="https://www.youtube.com/watch?v=<%= data.youtube_code %>" >
                 </div>
+                <div class="form-group has-error">
+                  <label class="control-label" for="focusedInput">SoundCloud 링크</label>
+                  <input class="form-control" id="soundcloud_code" type="text" value="https://www.youtube.com/watch?v=<%= data.soundcloud_code %>" >
+                </div>
                 <div class="form-group">
                   <label class="control-label" for="focusedInput">노트</label>
                   <textarea class="form-control" rows="3" id="description"><%= data.description %></textarea>
@@ -106,6 +110,8 @@
       var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
       var youtube = $('#youtube_code').val();
       var youtube_code = getUrlVars(youtube).v;
+      var soundcloud = $('#soundcloud_code').val();
+      var soundcloud_code = getUrlVars(soundcloud).v;
 
       $.ajax({
         url: url,
@@ -114,6 +120,7 @@
         data: {
           "music_image_url": $('#music_image_url').val(), 
           "youtube_code": youtube_code, 
+          "soundcloud_code": soundcloud_code, 
           "description": $('#description').val() 
         },
         success: function(result) {

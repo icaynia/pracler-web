@@ -149,9 +149,6 @@ module.exports = function(app)
 
 
     // home (/)
-
-
-
     // song (/song/a) overview - ARTIST
     app.get('/view/song/:artist', function (req, res) {
         //compute data here
