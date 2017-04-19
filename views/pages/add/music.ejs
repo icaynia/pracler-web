@@ -98,7 +98,6 @@
 
       var url = "/regist/"+regist_artist+"/"+regist_album+"/"+regist_title;
       var afterUrl = "/song/"+regist_artist+"/"+regist_album+"/"+regist_title;
-      alert('f');
       $.ajax({
         url: url,
         type: 'PUT',
@@ -109,6 +108,7 @@
           "description": description
         },
         success: function(result) {
+          alert('추가되었습니다.');
           goto(afterUrl);
         }
       });
