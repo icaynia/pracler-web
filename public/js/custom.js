@@ -49,7 +49,6 @@ function youtube_setContentPlayer_autoplay(code)
 {
     $( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
 }
-
 function getUrlVars(url)
 {
     var url = fetch(url);

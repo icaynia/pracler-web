@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-lg-6">
 
-                                        <div class="form-group has-error">
+                                        <div class="form-group">
                                             <label class="control-label" for="focusedInput">앨범 이름</label>
                                             <input class="form-control" id="regist_album" type="text" value="" >
                                         </div>
@@ -95,6 +95,13 @@
       var youtube_code = getUrlVars(youtube).v;
       var description = $('#description').val();
 
+      /* 처리 단계 */
+
+      // 앨범 내용이 없을 경우 자동으로 '_' 을 넣어줌.
+      if (!regist_album) 
+      {
+          regist_album = "_";
+      }
 
       var url = "/regist/"+regist_artist+"/"+regist_album+"/"+regist_title;
       var afterUrl = "/song/"+regist_artist+"/"+regist_album+"/"+regist_title;
