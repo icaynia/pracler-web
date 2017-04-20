@@ -18,7 +18,7 @@
             <td><a href="/song/<%=data[i].artist %>"><%=data[i].artist %></a></td>
 
             <% if (data[i].album != "_") { %>
-                <td><a href=""><%=data[i].album %></a></td>
+                <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>"><%=data[i].album %></a></td>
             <% } else { %>
                 <td></td>
             <% } %>
