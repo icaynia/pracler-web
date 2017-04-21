@@ -17,7 +17,7 @@
                 <div class="col-lg-8">
                     <input type="text" class="form-control" id="inputmusicname" placeholder="듣고 싶은 음악을 검색하세요!">
                 </div>
-                <a id="search_bt_home" class="col-lg-1 btn btn-primary">검색</a>
+                <button type="submit" id="search_bt_home" class="col-lg-1 btn btn-primary">검색</button>
                 <div class="col-lg-2" />
             </div>
         </form>
@@ -49,7 +49,7 @@
             var search_input = fetch($('#inputmusicname').val());
             var url = "/search/"+search_input;
 
-            goto(url);
+            refresh(url);
             
 
         })	;
