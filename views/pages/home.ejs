@@ -5,7 +5,7 @@
     <div class="text-center" style="padding:40px;">
         <div>
             <h1 style="padding:40px;">pracler <span style="font-size:18px;">Beta</span></h1>
-            <h4>전 세계 사람들과 음악 감상으로 소통하세요.</h4>
+            <h4><a href="/song/" id="music_count">0</a>개의 음악과 함께 전 세계 사람들과 소통하세요.</h4>
         </div>
     </div>
 
@@ -23,3 +23,19 @@
         </form>
     </div>
 </div>
+
+<script>
+    $(function(){ 
+        var url = "/data/music/count";
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(result) {
+                var obj = JSON.parse(result);
+                $("#music_count").html(obj.count);
+            }
+        });
+    })
+
+</script>

@@ -83,6 +83,19 @@ module.exports = function(app)
         });
     });
 
+    app.get('/data/music/count', function (req, res) {
+        
+        request("http://localhost:3000/data/music/count" , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.json(body);
+            }
+            else
+            {
+                res.render('./pages/404');
+            }
+        });
+    });
 
     app.get('/viewcall/search/music/:search', function (req, res) {
         console.log(req.params.search);
