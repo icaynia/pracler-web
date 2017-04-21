@@ -3,7 +3,6 @@ var FloatPlaying, ContentPlaying;
 $(function(){ 
     
     window.onpopstate = function(event) { 
-            //alert("event" + location.pathname );
             refresh(location.pathname);
     }
    
@@ -13,8 +12,12 @@ $(function(){
             var href = $(this).attr('href');
             history.pushState("", "", href);
             
+            if (href)
             refresh(href);
     });
+
+
+
 
      
 });
@@ -100,7 +103,6 @@ function refresh(url)
     if (url != null)
         if (url.indexOf('#') == -1)
         {
-            //alert(url);
             $('#main_content').load("/view"+url, function(responseText, statusText, xhr)
             {
                     if(statusText == "error")
@@ -108,6 +110,8 @@ function refresh(url)
             });
         }
 }
+
+
 
 function fetch(str)
 {
@@ -122,8 +126,6 @@ function unfetch(str)
 {
     return str.replaceAll('+', ' ');
 }
-
-
 
 
 

@@ -80,6 +80,7 @@
   $(function(){ 
     $("#search_bt").click(function(){ 
       event.preventDefault();
+
       var search_input = fetch($('#search_input').val());
       var url = "/search/"+search_input;
 
