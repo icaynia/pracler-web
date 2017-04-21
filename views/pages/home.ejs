@@ -26,6 +26,9 @@
 
 <script>
     $(function(){ 
+
+
+        var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
         var url = "/data/music/count";
         $.ajax({
             url: url,
@@ -33,7 +36,11 @@
             dataType: 'json',
             success: function(result) {
                 var obj = JSON.parse(result);
-                $("#music_count").html(obj.count);
+                $('#music_count').animateNumber(
+                    { 
+                        number: obj.count,
+                        numberStep: comma_separator_number_step
+                     });
             }
         });
 
