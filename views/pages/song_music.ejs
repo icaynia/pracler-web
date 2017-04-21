@@ -95,8 +95,12 @@
     </div>
     <div class="col-lg-4">
       <div class="bs-component">
-        <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
-        
+        <% if (data.youtube_code != "null") { %>
+            <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
+        <% } else if (data.soundcloud_code != "null" ){ %>
+            <a href="#" id="soundcloud-play-layout" class="btn btn-warning btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
+
+        <% } %>
         <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         
                             
@@ -125,14 +129,11 @@
     //youtube_setFloatPlayer("<%= data.youtube_code %>");
 
     $('#youtube-play-layout').click(function (e) {
-      if ("<%= data.youtube_code %>")
-      {
         youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
-      }
-      else if ("<%= data.soundcloud_code %>")
-      {
+    });
+    $('#soundcloud-play-layout').click(function (e) {
         soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
-      }
+    
     });
   });
   //youtube_to_layout();
