@@ -72,13 +72,11 @@
               <!--<div class="youtube">
                 <div id="contentplayer"></div>
                 </div>-->
-              <h3>정보</h3>
-              <blockquote>
-                <p>
-            <%= data.description %>
-                   </p>
+
+              <div id="description">
+              </div>
                 <!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
-              </blockquote>
+              
             </div>
             <div class="tab-pane fade" id="profile">
               <div style="width:100%; height:1000px"></div>
@@ -124,10 +122,7 @@
 
 <script language="javascript">
   document.title = "<%= data.title %> - <%= data.artist %>" ;
-
   $(function(){ 
-    //youtube_setFloatPlayer("<%= data.youtube_code %>");
-
     $('#youtube-play-layout').click(function (e) {
         youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
     });
@@ -137,4 +132,16 @@
     });
   });
   //youtube_to_layout();
+</script>
+
+<% if (data.description) { %> 
+  <script language="javascript">
+    $(function(){ 
+      $("#description").html(marked("<%-data.description.replaceAll('\n', '\\n');%>"));
+    });
+    //youtube_to_layout();
+  </script>
+<% } %> 
+
+<script>
 </script>

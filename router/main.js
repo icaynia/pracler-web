@@ -8,8 +8,6 @@ module.exports = function(app)
      *  
      */
 
-    // now
-
     app.get('/', function(req, res) {
         res.render('./layouts/layout', {param: "/"});
     });
@@ -445,3 +443,4 @@ function unfetch(str)
 {
     return str.replaceAll('+', ' ');
 }
+

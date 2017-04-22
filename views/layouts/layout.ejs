@@ -2,16 +2,21 @@
 <html>
 <head>
     <title>pracler :: Track Your Music.</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/js/custom.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="/js/jquery.color.min.js"></script>
     <script src="/js/jquery.animateNumber.min.js"></script>
+    <script src="/lib/markdown/dist/simplemde.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/lib/markdown/dist/simplemde.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
+  <script src="/lib/markdown/marked.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
 </head>
 
 <body >
@@ -62,6 +67,7 @@
     
   </div>
 
+  
   <div class="footer">
     <div class="container">
       © Copyright by icaynia. 
@@ -73,8 +79,6 @@
   <div class="floatplayer" id="floatplayer">
   </div>
 </div>
-
-
 
 <script>
   refresh('<%= param %>');
@@ -93,4 +97,8 @@
     })	
 
   });
-</script></body></html>
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+</body></html>

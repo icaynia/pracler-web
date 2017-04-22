@@ -13,7 +13,9 @@
     "body-parser": "^1.14.2",
     "ejs": "2.4.1",
     "express": "4.13.3",
-    "request": "^2.81.0"
+    "marked": "^0.3.6",
+    "request": "^2.81.0",
+    "simplemde": "^1.11.2"
   },
   "repository": {
     "type": "git",

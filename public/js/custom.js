@@ -119,6 +119,11 @@ function fetch(str)
     return str.replace(/ /gi, '+');
 }
 
+function fetch_word_break(str)
+{
+    return str.replace("\n", "\\r\\n");
+}
+
 String.prototype.replaceAll = function(org, dest) {
     return this.split(org).join(dest);
 }
