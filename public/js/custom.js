@@ -69,8 +69,9 @@ function getUrlVars(url)
         vars.push(hash[0]);
         vars[hash[0]] = hash[1];
     }
-    if (!url)
+    if (!vars.v)
     {
+        
         return "null";
     }
     else
@@ -82,10 +83,10 @@ function getUrlVars(url)
 function getUrlVars_soundcloud(url)
 {
     var url = fetch(url);
-    var hashes = url.split("/");
-    var va = hashes[3] + "/" + hashes[4];
-    if (hashes[3])
-    {
+    var hashes = url.split("soundcloud.com/");
+    var va = hashes[1];
+    if (va)
+    {   
         return va;
     }
     else
