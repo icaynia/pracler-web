@@ -10,8 +10,11 @@ $(function(){
             // custom handling here
             e.preventDefault();
             var href = $(this).attr('href');
+            if (href == '#')
+            {
+                return;
+            }
             history.pushState("", "", href);
-            
             if (href)
             refresh(href);
     });
