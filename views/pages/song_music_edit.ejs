@@ -106,7 +106,9 @@
     </div>
   </div>
 </form>
-
+<script language="javascript">
+  document.title = "수정 : <%= param.music %> ー <%= param.artist %>";
+</script>
 <script>
   $(function(){ 
     var simplemde = new SimpleMDE({ element: document.getElementById("description") });
@@ -134,6 +136,4 @@
     })	
   })
 
-</script>
-<script>
 </script>
