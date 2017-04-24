@@ -6,24 +6,40 @@
         <th>아티스트</th>
         <th>앨범</th>
         <th>제목</th>
-        <th>분류</th>
+        <!--<th>분류</th>-->
         <th>재생</th>
     </tr>
 </thead>
 <tbody>
 
     <% for(var i=0; i < data.length; i++) {%>
+    <% var var_artist, var_album, var_music; %>
+    <% 
+    if (data[i].artist)
+    if (data[i].artist.length > 15) var_artist = data[i].artist.substring(0, 15) + " ...";
+    else var_artist = data[i].artist;
+
+    if (data[i].album)
+    if (data[i].album.length > 15) var_album = data[i].album.substring(0, 15) + " ...";
+    else var_album = data[i].album;
+
+    if (data[i].title)
+    if (data[i].title.length > 15) var_music = data[i].title.substring(0, 15) + " ...";
+    else var_music = data[i].title;
+
+
+    %>
         <tr>
             <td></td>
-            <td><a href="/song/<%=data[i].artist %>"><%=data[i].artist %></a></td>
+            <td><a href="/song/<%=data[i].artist %>"><%= var_artist %></a></td>
 
             <% if (data[i].album != "_") { %>
-                <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>"><%=data[i].album %></a></td>
+                <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>"><%=var_album %></a></td>
             <% } else { %>
                 <td></td>
             <% } %>
-            <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=data[i].title %></a></td>
-            <td>-</td>
+            <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a></td>
+            <!--<td>-</td>-->
             <% if (data[i].youtube_code != "null") { %>
                 <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
             <% } else if (data[i].soundcloud_code != "null" ){ %>
