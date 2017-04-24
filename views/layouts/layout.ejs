@@ -70,7 +70,8 @@
   
   <div class="footer">
     <div class="container">
-      © Copyright by icaynia. 
+      © Copyright by icaynia. </br>
+      <b>개발자 메뉴</b> • <a href="#" id="refresh">Refresh</a>
     </div>
   </div>
 
@@ -95,6 +96,10 @@
       
 
     })	
+
+    $("#refresh").click(function() {
+      refresh($(location).attr('pathname'));
+    });
 
   });
 </script>
