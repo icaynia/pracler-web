@@ -358,9 +358,28 @@ module.exports = function(app)
 
     app.post('/signup/user', function (req, res) {
         //compute data here
-        
+
         request({ 
             url: "http://localhost:3000/signup/", 
+            method: 'POST', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.send({result:1});
+            }
+            else
+            {
+                //없는 경우
+                res.send({result:0});
+            }
+        });
+
+    });
+
+    app.get('/signin/user', function (req, res) {
+        request({ 
+            url: "http://localhost:3000/signin/", 
             method: 'POST', 
             form: req.body
         }, function (error, response, body) {
