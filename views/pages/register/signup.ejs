@@ -1,3 +1,5 @@
+<script src="/js/jsencrypt.min.js"></script> 
+
 <div class="container" style="padding-top:30px;">
     <div class="row">
         <h3>가입</h3>
@@ -40,7 +42,7 @@
                                     <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">닉네임</label>
                                     <div class="col-lg-5">
-                                        <input type="text" class="form-control" id="inputNickname" placeholder="영문 또는 숫자 20자 이내, 특수문자 사용 불가">
+                                        <input type="text" class="form-control" id="inputNickname" placeholder="20자 이내, 특수문자 사용 불가">
                                     </div>
                                     </div>
                                     <div class="form-group">
@@ -50,23 +52,23 @@
                                             <select class="form-control" id="birthday_day">
                                                 <option>일</option>
                                                 <% for (var i = 1; i <= 31; i++) { %>
-                                                <option><%= i %>일</option>
+                                                <option var="<%= i %>"><%= i %>일</option>
                                                 <% } %>
                                             </select>
                                             </div>
                                             <div class="col-sm-3 padding-5px-horizontal" >
-                                            <select class="form-control" id="birthday_">
+                                            <select class="form-control" id="birthday_month">
                                                 <option>월</option>
                                                 <% for (var i = 1; i <= 12; i++) { %>
-                                                <option><%= i %>월</option>
+                                                <option var="<%= i %>"><%= i %>월</option>
                                                 <% } %>
                                             </select>
                                             </div>
                                             <div class="col-sm-5 padding-5px-horizontal">
-                                            <select class="form-control" id="select">
+                                            <select class="form-control" id="birthday_year">
                                                 <option>년도</option>
                                                 <% for (var i = 2017; i >= 1920; i--) { %>
-                                                <option><%= i %>년</option>
+                                                <option var="<%= i %>"><%= i %>년</option>
                                                 <% } %>
                                             </select>
                                             </div>
@@ -74,12 +76,12 @@
                                         
                                     </div>
                                     <div class="form-group">
-                                        <label for="select" class="col-lg-2 control-label">성별</label>
+                                        <label for="gender" class="col-lg-2 control-label">성별</label>
                                         <div class="col-lg-4">
                                             <div class="col-sm-4 padding-5px-horizontal">
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                                        <input type="radio" name="optionsRadios" id="gender" value="m">
                                                         남
                                                     </label>
                                                     </div>
@@ -87,7 +89,7 @@
                                                                                         <div class="col-sm-4 padding-5px-horizontal">
                                                                                             <div class="radio">
                                                     <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                                        <input type="radio" name="optionsRadios" id="gender" value="f">
                                                         여
                                                     </label>
                                                     </div>
@@ -105,7 +107,7 @@
                             <form class="form-horizontal">
                                 <fieldset>
                                     <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">프로필 사진</label>
+                                    <label for="inputProfile" class="col-lg-2 control-label">프로필 사진</label>
                                     <div class="col-lg-10">
                                         <input type="text" class="form-control" id="inputProfile" placeholder="개발 중인 프로젝트이므로 주소 형태로 제공됩니다.">
                                     </div>
@@ -121,7 +123,7 @@
             <div class="bs-component">
 
                 
-                <a href="#" id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-top: 45px; margin-bottom: 25px">등록</a>
+                <a href="#" id="btn_regist" class="btn btn-default btn-lg btn-block" style="margin-top: 45px; margin-bottom: 25px">등록</a>
                 <div class="alert alert-dismissible alert-warning">
                     <h4>Warning!</h4>
                     <p>위 가입 버튼을 눌러 입력한 정보를 토대로 가입을 하는 경우 pracler 개인정보처리방침에 동의하는 것으로 간주합니다.
@@ -147,44 +149,49 @@
 </script>
 
 <script>
-  $(function(){ 
-    $("#btn_save").click(function(){ 
-      event.preventDefault();
+    $(function(){ 
+        $("#btn_regist").click(function(){ 
+            event.preventDefault();
 
-      var youtube = $('#youtube_code').val();
+            var inputEmail = $('#inputEmail').val();
+            var inputPassword = $('#inputPassword').val();
+            var inputPasswordAgain = $('#inputPasswordAgain').val();
+            var inputNickname = $('#inputNickname').val();
+            var birthday_day = $('#birthday_day').val();
+            var birthday_month = $('#birthday_month').val();
+            var birthday_year = $('#birthday_year').val();
+            var gender = $('#gender').val();
+            var inputProfile = $('#inputProfile').val();
 
-      var regist_artist = $('#regist_artist').val();
-      var regist_album = $('#regist_album').val();
-      var regist_title = $('#regist_title').val();
-      var music_image_url = $('#music_image_url').val();
-      var youtube_code = getUrlVars(youtube);
-      var description = $('#description').val();
-
-      /* 처리 단계 */
-
-      // 앨범 내용이 없을 경우 자동으로 '_' 을 넣어줌.
-      if (!regist_album) 
-      {
-          regist_album = "_";
-      }
-
-      var url = "/regist/"+regist_artist+"/"+regist_album+"/"+regist_title;
-      var afterUrl = "/song/"+regist_artist+"/"+regist_album+"/"+regist_title;
-      $.ajax({
-        url: url,
-        type: 'PUT',
-        dataType: 'json',
-        data: {
-          "music_image_url": music_image_url, 
-          "youtube_code": youtube_code, 
-          "description": description
-        },
-        success: function(result) {
+            /* filter */
+            if (!inputEmail) { alert("이메일이 입력되지 않았습니다."); return; } // 동작
+            if (!inputEmail.includes("@")) { alert("이메일 입력 오류입니다.\n입력한 이메일을 다시 확인해주세요."); return; } // 동작
+            if (!inputPassword) { alert("비밀번호가 입력되지 않았습니다."); return; } // 동작
+            if (!inputPasswordAgain) { alert("비밀번호 재확인이 필요합니다."); return; } // 동작
+            if (inputPassword != inputPasswordAgain) { alert("비밀번호 재확인이 일치하지 않습니다."); return; } // 동작
+            if (!inputNickname) { alert("닉네임이 입력되지 않았습니다."); return; } // 동작
             
-            setTimeout("goto('"+afterUrl+"')", 3000);
-        } 
-      });
-    })	
-  })
+            /* 암호화 */
+            var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8/xTui7So5fr9GPZyDrhq7JaXgS3ZirbIgCsoNsufWg8thQsb1EW+S8L6Ne3fc0q+hK78NfpMbHnvLzISUAGxFvG4jloAdUwdpF+6U4xVpxqFAObOVClfW8jew9NN1FFm9oNyJv9Z57iYPJj3ya16isNoYNwT406uEsEp5tHu1QIDAQAB";
+            var encrypt = new JSEncrypt();
+            encrypt.setPublicKey(publicKey);
+            var encrypted = encrypt.encrypt(inputPassword);
+
+            $.ajax({
+                url: "/signup/user",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                "inputEmail": inputEmail, 
+                "inputPassword": encrypted,
+                "inputNickname": inputNickname
+                },
+                success: function(result) {
+                    setTimeout("alert('가입이 완료되었습니다.')", 1000);
+                    setTimeout("goto('/')", 3000);
+                } 
+            });
+        })	
+    })
 
 </script>
