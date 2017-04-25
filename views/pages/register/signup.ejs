@@ -50,25 +50,25 @@
                                         <div class="col-lg-5">
                                             <div class="col-sm-4 padding-5px-horizontal">
                                             <select class="form-control" id="birthday_day">
-                                                <option>일</option>
+                                                <option val="null">일</option>
                                                 <% for (var i = 1; i <= 31; i++) { %>
-                                                <option var="<%= i %>"><%= i %>일</option>
+                                                <option val="<%= i %>"><%= i %>일</option>
                                                 <% } %>
                                             </select>
                                             </div>
                                             <div class="col-sm-3 padding-5px-horizontal" >
                                             <select class="form-control" id="birthday_month">
-                                                <option>월</option>
+                                                <option val="null">월</option>
                                                 <% for (var i = 1; i <= 12; i++) { %>
-                                                <option var="<%= i %>"><%= i %>월</option>
+                                                <option val="<%= i %>"><%= i %>월</option>
                                                 <% } %>
                                             </select>
                                             </div>
                                             <div class="col-sm-5 padding-5px-horizontal">
                                             <select class="form-control" id="birthday_year">
-                                                <option>년도</option>
+                                                <option val="null">년도</option>
                                                 <% for (var i = 2017; i >= 1920; i--) { %>
-                                                <option var="<%= i %>"><%= i %>년</option>
+                                                <option val="<%= i %>"><%= i %>년</option>
                                                 <% } %>
                                             </select>
                                             </div>
@@ -81,6 +81,7 @@
                                             <div class="col-sm-4 padding-5px-horizontal">
                                                 <div class="radio">
                                                     <label>
+                                                        <input type="hidden" name="optionsRadios" id="gender" value="null" checked="">
                                                         <input type="radio" name="optionsRadios" id="gender" value="m">
                                                         남
                                                     </label>
@@ -109,7 +110,7 @@
                                     <div class="form-group">
                                     <label for="inputProfile" class="col-lg-2 control-label">프로필 사진</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputProfile" placeholder="개발 중인 프로젝트이므로 주소 형태로 제공됩니다.">
+                                        <input type="text" class="form-control" id="inputProfilePicture" placeholder="개발 중인 프로젝트이므로 주소 형태로 제공됩니다.">
                                     </div>
                                     </div>
                                 </fieldset>
@@ -160,8 +161,8 @@
             var birthday_day = $('#birthday_day').val();
             var birthday_month = $('#birthday_month').val();
             var birthday_year = $('#birthday_year').val();
-            var gender = $('#gender').val();
-            var inputProfile = $('#inputProfile').val();
+            var gender = $('#gender:checked').val();
+            var profile_picture = $('#profile_picture').val();
 
             /* filter */
             if (!inputEmail) { alert("이메일이 입력되지 않았습니다."); return; } // 동작
@@ -170,13 +171,27 @@
             if (!inputPasswordAgain) { alert("비밀번호 재확인이 필요합니다."); return; } // 동작
             if (inputPassword != inputPasswordAgain) { alert("비밀번호 재확인이 일치하지 않습니다."); return; } // 동작
             if (!inputNickname) { alert("닉네임이 입력되지 않았습니다."); return; } // 동작
+            if (birthday_day == "일") { alert("생일(일)이 입력되지 않았습니다."); return; } // 동작
+            if (birthday_month == "월") { alert("생일(월)이 입력되지 않았습니다."); return; } // 동작
+            if (birthday_year == "년도") { alert("생일(년도)가 입력되지 않았습니다."); return; } // 동작
+            if (!gender) { alert("성별이 선택되지 않았습니다."); return; }
+
+            if (!profile_picture) profile_picture = "null";
+
+            /* execute */
+            birthday_day = birthday_day.substring(0, $('#birthday_day').val().length-1);
+            birthday_month = birthday_month.substring(0, $('#birthday_month').val().length-1);
+            birthday_year = birthday_year.substring(0, $('#birthday_year').val().length-1);
             
-            /* 암호화 */
+            var birthday = leadingZeros(birthday_year, 2) + "-" + leadingZeros(birthday_month, 2) + "-" + leadingZeros(birthday_day, 2);
+            
+            /* encrypt */
             var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8/xTui7So5fr9GPZyDrhq7JaXgS3ZirbIgCsoNsufWg8thQsb1EW+S8L6Ne3fc0q+hK78NfpMbHnvLzISUAGxFvG4jloAdUwdpF+6U4xVpxqFAObOVClfW8jew9NN1FFm9oNyJv9Z57iYPJj3ya16isNoYNwT406uEsEp5tHu1QIDAQAB";
             var encrypt = new JSEncrypt();
             encrypt.setPublicKey(publicKey);
             var encrypted = encrypt.encrypt(inputPassword);
 
+            /* request */
             $.ajax({
                 url: "/signup/user",
                 type: 'POST',
@@ -184,12 +199,16 @@
                 data: {
                 "inputEmail": inputEmail, 
                 "inputPassword": encrypted,
-                "inputNickname": inputNickname
+                "inputNickname": inputNickname,
+                "birthday": birthday,
+                "gender": gender,
+                "profile_picture": profile_picture,
+                
                 },
                 success: function(result) {
-                    setTimeout("alert('가입이 완료되었습니다.')", 1000);
-                    setTimeout("goto('/')", 3000);
-                } 
+                    alert('가입이 완료되었습니다.');
+                    goto('/');
+                }
             });
         })	
     })
