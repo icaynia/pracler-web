@@ -209,11 +209,20 @@ module.exports = function(app)
         var album_encode = encodeURIComponent(req.params.album);
 
         var string = fetch(artist_encode+"/"+album_encode);
-        
+        var view_layout;
+        switch (req.param('mode'))
+        {
+            case "edit":
+                view_layout = './pages/song_album_edit';
+                break;
+            default:
+                view_layout = './pages/song_album';
+        }
+
         request("http://localhost:3000/song/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                res.render('./pages/song_album', {
+                res.render(view_layout, {
                     param: req.params,
                     data: JSON.parse(unfetch(body))
                 });

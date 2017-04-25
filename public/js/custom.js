@@ -3,7 +3,7 @@ var FloatPlaying, ContentPlaying;
 $(function(){ 
     
     window.onpopstate = function(event) { 
-            refresh(location.pathname);
+            refresh(location.pathname + location.search);
     }
    
     $(this).on('click', 'a, button',function (e) {

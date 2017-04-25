@@ -7,10 +7,7 @@
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
           <h4 style="word-break: keep-all;"><%= data.artist %>
-          <% if (data.album != '_') { %>
-          &nbsp; ー&nbsp; <%= data.album %>
-          <% } %></h4>
-          <h2 style="word-break: keep-all;"><%= data.title %></h2>
+          <h2 style="word-break: keep-all;"><%= data.album %></h2>
         </div>
       </div>
     </div>
@@ -26,7 +23,7 @@
           <ul class="nav nav-tabs">
             
             <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.album %></a>
             </li>
           </ul>
       </div>

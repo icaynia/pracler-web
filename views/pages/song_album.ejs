@@ -7,7 +7,10 @@
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
           <h4 style="word-break: keep-all;"><a href="/song/<%= param.artist %>"><%= param.artist %></a></h4>
-          <h2 style="word-break: keep-all;"><%= param.album %></h2>
+          <% if (data.album != '_') { %>
+          
+          <h2 style="word-break: keep-all;"><%= data.album %></h2>
+          <% } %>
         </div>
       </div>
     </div>
@@ -23,7 +26,7 @@
           <ul class="nav nav-tabs">
             
             <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= param.album %> </a>
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.album  %> </a>
             </li>
             <li class="">
               <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
@@ -91,6 +94,8 @@
     </div>
     <div class="col-lg-4">
       <div class="bs-component">
+        <a href="/song/<%= param.artist %>/<%= param.album %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
+        
         <a href="#" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px"> ▶&nbsp;&nbsp; Youtube에서 보기</a>
         <div class="panel panel-success">
           <div class="panel-heading">
