@@ -31,6 +31,13 @@ module.exports = function(app)
             param: string
         });
     });
+
+    app.get('/signup', function(req, res) {
+        var string = fetch("/signup");
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
     
     app.get('/add/artist', function(req, res) {
         var string = fetch("/add/artist");
@@ -277,6 +284,13 @@ module.exports = function(app)
     app.get('/view/now', function (req, res) {
         //compute data here
         res.render('./pages/home', {
+            title: "now"
+        });
+    });
+
+    app.get('/view/signup', function (req, res) {
+        //compute data here
+        res.render('./pages/register/signup', {
             title: "now"
         });
     });

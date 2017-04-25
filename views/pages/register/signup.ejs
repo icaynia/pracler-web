@@ -1,0 +1,190 @@
+<div class="container" style="padding-top:30px;">
+    <div class="row">
+        <h3>가입</h3>
+        <div class="col-lg-8">
+            <div class="bs-component">
+                <div class="content-tabs">
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="info">
+
+                            <h4 style="padding-top:30px;">・ 필수 정보</h4>
+                            <hr>
+
+                            <div>
+
+                                <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">이메일 주소</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" id="inputEmail" placeholder="이메일 주소를 입력하세요.">
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="inputPassword" class="col-lg-2 control-label">비밀번호</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" id="inputPassword" placeholder="영문 또는 숫자(필수), 특수기호 18자 이내" >
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="inputPassword" class="col-lg-2 control-label">비밀번호 재확인</label>
+                                    <div class="col-lg-5">
+                                        <input type="password" class="form-control" id="inputPasswordAgain" placeholder="비밀번호 재확인">
+                                        <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Checkbox
+                                        </label>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">닉네임</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" id="inputNickname" placeholder="영문 또는 숫자 20자 이내, 특수문자 사용 불가">
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label">생년월일</label>
+                                        <div class="col-lg-5">
+                                            <div class="col-sm-4 padding-5px-horizontal">
+                                            <select class="form-control" id="birthday_day">
+                                                <option>일</option>
+                                                <% for (var i = 1; i <= 31; i++) { %>
+                                                <option><%= i %>일</option>
+                                                <% } %>
+                                            </select>
+                                            </div>
+                                            <div class="col-sm-3 padding-5px-horizontal" >
+                                            <select class="form-control" id="birthday_">
+                                                <option>월</option>
+                                                <% for (var i = 1; i <= 12; i++) { %>
+                                                <option><%= i %>월</option>
+                                                <% } %>
+                                            </select>
+                                            </div>
+                                            <div class="col-sm-5 padding-5px-horizontal">
+                                            <select class="form-control" id="select">
+                                                <option>년도</option>
+                                                <% for (var i = 2017; i >= 1920; i--) { %>
+                                                <option><%= i %>년</option>
+                                                <% } %>
+                                            </select>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select" class="col-lg-2 control-label">성별</label>
+                                        <div class="col-lg-4">
+                                            <div class="col-sm-4 padding-5px-horizontal">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                                        남
+                                                    </label>
+                                                    </div>
+                                                                                        </div>
+                                                                                        <div class="col-sm-4 padding-5px-horizontal">
+                                                                                            <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                                        여
+                                                    </label>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </fieldset>
+                                </form>
+
+                            </div>
+
+                            <h4 style="padding-top:30px;">・ 부가 정보</h4>
+                            <hr>
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">프로필 사진</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputProfile" placeholder="개발 중인 프로젝트이므로 주소 형태로 제공됩니다.">
+                                    </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="bs-component">
+
+                
+                <a href="#" id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-top: 45px; margin-bottom: 25px">등록</a>
+                <div class="alert alert-dismissible alert-warning">
+                    <h4>Warning!</h4>
+                    <p>위 가입 버튼을 눌러 입력한 정보를 토대로 가입을 하는 경우 pracler 개인정보처리방침에 동의하는 것으로 간주합니다.
+                    </p>
+                </div>2
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">편집규정</h3>
+                    </div>
+                    <div class="panel-body">
+                        1. 
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+  document.title = "새로 추가하기 :: pracler";
+</script>
+
+<script>
+  $(function(){ 
+    $("#btn_save").click(function(){ 
+      event.preventDefault();
+
+      var youtube = $('#youtube_code').val();
+
+      var regist_artist = $('#regist_artist').val();
+      var regist_album = $('#regist_album').val();
+      var regist_title = $('#regist_title').val();
+      var music_image_url = $('#music_image_url').val();
+      var youtube_code = getUrlVars(youtube);
+      var description = $('#description').val();
+
+      /* 처리 단계 */
+
+      // 앨범 내용이 없을 경우 자동으로 '_' 을 넣어줌.
+      if (!regist_album) 
+      {
+          regist_album = "_";
+      }
+
+      var url = "/regist/"+regist_artist+"/"+regist_album+"/"+regist_title;
+      var afterUrl = "/song/"+regist_artist+"/"+regist_album+"/"+regist_title;
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "music_image_url": music_image_url, 
+          "youtube_code": youtube_code, 
+          "description": description
+        },
+        success: function(result) {
+            
+            setTimeout("goto('"+afterUrl+"')", 3000);
+        } 
+      });
+    })	
+  })
+
+</script>
