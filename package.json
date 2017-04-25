@@ -15,7 +15,8 @@
     "express": "4.13.3",
     "marked": "^0.3.6",
     "request": "^2.81.0",
-    "simplemde": "^1.11.2"
+    "simplemde": "^1.11.2",
+    "ursa": "^0.9.4"
   },
   "repository": {
     "type": "git",

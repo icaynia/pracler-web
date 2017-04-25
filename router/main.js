@@ -1,12 +1,21 @@
 //require('../utils/strings.js');
 
 var request = require('request');
+var ursa = require('ursa');
+var fs = require('fs');
 
 module.exports = function(app)
 {
     /** Main Layout
      *  
      */
+    var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
+
+    app.post('/rsa/encrypt', function(req, res) {
+        res.json({
+            pw: crt.encrypt(req.body.inputPassword, 'utf8', 'base64')
+        });
+    });
 
     app.get('/', function(req, res) {
         res.render('./layouts/layout', {param: "/"});
@@ -59,6 +68,8 @@ module.exports = function(app)
             param: string
         });
     });
+
+    app.get
 
     app.get('/song/:artist/:album/:title', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
@@ -377,9 +388,9 @@ module.exports = function(app)
 
     });
 
-    app.get('/signin/user', function (req, res) {
+    app.post('/signin/user', function (req, res) {
         request({ 
-            url: "http://localhost:3000/signin/", 
+            url: "http://localhost:3000/signin", 
             method: 'POST', 
             form: req.body
         }, function (error, response, body) {
@@ -393,6 +404,9 @@ module.exports = function(app)
                 res.send({result:0});
             }
         });
+
+
+        
 
     });
 

@@ -1,3 +1,4 @@
+<script src="/js/jsencrypt.min.js"></script> 
 
 <div class="container">
     <div class="row">
@@ -72,7 +73,6 @@
         $("#btn_login").click(function(){ 
             event.preventDefault();
 
-            alert('로그인 오류입니다.');
             var inputEmail = $('#inputEmail').val();
             var inputPassword = $('#inputPassword').val();
 
@@ -80,7 +80,14 @@
             if (!inputEmail) { alert("이메일이 입력되지 않았습니다."); return; } // 동작
             if (!inputEmail.includes("@")) { alert("이메일 입력 오류입니다.\n입력한 이메일을 다시 확인해주세요."); return; } // 동작
             if (!inputPassword) { alert("비밀번호가 입력되지 않았습니다."); return; } // 동작
-            
+
+            var publicKey = "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8/xTui7So5fr9GPZyDrhq7JaX\ngS3ZirbIgCsoNsufWg8thQsb1EW+S8L6Ne3fc0q+hK78NfpMbHnvLzISUAGxFvG4\njloAdUwdpF+6U4xVpxqFAObOVClfW8jew9NN1FFm9oNyJv9Z57iYPJj3ya16isNo\nYNwT406uEsEp5tHu1QIDAQAB\n-----END PUBLIC KEY-----";
+            var encrypt = new JSEncrypt();
+            encrypt.setPublicKey(publicKey);
+            var encrypted = encrypt.encrypt(inputPassword);
+            alert(encrypted);
+
+            alert(encrypted.toString("base64"));
             /* request */
             $.ajax({
                 url: "/signin/user",

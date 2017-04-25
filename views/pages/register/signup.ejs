@@ -139,7 +139,6 @@
                         1. 
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -186,30 +185,38 @@
             var birthday = leadingZeros(birthday_year, 2) + "-" + leadingZeros(birthday_month, 2) + "-" + leadingZeros(birthday_day, 2);
             
             /* encrypt */
-            var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8/xTui7So5fr9GPZyDrhq7JaXgS3ZirbIgCsoNsufWg8thQsb1EW+S8L6Ne3fc0q+hK78NfpMbHnvLzISUAGxFvG4jloAdUwdpF+6U4xVpxqFAObOVClfW8jew9NN1FFm9oNyJv9Z57iYPJj3ya16isNoYNwT406uEsEp5tHu1QIDAQAB";
-            var encrypt = new JSEncrypt();
-            encrypt.setPublicKey(publicKey);
-            var encrypted = encrypt.encrypt(inputPassword);
-
-            /* request */
             $.ajax({
-                url: "/signup/user",
+                url: "/rsa/encrypt",
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                "inputEmail": inputEmail, 
-                "inputPassword": encrypted,
-                "inputNickname": inputNickname,
-                "birthday": birthday,
-                "gender": gender,
-                "profile_picture": profile_picture,
-                
+                    "inputPassword": inputPassword, 
                 },
                 success: function(result) {
-                    alert('가입이 완료되었습니다.');
-                    goto('/');
+                    alert(result.pw);
+                    /* request */
+                    $.ajax({
+                        url: "/signup/user",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                        "inputEmail": inputEmail, 
+                        "inputPassword": result.pw,
+                        "inputNickname": inputNickname,
+                        "birthday": birthday,
+                        "gender": gender,
+                        "profile_picture": profile_picture,
+                        
+                        },
+                        success: function(result) {
+                            alert('가입이 완료되었습니다.');
+                            goto('/');
+                        }
+                    });
                 }
             });
+
+            
         })	
     })
 
