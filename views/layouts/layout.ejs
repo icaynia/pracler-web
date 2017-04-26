@@ -56,9 +56,23 @@
         <button id="search_bt" type="submit" class="btn btn-default" >검색</button>
       </form>
 
-
       <ul class="nav navbar-nav navbar-right">
+      <%  if (session) { %>
+      <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= session %><span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">재생목록</a></li>
+            <li><a href="#">트래킹</a></li>
+            <li class="divider"></li>
+            <li><a href="#">로그아웃</a></li>
+          </ul>
+        </li>
+
+      <%  } else { %>
         <li><a id="_" href="/login">로그인</a></li>
+        
+    
+      <%  }%>
       </ul>
     </div>
   </div>
@@ -73,7 +87,7 @@
   <div class="footer">
     <div class="container">
       © Copyright by icaynia. </br>
-      <b>개발자 메뉴</b> • <a href="#" id="refresh">Refresh</a>
+      <b>개발자 메뉴</b> • <a href="#" id="refresh">Refresh</a><%= param %>
     </div>
   </div>
 
