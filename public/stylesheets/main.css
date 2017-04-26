@@ -173,24 +173,57 @@ html,body{height:100%;}
     position: relative;
 }
 
+
+@media (min-width: 1200px) {
+
+    .floatplayer {
+        width:480px ;
+        height:270px ;
+        bottom: 40px;
+        right: 10px;
+    }
+
+    .floatplayerbox {
+        position:fixed;
+        width:480px ;
+        height:270px ;
+        bottom: 40px;
+        right: 10px;
+    }
+
+    .floatplayerbox .youtube {
+        background-color: #000;
+        position: static;
+        width:480px !important;
+        height:270px !important;
+    }
+
+}
+
+@media (min-width: 200px) {
+    .floatplayer {
+        width:240px ;
+        height:135px ;
+        bottom: 0px;
+        right: 0px;
+    }
+
 .floatplayerbox {
     position:fixed;
-    width:480px ;
-    height:270px ;
-    bottom: 40px;
-    right: 10px;
+    width:240px ;
+    height:135px ;
+    bottom: 0px;
+    right: 0px;
+}
+    .floatplayerbox .youtube {
+        background-color: #000;
+        position: static;
+        width:240px !important;
+        height:135px !important;
+    }
 }
 
-.floatplayer {
-    width:480px ;
-    height:270px ;
-    bottom: 40px;
-    right: 10px;
-}
-
-.floatplayerbox .youtube {
-    background-color: #000;
-    position: static;
-    width:480px !important;
-    height:270px !important;
+.hidden
+{
+    display: none;
 }

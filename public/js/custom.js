@@ -54,11 +54,13 @@ function youtube_content_to_float()
 function youtube_setContentPlayer_autoplay(code)
 {
     $( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
+    $( "div.floatplayerbox" ).removeClass("hidden");
 }
 
 function soundcloud_setContentPlayer_autoplay(code)
 {
     $( "div.floatplayerbox" ).html('<div class="youtube"><iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https://soundcloud.com/'+code+'&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe></div>');
+    $( "div.floatplayerbox" ).removeClass("hidden");
 }
 
 function getUrlVars(url)
