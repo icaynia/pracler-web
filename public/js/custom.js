@@ -19,10 +19,6 @@ $(function(){
             refresh(href);
     });
 
-
-
-
-     
 });
 function youtube_setContentPlayer(code)
 {

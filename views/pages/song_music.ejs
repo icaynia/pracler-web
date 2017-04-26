@@ -122,6 +122,24 @@
 <script language="javascript">
   document.title = "<%= data.title %> - <%= data.artist %>" ;
   $(function(){ 
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        return results[1] || 0;
+    }
+
+    var autop = $.urlParam('autoplay'); 
+    if (autop == "autoplay")
+    {
+        if ("<%= data.youtube_code %>" != "null")
+        {
+            youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+            
+        }
+        else if ("<%= data.soundcloud_code %>" != "null")
+        {
+            soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
+        }
+    }
     $('#youtube-play-layout').click(function (e) {
         youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
     });
