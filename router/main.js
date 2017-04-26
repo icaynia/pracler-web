@@ -4,6 +4,7 @@ var request = require('request');
 var ursa = require('ursa');
 var fs = require('fs');
 
+
 module.exports = function(app)
 {
     /** Main Layout
@@ -14,6 +15,20 @@ module.exports = function(app)
     app.post('/rsa/encrypt', function(req, res) {
         res.json({
             pw: crt.encrypt(req.body.inputPassword, 'utf8', 'base64')
+        });
+    });
+
+    app.get('/data/session', function(req, res) {
+        console.log(req.session.email);
+        res.json({
+            session: req.session.email
+        });
+    });
+    
+    app.get('/data/sessv', function(req, res) {
+        req.session.email = "sessvvv";
+        res.json({
+            session: req.session.email
         });
     });
 
@@ -68,8 +83,6 @@ module.exports = function(app)
             param: string
         });
     });
-
-    app.get
 
     app.get('/song/:artist/:album/:title', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
@@ -371,7 +384,7 @@ module.exports = function(app)
         //compute data here
 
         request({ 
-            url: "http://localhost:3000/signup/", 
+            url: "http://localhost:3000/signup", 
             method: 'POST', 
             form: req.body
         }, function (error, response, body) {
@@ -389,25 +402,26 @@ module.exports = function(app)
     });
 
     app.post('/signin/user', function (req, res) {
+
         request({ 
             url: "http://localhost:3000/signin", 
             method: 'POST', 
             form: req.body
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                //있는 경우
+                //성공
                 res.send({result:1});
+                console.log("성공 : " + req.body.inputEmail);
+                req.session.email = req.body.inputEmail;
+                console.log("sess : " + req.session.email);
             }
             else
             {
-                //없는 경우
+                //실패
                 res.send({result:0});
+                console.log("\x1b[31m", "실패 : " + req.body.inputEmail);
             }
         });
-
-
-        
-
     });
 
     app.put('/regist/:artist/:album/:music', function (req, res) {
@@ -504,7 +518,6 @@ module.exports = function(app)
             }
         });
     });
-
 }
 
 function fetch(str)

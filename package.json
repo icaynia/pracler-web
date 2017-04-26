@@ -11,9 +11,12 @@
   },
   "dependencies": {
     "body-parser": "^1.14.2",
+    "connect-redis": "^3.2.0",
     "ejs": "2.4.1",
     "express": "4.13.3",
+    "express-session": "^1.15.2",
     "marked": "^0.3.6",
+    "mongoose-session": "0.0.4",
     "request": "^2.81.0",
     "simplemde": "^1.11.2",
     "ursa": "^0.9.4"
