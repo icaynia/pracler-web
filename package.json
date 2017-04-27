@@ -17,6 +17,7 @@
     "express-session": "^1.15.2",
     "marked": "^0.3.6",
     "mongoose-session": "0.0.4",
+    "redis": "^2.7.1",
     "request": "^2.81.0",
     "simplemde": "^1.11.2",
     "ursa": "^0.9.4"

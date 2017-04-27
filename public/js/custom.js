@@ -20,6 +20,12 @@ $(function(){
     });
 
 });
+
+function refresh_important(url)
+{
+    window.location.href = url;
+}
+
 function youtube_setContentPlayer(code)
 {
     ContentPlayer = new YT.Player('contentplayer', {

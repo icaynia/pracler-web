@@ -64,7 +64,7 @@
             <li><a href="#">재생목록</a></li>
             <li><a href="#">트래킹</a></li>
             <li class="divider"></li>
-            <li><a href="#">로그아웃</a></li>
+            <li><a href="#" id="logout">로그아웃</a></li>
           </ul>
         </li>
 
@@ -115,6 +115,10 @@
 
     $("#refresh").click(function() {
       refresh($(location).attr('pathname'));
+    });
+
+    $("#logout").click(function() {
+      refresh_important('/data/sessiondestroy');
     });
 
   });

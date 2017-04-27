@@ -25,12 +25,16 @@ module.exports = function(app)
         });
     });
     
-    app.get('/data/sessiondestroy', function(req, res) {
-        req.session.destroy(function(err){
-            // cannot access session here
-        });
+    app.get('/data/sesv', function(req, res) {
+        req.session.email = "vv";
         res.json({
             session: req.session.email
+        });
+    });
+
+    app.get('/data/sessiondestroy', function(req, res) {
+        req.session.destroy(function(err){
+            res.send("<script> window.location.href = '/';</script>");
         });
     });
 

@@ -2,14 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
-mongoose = require('mongoose');
-var db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', function(){
-    // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
-});
-mongoose.connect('mongodb://admin:adminds031895@ds031895.mlab.com:31895/pracler');
+
+var redis = require('redis').createClient();
+var RedisStore = require('connect-redis')(session);
 
 app.set('port', (process.env.PORT || 5000));
 var port2 = 443;
@@ -20,7 +15,13 @@ app.use(session({
   key: 'pracler',
   secret: 'sigggnnnnnnn##!!',
   cookie:{maxAge:7 * 24 * 60 * 1000},
-  store: require('mongoose-session')(mongoose)
+  store: new RedisStore(
+      {
+            host: "127.0.0.1",
+            port: 6379,
+            client: redis,
+            prefix : "session:"
+      })
 }));
 var router = require('./router/main')(app);
 
