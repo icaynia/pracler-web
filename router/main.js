@@ -435,6 +435,9 @@ module.exports = function(app)
                 res.send({result:1});
                 console.log("성공 : " + req.body.inputEmail);
                 req.session.email = req.body.inputEmail;
+                req.session.save(function() {
+                    console.log("저장 성공");
+                });
                 console.log("sess : " + req.session.email);
             }
             else
