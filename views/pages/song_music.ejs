@@ -154,7 +154,7 @@
 <% if (data.description) { %> 
   <script language="javascript">
     $(function(){ 
-      $("#description").html(marked("<%-data.description.replaceAll('\n', '\\n');%>"));
+      $("#description").html(marked("<%-data.description.replaceAll('\n', '</br>\\n');%>"));
     });
     //youtube_to_layout();
   </script>
