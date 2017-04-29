@@ -75,7 +75,6 @@
               <div id="description" class="description view-markup">
               </div>
                 <!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
-              
             </div>
             <div class="tab-pane fade" id="profile">
               <div style="width:100%; height:1000px"></div>
@@ -154,7 +153,7 @@
 <% if (data.description) { %> 
   <script language="javascript">
     $(function(){ 
-      $("#description").html(marked("<%-data.description.replaceAll('\n', '</br>\\n');%>"));
+      $("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
     });
     //youtube_to_layout();
   </script>
