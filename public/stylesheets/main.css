@@ -227,3 +227,9 @@ html,body{height:100%;}
 {
     display: none;
 }
+
+
+.view-markup h1
+{
+    font-size: 18px;
+}

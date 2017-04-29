@@ -12,19 +12,20 @@ module.exports = function(app)
      */
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
+    // 값 암호화 요청
     app.post('/rsa/encrypt', function(req, res) {
         res.json({
             pw: crt.encrypt(req.body.inputPassword, 'utf8', 'base64')
         });
     });
 
+    // 세션 확인
     app.get('/data/session', function(req, res) {
-        console.log(req.session.email);
         res.json({
-            session: req.session.email
+
         });
     });
-    
+
     app.get('/data/sesv', function(req, res) {
         req.session.email = "vv";
         res.json({
@@ -40,97 +41,84 @@ module.exports = function(app)
 
     app.get('/', function(req, res) {
         res.render('./layouts/layout', {
-            param: "/",
-            session: req.session.email 
+            param: "/"
 
         });
     });
 
 
     app.get('/now', function(req, res) {
-        res.render('./layouts/layout', {param: "/now",
-            session: req.session.email});
+        res.render('./layouts/layout', {param: "/now"});
     });
 
     app.get('/cast', function(req, res) {
-        res.render('./layouts/layout', {param: "/cast",
-            session: req.session.email});
+        res.render('./layouts/layout', {param: "/cast"});
     });
     // login
     app.get('/login', function(req, res) {
-        res.render('./layouts/layout', {param: "/login",
-            session: req.session.email});
+        res.render('./layouts/layout', {param: "/login"});
     });
     
     app.get('/add', function(req, res) {
         var string = fetch("/add");
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
 
     app.get('/signup', function(req, res) {
         var string = fetch("/signup");
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
     
     app.get('/add/artist', function(req, res) {
         var string = fetch("/add/artist");
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
     
     app.get('/add/album', function(req, res) {
         var string = fetch("/add/album");
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
     
     app.get('/add/music', function(req, res) {
         var string = fetch("/add/music");
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
 
     app.get('/song/:artist/:album/:title', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
 
     app.get('/song/:artist/:album', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"?mode="+req.param('mode'))
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
 
     app.get('/song/:artist', function(req, res) {
         var string = fetch("/song/"+req.params.artist+"?mode="+req.param('mode'))
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
  
     app.get('/search/:search', function(req, res) {
         var string = fetch("/search/"+req.params.search)
         res.render('./layouts/layout', {
-            param: string,
-            session: req.session.email
+            param: string
         });
     });
 
