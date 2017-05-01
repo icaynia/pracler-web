@@ -126,7 +126,15 @@
         return results[1] || 0;
     }
 
-    var autop = $.urlParam('autoplay'); 
+    try
+    {
+      var autop = $.urlParam('autoplay'); 
+    }
+    catch(err)
+    {
+
+    } 
+
     if (autop == "autoplay")
     {
         if ("<%= data.youtube_code %>" != "null")
