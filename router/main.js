@@ -12,6 +12,7 @@ module.exports = function(app)
      */
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
+    app.use('/api', require('./api'));
     // 값 암호화 요청
     app.post('/rsa/encrypt', function(req, res) {
         res.json({
