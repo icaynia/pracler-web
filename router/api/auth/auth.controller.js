@@ -4,3 +4,11 @@ exports.register = (req, res) => {
 
     res.send('register is working');
 }
+
+
+exports.login = (req, res) => {
+    const { email, password } = req.body;
+    let newUser = null;
+
+    res.send('login is working');
+}

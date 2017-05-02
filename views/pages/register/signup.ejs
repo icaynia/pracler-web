@@ -196,13 +196,13 @@
                     alert(result.pw);
                     /* request */
                     $.ajax({
-                        url: "/signup/user",
+                        url: "/api/auth/register",
                         type: 'POST',
                         dataType: 'json',
                         data: {
-                        "inputEmail": inputEmail, 
-                        "inputPassword": result.pw,
-                        "inputNickname": inputNickname,
+                        "email": inputEmail, 
+                        "password": result.pw,
+                        "nickname": inputNickname,
                         "birthday": birthday,
                         "gender": gender,
                         "profile_picture": profile_picture,
