@@ -25,6 +25,22 @@ exports.register = (req, res) => {
 exports.login = (req, res) => {
     const { email, password } = req.body;
     let newUser = null;
+    request({ 
+            url: "http://localhost:3000/api/auth/login", 
+            method: 'POST', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //성공
+                res.send({result:1});
+                console.log("성공 : " + req.body.email);
 
-    res.send('login is working');
+            }
+            else
+            {
+                //실패
+                res.send({result:0});
+                console.log("\x1b[31m", "실패 : " + req.body.email);
+            }
+    });
 }
