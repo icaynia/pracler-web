@@ -392,23 +392,23 @@ module.exports = function(app)
     });
 
     app.post('/signup/user', function (req, res) {
-        //compute data here
+        // 더이상 사용하지 않습니다.
 
-        request({ 
-            url: "http://localhost:3000/signup", 
-            method: 'POST', 
-            form: req.body
-        }, function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //있는 경우
-                res.send({result:1});
-            }
-            else
-            {
-                //없는 경우
-                res.send({result:0});
-            }
-        });
+        // request({ 
+        //     url: "http://localhost:3000/signup", 
+        //     method: 'POST', 
+        //     form: req.body
+        // }, function (error, response, body) {
+        //     if (!error && response.statusCode == 200) {
+        //         //있는 경우
+        //         res.send({result:1});
+        //     }
+        //     else
+        //     {
+        //         //없는 경우
+        //         res.send({result:0});
+        //     }
+        // });
 
     });
 
