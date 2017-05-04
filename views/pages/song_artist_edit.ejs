@@ -96,6 +96,7 @@
 
 <script>
   $(function(){ 
+    var simplemde = new SimpleMDE({ element: document.getElementById("description") });
     $("#btn_save").click(function(){ 
       event.preventDefault();
       var url = "/song/<%= param.artist %>";
@@ -106,7 +107,7 @@
         dataType: 'json',
         data: {
           "artist_image_url": $('#artist_image_url').val(), 
-          "description": $('#description').val() 
+          "description": simplemde.value() 
         },
         success: function(result) {
           goto(url);
