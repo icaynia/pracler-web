@@ -7,6 +7,7 @@ $(function(){
     }
    
     $(this).on('click', 'a, button',function (e) {
+            console.log("a or button click event at custom.js");
             // custom handling here
             e.preventDefault();
             var href = $(this).attr('href');
@@ -23,6 +24,7 @@ $(function(){
 
 function refresh_important(url)
 {
+    console.log("refresh_important at custom.js");
     window.location.href = url;
 }
 
