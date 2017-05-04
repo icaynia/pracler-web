@@ -235,8 +235,19 @@ html,body{height:100%;}
 
 .view-markup h1
 {
+    font-size: 30px;
+}
+
+.view-markup h2
+{
     font-size: 26px;
 }
+
+.view-markup h3
+{
+    font-size: 20px;
+}
+
 
 .view-markup p
 {
