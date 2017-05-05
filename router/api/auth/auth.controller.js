@@ -21,7 +21,6 @@ exports.register = (req, res) => {
     });
 }
 
-
 exports.login = (req, res) => {
     const { email, password } = req.body;
     let newUser = null;
@@ -32,6 +31,9 @@ exports.login = (req, res) => {
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //성공
+                res.cookie('frv', JSON.parse(body).token, {
+                       httpOnly: true, maxAge: 60 * 60 * 1000 * 24 * 30 // 1 month
+                });
                 res.send({result:1});
                 console.log("성공 : " + req.body.email);
 
