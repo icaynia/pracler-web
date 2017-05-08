@@ -3,6 +3,7 @@
 var request = require('request');
 var ursa = require('ursa');
 var fs = require('fs');
+const fetch = require('./util/fetch')
 
 
 module.exports = function(app)
@@ -13,6 +14,7 @@ module.exports = function(app)
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
     app.use('/api', require('./api'));
+    app.use('/song', require('./song'));
     // app.use('/view', require('./view'));
     // 값 암호화 요청
     app.post('/rsa/encrypt', function(req, res) {
@@ -96,34 +98,6 @@ module.exports = function(app)
         });
     });
 
-    app.get('/song/:artist/:album/:title', function(req, res) {
-        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-
-    app.get('/song/:artist/:album', function(req, res) {
-        var string = fetch("/song/"+req.params.artist+"/"+req.params.album+"?mode="+req.param('mode'))
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-
-    app.get('/song/:artist', function(req, res) {
-        var string = fetch("/song/"+req.params.artist+"?mode="+req.param('mode'))
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-
-    app.get('/song/', function(req, res) {
-        var string = fetch("/search/")
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
- 
     app.get('/search/:search', function(req, res) {
         var string = fetch("/search/"+req.params.search)
         res.render('./layouts/layout', {
@@ -185,7 +159,6 @@ module.exports = function(app)
                     param: req.params,
                     data: JSON.parse(body)
                 });
-                console.log(body);
             }
             else
             {
@@ -307,6 +280,7 @@ module.exports = function(app)
 
     // song (/song/a/b/c) overview - MUSIC
     app.get('/view/song/:artist/:album/:music', function (req, res) {
+        console.log(req.params.artist);
         //compute data here
         var artist_encode = encodeURIComponent(req.params.artist);
         var album_encode = encodeURIComponent(req.params.album);
@@ -322,14 +296,14 @@ module.exports = function(app)
                 view_layout = './pages/song_music';
         }
 
-        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        var string = fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
         
         request("http://localhost:3000/song/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
                 res.render(view_layout, {
                     param: req.params,
-                    data: JSON.parse(unfetch(body))
+                    data: JSON.parse(fetch.unfetch(body))
                 });
             }
             else
@@ -587,18 +561,3 @@ module.exports = function(app)
         });
     });
 }
-
-function fetch(str)
-{
-    return str.replace(/ /gi, '+');
-}
-
-String.prototype.replaceAll = function(org, dest) {
-    return this.split(org).join(dest);
-}
-
-function unfetch(str)
-{
-    return str.replaceAll('+', ' ');
-}
-
