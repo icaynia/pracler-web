@@ -3,30 +3,24 @@
 var request = require('request');
 var ursa = require('ursa');
 var fs = require('fs');
-const fetch = require('./util/fetch')
+const Fetch = require('./util/fetch')
 
 
 module.exports = function(app)
 {
-    /** Main Layout
-     *  
-     */
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
     app.use('/api', require('./api'));
     app.use('/song', require('./song'));
-    // app.use('/view', require('./view'));
+    app.use('/add', require('./add'));
+    app.use('/search', require('./search'));
+    app.use('/view', require('./view'));
+
+
     // 값 암호화 요청
     app.post('/rsa/encrypt', function(req, res) {
         res.json({
             pw: crt.encrypt(req.body.inputPassword, 'utf8', 'base64')
-        });
-    });
-
-    // 세션 확인
-    app.get('/data/session', function(req, res) {
-        res.json({
-
         });
     });
 
@@ -46,7 +40,6 @@ module.exports = function(app)
     app.get('/', function(req, res) {
         res.render('./layouts/layout', {
             param: "/"
-
         });
     });
 
@@ -76,44 +69,9 @@ module.exports = function(app)
             param: string
         });
     });
-    
-    app.get('/add/artist', function(req, res) {
-        var string = fetch("/add/artist");
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-    
-    app.get('/add/album', function(req, res) {
-        var string = fetch("/add/album");
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-    
-    app.get('/add/music', function(req, res) {
-        var string = fetch("/add/music");
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
 
-    app.get('/search/:search', function(req, res) {
-        var string = fetch("/search/"+req.params.search)
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
-
-    app.get('/search/', function(req, res) {
-        var string = fetch("/search/")
-        res.render('./layouts/layout', {
-            param: string
-        });
-    });
 
     app.get('/data/music/count', function (req, res) {
-        
         request("http://localhost:3000/data/music/count" , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
@@ -127,10 +85,9 @@ module.exports = function(app)
     });
 
     app.get('/viewcall/search/music/:search', function (req, res) {
-        console.log(req.params.search);
-        var string = encodeURIComponent(fetch(req.params.search));
+        var string = encodeURIComponent(Fetch.fetch(req.params.search));
         
-        req.params.search = unfetch(req.params.search);
+        req.params.search = Fetch.unfetch(req.params.search);
 
         request("http://localhost:3000/search/music/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -278,77 +235,26 @@ module.exports = function(app)
         })
     });
 
-    // song (/song/a/b/c) overview - MUSIC
-    app.get('/view/song/:artist/:album/:music', function (req, res) {
-        console.log(req.params.artist);
-        //compute data here
-        var artist_encode = encodeURIComponent(req.params.artist);
-        var album_encode = encodeURIComponent(req.params.album);
-        var title_encode = encodeURIComponent(req.params.music);
-
-        var view_layout;
-        switch (req.param('mode'))
-        {
-            case "edit":
-                view_layout = './pages/song_music_edit';
-                break;
-            default:
-                view_layout = './pages/song_music';
-        }
-
-        var string = fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
-        
-        request("http://localhost:3000/song/"+string , function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //있는 경우
-                res.render(view_layout, {
-                    param: req.params,
-                    data: JSON.parse(fetch.unfetch(body))
-                });
-            }
-            else
-            {
-                res.render('./pages/404');
-            }
-        })
-        
-    });
 
     app.get('/view/search/:search', function (req, res) {
 
-        var string = encodeURIComponent(fetch(req.params.search));
+        var string = encodeURIComponent(Fetch.fetch(req.params.search));
         
-        req.params.search = unfetch(req.params.search);
-        request("http://localhost:3000/search/"+string , function (error, response, body) {
+        req.params.search = Fetch.unfetch(req.params.search);
+        console.log(req.params.search );
+
+        request("http://localhost:3000/search/music/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
                 res.render('./pages/search', {
                     param: req.params,
-                    data: JSON.parse(unfetch(body)),
+                    data: JSON.parse(Fetch.unfetch(body)),
                     search: req.params.search
                 });
             }
             else
             {
-                res.render('./pages/404');
-            }
-        });
-    });
-    app.get('/view/search', function (req, res) {
-
-        
-        request("http://localhost:3000/search/music" , function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //있는 경우
-                res.render('./pages/search', {
-                    param: req.params,
-                    data: JSON.parse(unfetch(body)),
-                    search: ""
-                });
-            }
-            else
-            {
-                res.render('./pages/404');
+                res.status(404).render('./pages/404');
             }
         });
     });
@@ -414,10 +320,6 @@ module.exports = function(app)
         res.render('./pages/404');
     });
 
-    app.get('/view', function (req, res) {
-        //compute data here
-        res.render('./pages/home');
-    });
 
     app.post('/signup/user', function (req, res) {
         // 더이상 사용하지 않습니다.

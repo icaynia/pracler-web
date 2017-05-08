@@ -253,3 +253,13 @@ html,body{height:100%;}
 {
     font-size: 15px;
 }
+
+a .verify_false
+{
+    color: #2196f3;
+}
+
+a .verify_true
+{
+    color: #21b633;
+}
