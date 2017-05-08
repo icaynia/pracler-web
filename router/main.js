@@ -13,6 +13,7 @@ module.exports = function(app)
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
     app.use('/api', require('./api'));
+    // app.use('/view', require('./view'));
     // 값 암호화 요청
     app.post('/rsa/encrypt', function(req, res) {
         res.json({
@@ -115,9 +116,23 @@ module.exports = function(app)
             param: string
         });
     });
+
+    app.get('/song/', function(req, res) {
+        var string = fetch("/search/")
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
  
     app.get('/search/:search', function(req, res) {
         var string = fetch("/search/"+req.params.search)
+        res.render('./layouts/layout', {
+            param: string
+        });
+    });
+
+    app.get('/search/', function(req, res) {
+        var string = fetch("/search/")
         res.render('./layouts/layout', {
             param: string
         });
@@ -150,6 +165,27 @@ module.exports = function(app)
                     param: req.params,
                     data: JSON.parse(body)
                 });
+            }
+            else
+            {
+                //없는 경우
+                res.render('./pages/404');
+            }
+        })
+    });
+
+    
+    app.get('/viewcall/search/music/', function (req, res) {
+        
+
+        request("http://localhost:3000/search/music/" , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.render('./pages/search/simple_music.ejs', {
+                    param: req.params,
+                    data: JSON.parse(body)
+                });
+                console.log(body);
             }
             else
             {
@@ -316,6 +352,24 @@ module.exports = function(app)
                     param: req.params,
                     data: JSON.parse(unfetch(body)),
                     search: req.params.search
+                });
+            }
+            else
+            {
+                res.render('./pages/404');
+            }
+        });
+    });
+    app.get('/view/search', function (req, res) {
+
+        
+        request("http://localhost:3000/search/music" , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.render('./pages/search', {
+                    param: req.params,
+                    data: JSON.parse(unfetch(body)),
+                    search: ""
                 });
             }
             else
