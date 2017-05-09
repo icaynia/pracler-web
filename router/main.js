@@ -17,12 +17,7 @@ module.exports = function(app)
     app.use('/view', require('./view'));
 
 
-    // 값 암호화 요청
-    app.post('/rsa/encrypt', function(req, res) {
-        res.json({
-            pw: crt.encrypt(req.body.inputPassword, 'utf8', 'base64')
-        });
-    });
+    
 
     app.get('/data/sesv', function(req, res) {
         req.session.email = "vv";
@@ -57,14 +52,14 @@ module.exports = function(app)
     });
     
     app.get('/add', function(req, res) {
-        var string = fetch("/add");
+        var string = Fetch.fetch("/add");
         res.render('./layouts/layout', {
             param: string
         });
     });
 
     app.get('/signup', function(req, res) {
-        var string = fetch("/signup");
+        var string = Fetch.fetch("/signup");
         res.render('./layouts/layout', {
             param: string
         });
@@ -129,7 +124,7 @@ module.exports = function(app)
         console.log(req.params.search);
         var string = encodeURIComponent(fetch(req.params.search));
         
-        req.params.search = unfetch(req.params.search);
+        req.params.search = Fetch.unfetch(req.params.search);
 
         request("http://localhost:3000/search/artist/"+string , function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -149,17 +144,17 @@ module.exports = function(app)
     
     app.get('/viewcall/search/album/:search', function (req, res) {
 
-        var string = fetch(req.params.search);
+        var string = Fetch.fetch(req.params.search);
         
-        req.params.search = unfetch(req.params.search);
+        req.params.search = Fetch.unfetch(req.params.search);
         res.render('./pages/search/simple_album.ejs');
     });
 
     app.get('/viewcall/search/user/:search', function (req, res) {
 
-        var string = fetch(req.params.search);
+        var string = Fetch.fetch(req.params.search);
         
-        req.params.search = unfetch(req.params.search);
+        req.params.search = Fetch.unfetch(req.params.search);
         res.render('./pages/search/simple_user.ejs');
     });
     /** View
@@ -209,7 +204,7 @@ module.exports = function(app)
         var artist_encode = encodeURIComponent(req.params.artist);
         var album_encode = encodeURIComponent(req.params.album);
 
-        var string = fetch(artist_encode+"/"+album_encode);
+        var string = Fetch.fetch(artist_encode+"/"+album_encode);
         var view_layout;
         switch (req.param('mode'))
         {
@@ -375,7 +370,7 @@ module.exports = function(app)
         var album_encode = encodeURIComponent(req.params.album);
         var title_encode = encodeURIComponent(req.params.music);
 
-        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        var string = Fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
 
         console.log("http://localhost:3000/regist/"+string);
         request({ 
@@ -401,7 +396,7 @@ module.exports = function(app)
         var album_encode = encodeURIComponent(req.params.album);
         var title_encode = encodeURIComponent(req.params.music);
         
-        var string = fetch(artist_encode+"/"+album_encode+"/"+title_encode);
+        var string = Fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
         console.log("http://localhost:3000/song/"+string);
         request({ 
             url: "http://localhost:3000/song/"+string, 
@@ -423,7 +418,7 @@ module.exports = function(app)
         var artist_encode = encodeURIComponent(req.params.artist);
         var album_encode = encodeURIComponent(req.params.album);
 
-        var string = fetch(artist_encode+"/"+album_encode);
+        var string = Fetch.fetch(artist_encode+"/"+album_encode);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
@@ -445,7 +440,7 @@ module.exports = function(app)
         //compute data here
         var artist_encode = encodeURIComponent(req.params.artist);
 
-        var string = fetch(artist_encode);
+        var string = Fetch.fetch(artist_encode);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
