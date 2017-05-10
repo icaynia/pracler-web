@@ -30,21 +30,7 @@ module.exports = function(app)
     });
 
     app.get('/', function(req, res) {
-        var loggedEmail;
-        checkAuth(req, function(frv) {
-            console.log("succ " + frv);
-            loggedEmail = frv;
-            res.render('./layouts/layout', {
-                param: "/",
-                auth: loggedEmail
-            });
-        }, function() {
-
-            res.render('./layouts/layout', {
-                param: "/",
-                auth: loggedEmail
-            });
-        });
+        content(req, res, '/')
     });
 
     app.use('/', function(req, res, next)
@@ -470,6 +456,24 @@ module.exports = function(app)
             }
         });
     });
+
+    function content(req, res, param)
+    {
+        var loggedEmail;
+        checkAuth(req, function(frv) {
+            loggedEmail = frv;
+            res.render('./layouts/layout', {
+                param: param,
+                auth: loggedEmail
+            });
+        }, function() {
+
+            res.render('./layouts/layout', {
+                param: param,
+                auth: loggedEmail
+            });
+        });
+    }
 
     function checkAuth(req, func, nofunc)
     {
