@@ -3,7 +3,7 @@
 var request = require('request');
 var ursa = require('ursa');
 var fs = require('fs');
-const Fetch = require('./util/fetch')
+const Fetch = require('./util/fetch');
 
 
 module.exports = function(app)
@@ -15,9 +15,6 @@ module.exports = function(app)
     app.use('/add', require('./add'));
     app.use('/search', require('./search'));
     app.use('/view', require('./view'));
-
-
-    
 
     app.get('/data/sesv', function(req, res) {
         req.session.email = "vv";
@@ -33,11 +30,27 @@ module.exports = function(app)
     });
 
     app.get('/', function(req, res) {
-        res.render('./layouts/layout', {
-            param: "/"
+        var loggedEmail;
+        checkAuth(req, function(frv) {
+            console.log("succ " + frv);
+            loggedEmail = frv;
+            res.render('./layouts/layout', {
+                param: "/",
+                auth: loggedEmail
+            });
+        }, function() {
+
+            res.render('./layouts/layout', {
+                param: "/",
+                auth: loggedEmail
+            });
         });
     });
 
+    app.use('/', function(req, res, next)
+    {
+        next();
+    })
 
     app.get('/now', function(req, res) {
         res.render('./layouts/layout', {param: "/now"});
@@ -457,4 +470,25 @@ module.exports = function(app)
             }
         });
     });
+
+    function checkAuth(req, func, nofunc)
+    {
+        var cookie = req.cookies.frv;
+        request({ 
+            url: "http://localhost:3000/api/auth/check/?token="+cookie, 
+            method: 'GET', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                func(JSON.parse(body).info.username);
+            }
+            else
+            {
+                //없는 경우
+                console.log('check : false');
+                nofunc(body.frv);
+            }
+        });
+    }
 }

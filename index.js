@@ -1,16 +1,27 @@
 var express = require('express');
 var app = express();
+var https = require('https');
+
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser')
+
 var session = require('express-session');
+var fs = require('fs');
 
 var redis = require('redis').createClient();
 var RedisStore = require('connect-redis')(session);
+
+var options = {  
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+};
 
 app.set('port', (process.env.PORT || 5000));
 var port2 = 443;
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(cookieParser());
 app.use(session({
   key: 'pracler',
   secret: 'sigggnnnnnnn##!!',
@@ -25,7 +36,9 @@ app.use(session({
 }));
 var router = require('./router/main')(app);
 
-
+// https.createServer(options, app).listen(port2, function(){  
+//   console.log("Https server listening on port " + port2);
+// });
 
 
 // views is directory for all template files
