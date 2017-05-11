@@ -46,3 +46,8 @@ exports.login = (req, res) => {
             }
     });
 }
+
+exports.logout = (req, res) => {
+    res.cookie('frv', "", {});
+    res.send("<script> window.location.href = '/';</script>");
+}
