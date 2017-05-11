@@ -2,7 +2,7 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
+        <img style="width:150px; height:150px; background-image:white;" src="<%= data.album_image_url %>"></div>
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
@@ -61,7 +61,7 @@
                 <h3>정보</h3>
                 <div class="form-group has-error">
                   <label class="control-label" for="focusedInput">곡 이미지 링크</label>
-                  <input class="form-control" id="music_image_url" type="text" value="<%= data.music_image_url %>" >
+                  <input class="form-control" id="album_image_url" type="text" value="<%= data.album_image_url %>" >
                 </div>
                 <div class="form-group has-error">
                   <label class="control-label" for="focusedInput">Youtube 링크</label>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group has-error">
                   <label class="control-label" for="focusedInput">SoundCloud 링크</label>
-                  <input class="form-control" id="soundcloud_code" type="text" value="https://www.youtube.com/watch?v=<%= data.youtube_code %>" >
+                  <input class="form-control" id="soundcloud_code" type="text" value="https://www.youtube.com/watch?v=<%= data.soundcloud_code %>" >
                 </div>
                 <div class="form-group">
                   <label class="control-label" for="focusedInput">노트</label>
@@ -108,13 +108,13 @@
       var url = "/song/<%= param.artist %>/<%= param.album %>";
       var youtube = $('#youtube_code').val();
       var youtube_code = getUrlVars(youtube).v;
-
+      alert($('#album_image_url').val())
       $.ajax({
         url: url,
         type: 'PUT',
         dataType: 'json',
         data: {
-          "music_image_url": $('#music_image_url').val(), 
+          "album_image_url": $('#album_image_url').val(), 
           "youtube_code": youtube_code, 
           "description": simplemde.value() 
         },

@@ -162,73 +162,8 @@ module.exports = function(app)
 
 
     // home (/)
-    // song (/song/a) overview - ARTIST
-    app.get('/view/song/:artist', function (req, res) {
-        //compute data here
-        var artist_encode = encodeURIComponent(req.params.artist);
 
-        var view_layout;
-        switch (req.param('mode'))
-        {
-            case "edit":
-                view_layout = './pages/song_artist_edit';
-                break;
-            default:
-                view_layout = './pages/song_artist';
-                break;
-        }
-
-        var string = fetch(artist_encode);
-        
-        request("http://localhost:3000/song/"+string , function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //있는 경우
-                res.render(view_layout, {
-                    param: req.params,
-                    data: JSON.parse(unfetch(body))
-                });
-            }
-            else
-            {
-                //없는 경우
-                res.render('./pages/404');
-            }
-        })
-        
-    });
-
-    // song (/song/a/b) overview - ALBUM
-    app.get('/view/song/:artist/:album', function (req, res) {
-        //compute data here
-        var artist_encode = encodeURIComponent(req.params.artist);
-        var album_encode = encodeURIComponent(req.params.album);
-
-        var string = Fetch.fetch(artist_encode+"/"+album_encode);
-        var view_layout;
-        switch (req.param('mode'))
-        {
-            case "edit":
-                view_layout = './pages/song_album_edit';
-                break;
-            default:
-                view_layout = './pages/song_album';
-        }
-
-        request("http://localhost:3000/song/"+string , function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                //있는 경우
-                res.render(view_layout, {
-                    param: req.params,
-                    data: JSON.parse(unfetch(body))
-                });
-            }
-            else
-            {
-                res.render('./pages/404');
-            }
-        })
-    });
-
+    
 
     app.get('/view/search/:search', function (req, res) {
 
@@ -396,7 +331,6 @@ module.exports = function(app)
         var title_encode = encodeURIComponent(req.params.music);
         
         var string = Fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
-        console.log("http://localhost:3000/song/"+string);
         request({ 
             url: "http://localhost:3000/song/"+string, 
             method: 'PUT', 
