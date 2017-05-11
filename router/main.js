@@ -4,7 +4,7 @@ var request = require('request');
 var ursa = require('ursa');
 var fs = require('fs');
 const Fetch = require('./util/fetch');
-
+const authChecker = require('./util/authChecker');
 
 module.exports = function(app)
 {
@@ -15,6 +15,8 @@ module.exports = function(app)
     app.use('/add', require('./add'));
     app.use('/search', require('./search'));
     app.use('/view', require('./view'));
+    app.use('/user', require('./user'));
+
 
     app.get('/data/sesv', function(req, res) {
         req.session.email = "vv";
@@ -31,12 +33,8 @@ module.exports = function(app)
 
     app.get('/', function(req, res) {
         content(req, res, '/')
+        console.log('어디');
     });
-
-    app.use('/', function(req, res, next)
-    {
-        next();
-    })
 
     app.get('/now', function(req, res) {
         res.render('./layouts/layout', {param: "/now"});

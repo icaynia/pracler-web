@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const Fetch = require('../util/fetch')
 var request = require('request');
+
+const user = require('./user');
 //const auth = require('./auth');
 
+router.use('/user', user);
 
 router.get('/', function(req, res) {
     console.log("c");

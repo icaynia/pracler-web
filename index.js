@@ -11,6 +11,7 @@ var fs = require('fs');
 var redis = require('redis').createClient();
 var RedisStore = require('connect-redis')(session);
 
+const authChecker = require('./router/util/authChecker');
 var options = {  
     key: fs.readFileSync('key.pem'),
     cert: fs.readFileSync('cert.pem')
@@ -49,7 +50,14 @@ app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
 
+
 app.use(function (req,res) {
-    res.status(404).render('./layouts/layout', {param:'/404'});
-    console.log("404");
+    authChecker.check(req, function(frv) {
+        res.status(404).render('./layouts/layout', {param:'/404', auth: frv});
+        console.log("404 : yes");
+    }, function(frv) {
+        res.status(404).render('./layouts/layout', {param:'/404', auth: frv});
+        console.log("404 : no");
+    });
+    //res.status(404).render('./layouts/layout', {param:'/404'});
 });
