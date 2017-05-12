@@ -42,7 +42,9 @@ exports.index = (req, res) => {
     }
 
     console.log('user');
-    res.status(409).send(username);
+    res.render('./pages/user/main', {
+        param: req.params
+    });
 
     // User.findUserByEmail(email)
     // .then(create)

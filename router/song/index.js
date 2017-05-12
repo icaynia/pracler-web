@@ -17,6 +17,11 @@ router.get('/:artist', function(req, res) {
     content(req, res, string);
 });
 
+// router.get('/', function(req, res) {
+//     //var string = Fetch.fetch("/song/"+req.params.artist+"?mode="+req.param('mode'))
+//     //content(req, res, string);
+// })
+
 function content(req, res, param)
 {
     var loggedEmail;
