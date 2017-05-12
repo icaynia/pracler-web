@@ -33,7 +33,6 @@ module.exports = function(app)
 
     app.get('/', function(req, res) {
         content(req, res, '/')
-        console.log('어디');
     });
 
     app.get('/now', function(req, res) {
@@ -417,7 +416,7 @@ module.exports = function(app)
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                func(JSON.parse(body).info.username);
+                func(JSON.parse(body).info.id);
             }
             else
             {
