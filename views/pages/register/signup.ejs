@@ -40,6 +40,12 @@
                                     </div>
                                     </div>
                                     <div class="form-group">
+                                    <label for="inputEmail" class="col-lg-2 control-label">아이디</label>
+                                    <div class="col-lg-5">
+                                        <input type="text" class="form-control" id="inputId" placeholder="아이디를 입력하세요.">
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
                                     <label for="inputEmail" class="col-lg-2 control-label">닉네임</label>
                                     <div class="col-lg-5">
                                         <input type="text" class="form-control" id="inputNickname" placeholder="20자 이내, 특수문자 사용 불가">
@@ -154,6 +160,7 @@
             event.preventDefault();
 
             var inputEmail = $('#inputEmail').val();
+            var inputId = $('#inputId').val();
             var inputPassword = $('#inputPassword').val();
             var inputPasswordAgain = $('#inputPasswordAgain').val();
             var inputNickname = $('#inputNickname').val();
@@ -166,6 +173,7 @@
             /* filter */
             if (!inputEmail) { alert("이메일이 입력되지 않았습니다."); return; } // 동작
             if (!inputEmail.includes("@")) { alert("이메일 입력 오류입니다.\n입력한 이메일을 다시 확인해주세요."); return; } // 동작
+            if (!inputId) { alert("아이디가 입력되지 않았습니다."); return; } // 동작
             if (!inputPassword) { alert("비밀번호가 입력되지 않았습니다."); return; } // 동작
             if (!inputPasswordAgain) { alert("비밀번호 재확인이 필요합니다."); return; } // 동작
             if (inputPassword != inputPasswordAgain) { alert("비밀번호 재확인이 일치하지 않습니다."); return; } // 동작
@@ -186,7 +194,7 @@
             
             /* encrypt */
             $.ajax({
-                url: "/rsa/encrypt",
+                url: "/api/rsa/encrypt",
                 type: 'POST',
                 dataType: 'json',
                 data: {
@@ -201,6 +209,7 @@
                         dataType: 'json',
                         data: {
                             "email": inputEmail, 
+                            "id": inputId, 
                             "password": result.pw,
                             "nickname": inputNickname,
                             "birthday": birthday,
