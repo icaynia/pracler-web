@@ -6,9 +6,9 @@
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
-          <h4 style="word-break: keep-all;"><a href="/song/1">aaa</a>
-          &nbsp; ー&nbsp; <a href="/song/1/1">bbb</a>
-          <h2 style="word-break: keep-all;">aaa <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
+          <h4 style="word-break: keep-all;"><a href="/song/1"></a>
+          &nbsp; &nbsp; <a href="/song/1/1"></a>
+          <h2 style="word-break: keep-all;"><%=data.id%> <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
           <ul class="nav nav-tabs">
             
             <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br>vs</a>
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%=data.id%></a>
             </li>
             <li class="">
               <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
@@ -73,6 +73,7 @@
 						<div id="description" class="description view-markup">
 						
 						</div>
+
 						<!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
 					</div>
 					<div class="tab-pane fade" id="profile">
@@ -89,6 +90,9 @@
 		</div>
 	</div>
     <div class="col-lg-4">
+      <div class="progress progress-striped active">
+          <div class="progress-bar" style="width: 45%"></div>
+      </div>
       <div class="bs-component">
         <a href="#" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
         

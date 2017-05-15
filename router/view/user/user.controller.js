@@ -1,55 +1,21 @@
+var request = require('request');
 
+const Fetch = require('../../util/fetch');
 exports.index = (req, res) => {
     var username = req.params.username;
-    const create = (user) => {
-        if (user)
-        {
-            throw new Error('email already exists');
+    
+    request("http://localhost:3000/api/user/"+username , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.render('./pages/user/main', {
+                param: req.params,
+                data: JSON.parse(Fetch.unfetch(body)),
+                search: ""
+            });
         }
         else
         {
-            return User.create(email, nickname, password, birthday, gender);
+            res.render('./pages/404');
         }
-    }
-
-    const count = (user) => {
-        newUser = user;
-        return User.count({}).exec();
-    }
-
-    const assign = (count) => {
-        if (count === 1)
-        {
-            return newUser.assignAdmin();
-        }
-        else
-        {
-            return Promise.resolve();
-        }
-    }
-
-    const respond = (isAdmin) => {
-        res.json({
-            message: 'registered successfully',
-            admin: isAdmin ? true : false
-        })
-    }
-
-    const onError = (error) => {
-        res.status(409).json({
-            message: error.message
-        })
-    }
-
-    console.log('user');
-    res.render('./pages/user/main', {
-        param: req.params
     });
-
-    // User.findUserByEmail(email)
-    // .then(create)
-    // .then(count)
-    // .then(assign)
-    // .then(respond)
-    // .catch(onError)
 }
