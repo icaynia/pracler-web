@@ -90,8 +90,10 @@
 		</div>
 	</div>
     <div class="col-lg-4">
-      <div class="progress progress-striped active">
-          <div class="progress-bar" style="width: 45%"></div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="width: 35%"></div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+        <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
       </div>
       <div class="bs-component">
         <a href="#" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
@@ -113,7 +115,7 @@
 </div>
 
 <script language="javascript">
-  document.title = "user" ;
+  document.title = "프로필 보기 - <%=data.id%> :: pracler" ;
   $(function(){ 
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);

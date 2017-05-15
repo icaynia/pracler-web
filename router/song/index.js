@@ -55,7 +55,7 @@ function checkAuth(req, func, nofunc)
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우
-            func(JSON.parse(body).info.username);
+            func(JSON.parse(body).info.id);
         }
         else
         {
