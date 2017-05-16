@@ -96,7 +96,9 @@
         <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
       </div>
       <div class="bs-component">
+        <% if (mypage == true) { %>
         <a href="#" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
+        <% } %>
         
                             
                         <div class="panel panel-success">
@@ -115,7 +117,7 @@
 </div>
 
 <script language="javascript">
-  document.title = "프로필 보기 - <%=data.id%> :: pracler" ;
+  document.title = "<%=data.id%> :: pracler" ;
   $(function(){ 
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
