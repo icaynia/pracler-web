@@ -141,21 +141,30 @@
         if ("<%= data.youtube_code %>" != "null")
         {
             youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
-            
+            createHistory();
         }
         else if ("<%= data.soundcloud_code %>" != "null")
         {
             soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
+            createHistory();
         }
     }
     $('#youtube-play-layout').click(function (e) {
         youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+        createHistory();
     });
     $('#soundcloud-play-layout').click(function (e) {
         soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
+        createHistory();
     
     });
   });
+
+  var createHistory = function() {
+      addhistory("<%= data.artist %>", "<%= data.album %>", "<%= data.title %>", function() {
+          console.log('Added history : <%= data.artist %>, <%= data.album %>, <%= data.title %>');
+      });
+  }
   //youtube_to_layout();
 </script>
 

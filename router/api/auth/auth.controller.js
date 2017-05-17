@@ -32,7 +32,7 @@ exports.login = (req, res) => {
             if (!error && response.statusCode == 200) {
                 //성공
                 res.cookie('frv', JSON.parse(body).token, {
-                       httpOnly: true, maxAge: 60 * 60 * 1000 * 24 * 30 // 1 month
+                       maxAge: 60 * 60 * 1000 * 24 * 30 // 1 month
                 });
                 res.send({result:1});
                 console.log("성공 : " + req.body.email);
@@ -42,7 +42,7 @@ exports.login = (req, res) => {
             {
                 //실패
                 res.send({result:0});
-                console.log("\x1b[31m", "실패 : " + req.body.email);
+                console.log("실패 : " + req.body.email);
             }
     });
 }

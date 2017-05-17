@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const auth = require('./auth');
+const history = require('./history');
 
 var ursa = require('ursa');
 var fs = require('fs');
@@ -15,6 +16,7 @@ router.post('/rsa/encrypt', function(req, res) {
 
 
 router.use('/auth', auth);
+router.use('/history', history);
 
 
 module.exports = router;

@@ -41,9 +41,9 @@
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a></td>
             <!--<td>-</td>-->
             <% if (data[i].youtube_code != "null") { %>
-                <td class="youtube-play-bt" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
+                <td class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
             <% } else if (data[i].soundcloud_code != "null" ){ %>
-                <td class="soundcloud-play-bt" code="<%= data[i].soundcloud_code %>"><a href="#">재생(soundcloud)</a></td>
+                <td class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><a href="#">재생(soundcloud)</a></td>
             <% } else { %>
                 <td></td>
             <% } %>
@@ -62,10 +62,16 @@
     $('.youtube-play-bt').click(function (e) {
         e.preventDefault();
         youtube_setContentPlayer_autoplay($(this).attr('code'));
+        addhistory($(this).attr('art'), $(this).attr('alb'), $(this).attr('tit'), function() {
+          console.log('Added history : ' + $(this).attr('art') +  $(this).attr('alb')+ $(this).attr('tit'));
+        });
     });
 
     $('.soundcloud-play-bt').click(function (e) {
         e.preventDefault();
         soundcloud_setContentPlayer_autoplay($(this).attr('code'));
+        addhistory($(this).attr('art'), $(this).attr('alb'), $(this).attr('tit'), function() {
+          console.log('Added history : ' + $(this).attr('art') +  $(this).attr('alb')+ $(this).attr('tit'));
+        });
     })
 </script>

@@ -22,6 +22,29 @@ $(function(){
 
 });
 
+function addhistory(artist, album, title, func) 
+{
+    if (!$.cookie("frv"))
+    {
+        return ;
+    }
+    
+    $.ajax({
+        url: "/api/history/add",
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          "auth": $.cookie("frv"), 
+          "artist": artist, 
+          "album": album, 
+          "title": title
+        },
+        success: function(result) {
+          func();
+        }
+    });
+}
+
 function refresh_important(url)
 {
     console.log("refresh_important at custom.js");
