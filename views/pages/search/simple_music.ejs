@@ -24,7 +24,7 @@
     else var_album = data[i].album;
 
     if (data[i].title)
-    if (data[i].title.length > 15) var_music = data[i].title.substring(0, 15) + " ...";
+    if (data[i].title.length > 25) var_music = data[i].title.substring(0, 25) + " ...";
     else var_music = data[i].title;
 
 
@@ -39,7 +39,7 @@
                 <td></td>
             <% } %>
             <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a></td>
-            <!--<td>-</td>-->
+            <!--<td>-</td>
             <% if (data[i].youtube_code != "null") { %>
                 <td class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
             <% } else if (data[i].soundcloud_code != "null" ){ %>
@@ -47,6 +47,17 @@
             <% } else { %>
                 <td></td>
             <% } %>
+--><td>
+            <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">재생<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/user/">재생</a></li>
+            <li><a href="#">재생목록</a></li>
+            <li><a href="#">트래킹</a></li>
+            <li class="divider"></li>
+            <li><a href="#" id="logout">로그아웃</a></li>
+          </ul>
+        </li></td>
         </tr>
     <% }; %>
             
