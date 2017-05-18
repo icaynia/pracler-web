@@ -2,13 +2,13 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
+        <img class="profile_image" src="<%=data.profile_picture%>"></div>
       </div>
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <div style="margin-left: 30px">
           <h4 style="word-break: keep-all;">
           <i class="fa fa-user" aria-hidden="true"></i> &nbsp;<%=data.id%> &nbsp; <a href="/song/1/1"></a>
-          <h2 style="word-break: keep-all;"><%= data.nickname %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2></h2>
+          <h2 style="word-break: keep-all;"><%=data.nickname%> <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
         </div>
       </div>
     </div>
