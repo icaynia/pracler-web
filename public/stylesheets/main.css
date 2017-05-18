@@ -228,6 +228,13 @@ html,body{height:100%;}
     display: none;
 }
 
+.music_image
+{
+    width: 150px; height: 150px;
+    object-fit: cover;
+    border-radius: 3%;
+}
+
 .profile_image
 {
     width: 130px; height: 130px;
