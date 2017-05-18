@@ -121,6 +121,34 @@
       refresh_important('/api/auth/logout');
     });
 
+    $(document).keydown(function(e) {
+    key = (e) ? e.keyCode : event.keyCode;
+     
+    var t = document.activeElement;
+     
+    if (key == 8 || key == 116 || key == 17 || key == 82) {
+        if (key == 8) {
+            if (t.tagName != "INPUT") {
+                if (e) {
+                    e.preventDefault();
+                    refresh('<%= param %>');
+                } else {
+                    event.keyCode = 0;
+                    event.returnValue = false;
+                }
+            }
+        } else {
+            if (e) {
+                e.preventDefault();
+                    refresh('<%= param %>');
+            } else {
+                event.keyCode = 0;
+                event.returnValue = false;
+            }
+        }
+    }
+});
+
   });
 </script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
