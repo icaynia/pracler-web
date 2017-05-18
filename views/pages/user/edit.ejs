@@ -1,0 +1,123 @@
+<div class="song-info">
+  <div class="container">
+    <div style="white-space: nowrap;">
+      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+        <img style="width:150px; height:150px; background-image:white;" src="<%= data.music_image_url %>"></div>
+      </div>
+      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+        <div style="margin-left: 30px">
+          <h4 style="word-break: keep-all;">
+          <i class="fa fa-user" aria-hidden="true"></i> &nbsp;<%=data.id%> &nbsp; <a href="/song/1/1"></a>
+          <h2 style="word-break: keep-all;"><%= data.nickname %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2></h2>
+        </div>
+      </div>
+    </div>
+
+    </br>
+
+  </div>
+</div>
+<div class="song-stats">
+  <div class="container">
+    <div>
+      <div style="float:left; float: bottom;">
+          <ul class="nav nav-tabs">
+            
+            <li class="active">
+              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.nickname %></a>
+            </li>
+          </ul>
+      </div>
+      <!--<div class="stat" style="float:left">
+          <p class="stat-name">재생 회수</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">듣는 사람</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">좋아요</h6>
+          <p class="stat-value">10</h6>
+      </div>
+      <div class="stat" style="float:left">
+          <p class="stat-name">오늘</h6>
+          <p class="stat-value">10</h6>
+      </div>-->
+    </div>
+
+    </br>
+
+  </div>
+</div>
+<form id="form" title="" method="post">
+  <div class="container" style="margin-top:30px;">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="bs-component">
+          <div class="content-tabs">
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active in" id="info">
+                
+                <h3>정보</h3>
+                <div class="form-group has-error">
+                  <label class="control-label" for="focusedInput">프로필 사진 링크</label>
+                  <input class="form-control" id="profile_picture" type="text" value="<%= data.profile_picture %>" >
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="focusedInput">프로필 설명</label>
+                  <textarea class="v" id="description"><%= data.description %></textarea>
+                  <label class="control-label" for="focusedInput"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <a id="btn_save" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">수정</a>
+          
+          <div class="alert alert-dismissible alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Warning!</h4>
+          <p>개발 중인 페이지입니다. 작동이 되지 않는 부분이 있을 수 있습니다.</p>
+        </div>
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">편집규정</h3>
+            </div>
+            <div class="panel-body">
+              이 곡의 정보를 수정하면 저작자표시-비영리-동일조건변경허락 2.0 대한민국으로 배포하는 것에 동의하는 것입니다. 이 동의는 철회할 수 없습니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<script language="javascript">
+  document.title = "프로필 수정 : <%= data.id %> ー <%= data.nickname %>";
+</script>
+<script>
+  $(function(){ 
+    var simplemde = new SimpleMDE({ element: document.getElementById("description") });
+    $("#btn_save").click(function(){ 
+      event.preventDefault();
+      var url = "/user/<%=data.id%>";
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          "profile_picture": $('#profile_picture').val(), 
+          "description": simplemde.value() 
+        },
+        success: function(result) {
+          goto(url);
+        }
+      });
+    })	
+  })
+
+</script>
