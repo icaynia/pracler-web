@@ -223,6 +223,27 @@ html,body{height:100%;}
 
 }
 
+.user_nowplaying
+{
+    position:relative; 
+    height: 40px;
+    border-left: thick solid #B01302;
+    border-right: thick solid #B01302;
+}
+
+.user_nowplaying .icon
+{ 
+  position:absolute;
+  height:40px; top: 0; bottom: -14px; left: 10px;margin-top:auto; margin-bottom:auto;
+  color: #B01302
+}
+
+.user_nowplaying .txt
+{ 
+  position:absolute;
+  height:40px; top: 0; bottom: -20px; left: 50px;  margin-top:auto; margin-bottom:auto;
+
+}
 .hidden
 {
     display: none;

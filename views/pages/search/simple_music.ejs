@@ -31,14 +31,8 @@
     %>
         <tr>
             <td> &nbsp;&nbsp;
-                <% if (data[i].youtube_code != "null") { %>
-                    <a href="" class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><i class="fa fa-play" aria-hidden="true"></i></td></a>
-                <% } else if (data[i].soundcloud_code != "null" ){ %>
-                    <a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><i class="fa fa-play" aria-hidden="true"></i></td></a>
-                <% } else { %>
-                <% } %>
                 
-            
+            </td>
             <td><a href="/song/<%=data[i].artist %>"><%= var_artist %></a></td>
 
             <% if (data[i].album != "_") { %>
@@ -46,7 +40,15 @@
             <% } else { %>
                 <td></td>
             <% } %>
-            <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a></td>
+            <td>
+                <% if (data[i].youtube_code != "null") { %>
+                    <a href="" class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                <% } else if (data[i].soundcloud_code != "null" ){ %>
+                    <a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
+                <% } else { %>
+                <% } %> <a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a> 
+                
+                </td>
             <!--<td>-</td>
             <% if (data[i].youtube_code != "null") { %>
                 <td class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><a href="#">재생(youtube)</a></td>
@@ -67,9 +69,9 @@
                             <% } else { %>
                             <% } %>-->
                             <li><a href="#">재생목록에 추가</a></li>
-                            <li><a href="#">트래킹</a></li>
+                            <!--<li><a href="#">트래킹</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" id="logout">로그아웃</a></li>
+                            <li><a href="#" id="logout">로그아웃</a></li>-->
                         </ul>
                     </li>
                 </ul>
