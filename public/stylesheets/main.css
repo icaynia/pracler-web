@@ -225,6 +225,7 @@ html,body{height:100%;}
 
 .user_nowplaying
 {
+    background-color: #f7f7f7;
     position:relative; 
     height: 40px;
     border-left: thick solid #B01302;
