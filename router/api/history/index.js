@@ -20,4 +20,22 @@ router.post('/add', function (req, res) {
     });
 });
 
+router.get('/:userid', function (req, res) {
+    request({ 
+            url: "http://localhost:3000/api/history/"+req.params.userid, 
+            method: 'GET', 
+            form: req.body
+        }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.send({result:1});
+            }
+            else
+            {
+                //없는 경우
+                res.send({result:0});
+            }
+    });
+});
+
 module.exports = router;

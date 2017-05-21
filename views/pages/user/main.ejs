@@ -1,68 +1,68 @@
 <div class="song-info">
-  <div class="container">
-    <div style="white-space: nowrap;">
-      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img class="profile_image" src="<%=data.profile_picture%>"></div>
-      </div>
-      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <div style="margin-left: 30px">
-          <h4 style="word-break: keep-all;"><a href="/song/1"></a>
-          <i class="fa fa-user" aria-hidden="true"></i> &nbsp;<%=data.id%> &nbsp; <a href="/song/1/1"></a>
-          <h2 style="word-break: keep-all;"><%=data.nickname%> <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
-        </div>
-      </div>
-    </div>
-    </br>
-  </div>
+	<div class="container">
+		<div style="white-space: nowrap;">
+			<div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+				<img class="profile_image" src="<%=data.profile_picture%>"></div>
+			</div>
+			<div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+				<div style="margin-left: 30px">
+					<h4 style="word-break: keep-all;"><a href="/song/1"></a>
+					<i class="fa fa-user" aria-hidden="true"></i> &nbsp;<%=data.id%> &nbsp; <a href="/song/1/1"></a>
+					<h2 style="word-break: keep-all;"><%=data.nickname%> <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
+				</div>
+			</div>
+		</div>
+		</br>
+	</div>
 </div>
 <div class="song-stats">
-  <div class="container">
-    <div>
-      <div style="float:left; float: bottom;">
-          <ul class="nav nav-tabs">
-            
-            <li class="active">
-              <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%=data.nickname%></a>
-            </li>
-            <li class="">
-              <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
-            </li>
-            <li class="">
-              <a href="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
-            </li>
-            <li class="">
-              <a href="#today" data-toggle="tab" aria-expanded="false">오늘</br>13</a>
-            </li>
-          </ul>
-      </div>
-      <!--<div class="stat" style="float:left">
-          <p class="stat-name">재생 회수</h6>
-          <p class="stat-value">10</h6>
-      </div>
-      <div class="stat" style="float:left">
-          <p class="stat-name">듣는 사람</h6>
-          <p class="stat-value">10</h6>
-      </div>
-      <div class="stat" style="float:left">
-          <p class="stat-name">좋아요</h6>
-          <p class="stat-value">10</h6>
-      </div>
-      <div class="stat" style="float:left">
-          <p class="stat-name">오늘</h6>
-          <p class="stat-value">10</h6>
-      </div>-->
-    </div>
+	<div class="container">
+		<div>
+			<div style="float:left; float: bottom;">
+					<ul class="nav nav-tabs">
+						
+						<li class="active">
+							<a href="" data-target="#info" data-toggle="tab" aria-expanded="true">정보</br><%=data.nickname%></a>
+						</li>
+						<li class="">
+							<a href="" id="tab_history" data-target="#history" data-toggle="tab" aria-expanded="false">청취</br>100</a>
+						</li>
+						<li class="">
+							<a href="" data-target="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
+						</li>
+						<li class="">
+							<a href="" data-target="#today"  data-toggle="tab" aria-expanded="false">오늘</br>13</a>
+						</li>
+					</ul>
+			</div>
+			<!--<div class="stat" style="float:left">
+					<p class="stat-name">재생 회수</h6>
+					<p class="stat-value">10</h6>
+			</div>
+			<div class="stat" style="float:left">
+					<p class="stat-name">듣는 사람</h6>
+					<p class="stat-value">10</h6>
+			</div>
+			<div class="stat" style="float:left">
+					<p class="stat-name">좋아요</h6>
+					<p class="stat-value">10</h6>
+			</div>
+			<div class="stat" style="float:left">
+					<p class="stat-name">오늘</h6>
+					<p class="stat-value">10</h6>
+			</div>-->
+		</div>
 
-    </br>
+		</br>
 
-  </div>
+	</div>
 </div>
 <div class="container" style="margin-top:30px;">
 	<div class="row">
 		<div class="col-lg-8">
-      <div class="user_nowplaying"> 
-        <span class="icon"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></span><span class="txt">지금 듣고 있습니다 : <a>아티스트</a> - <a>타이틀</a></span>
-      </div>
+			<div class="user_nowplaying"> 
+				<span class="icon"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></span><span class="txt">지금 듣고 있습니다 : <a>아티스트</a> - <a>타이틀</a></span>
+			</div>
 
 			<div class="bs-component">
 				<div class="content-tabs">
@@ -78,8 +78,10 @@
 
 						<!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
 					</div>
-					<div class="tab-pane fade" id="profile">
-						<div style="width:100%; height:1000px"></div>
+					<div class="tab-pane fade" id="history">
+						<div style="width:100%; height:1000px">
+								<div id="history">히스토리 부분</div>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="like">
 						<div style="width:100%; height:1000px"></div>
@@ -91,50 +93,79 @@
 			</div>
 		</div>
 	</div>
-    <div class="col-lg-4">
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="width: 35%"></div>
-        <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
-        <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
-      </div>
-      <div class="bs-component">
-        <% if (mypage == true) { %>
-        <a href="/user/<%=data.id%>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
-        <% } %>
-        
-                            
-                  <div class="panel panel-success">
-                      <div class="panel-heading">
-                          <h3 class="panel-title">소개</h3>
-                      </div>
-                      <div class="panel-body">
-                          
-                      </div>
-                  </div>
+		<div class="col-lg-4">
+			<div class="progress">
+				<div class="progress-bar progress-bar-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top" style="width: 35%"></div>
+				<div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+				<div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+			</div>
+			<div class="bs-component">
+				<% if (mypage == true) { %>
+				<a href="/user/<%=data.id%>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
+				<% } %>
+				
+														
+									<div class="panel panel-success">
+											<div class="panel-heading">
+													<h3 class="panel-title">소개</h3>
+											</div>
+											<div class="panel-body">
+													
+											</div>
+									</div>
 
 
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script language="javascript">
-  document.title = "<%=data.id%> :: pracler" ;
-  $(function(){ 
-    $.urlParam = function(name){
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        return results[1] || 0;
-    }
+	document.title = "<%=data.id%> :: pracler" ;
+	$(function(){ 
+		$.urlParam = function(name){
+				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+				return results[1] || 0;
+		}
 
-  });
-  //youtube_to_layout();
+	});
+	//youtube_to_layout();
 </script>
 
 <% if (data.description) { %> 
-  <script language="javascript">
-    $(function(){ 
-      $("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
-    });
-    youtube_to_layout();
-  </script>
+	<script language="javascript">
+		$(function(){ 
+			$("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
+		});
+		youtube_to_layout();
+	</script>
 <% } %> 
+
+<script>
+	$(function(){
+		$("#tab_history").click(function() {
+			history();
+		});
+	});
+</script>
+
+<script language="javascript">
+function history()
+{
+	var url = "/api/history/<%=data.id%>";
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+		success: function(result) {
+			var obj = JSON.parse(result);
+			alert(obj);
+			// $('#music_count').animateNumber(
+			//     { 
+			//         number: obj.count,
+			//         numberStep: comma_separator_number_step
+			//      });
+		}
+	});
+}
+</script>
