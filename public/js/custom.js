@@ -15,7 +15,7 @@ $(function(){
             {
                 return;
             }
-            history.pushState("", "", href);
+            //history.pushState("", "", href);
             if (href)
             refresh(href);
     });

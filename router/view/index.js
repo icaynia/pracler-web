@@ -3,9 +3,11 @@ const Fetch = require('../util/fetch')
 var request = require('request');
 
 const user = require('./user');
+const history = require('./history');
 //const auth = require('./auth');
 
 router.use('/user', user);
+router.use('/history', history);
 
 router.get('/', function(req, res) {
     console.log("c");

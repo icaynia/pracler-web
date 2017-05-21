@@ -28,7 +28,7 @@ router.get('/:userid', function (req, res) {
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                res.send({result:1});
+                res.json(JSON.parse(body));
             }
             else
             {
