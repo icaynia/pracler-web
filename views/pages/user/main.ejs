@@ -162,6 +162,18 @@ function history()
             $('#history').html(result);
         }
     });	
-
+}
+function nowplaying()
+{
+	var url = "/view/nowplaying/<%=data.id%>";
+	
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        success: function(result) {
+            $('#history').html(result);
+        }
+    });	
 }
 </script>
