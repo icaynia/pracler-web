@@ -7,15 +7,14 @@ $(function(){
     }
    
     $(this).on('click', 'a, button',function (e) {
-            console.log("a or button click event at custom.js");
             // custom handling here
             e.preventDefault();
-            var href = $(this).attr('href');
+            var href = $(this).attr('href') || $(this).attr('href-hidden');
             if (href == '#')
             {
                 return;
             }
-            //history.pushState("", "", href);
+            if ( history.pushState )  history.pushState("","", href);
             if (href)
             refresh(href);
     });

@@ -4,10 +4,12 @@ var request = require('request');
 
 const user = require('./user');
 const history = require('./history');
+const search = require('./search');
 //const auth = require('./auth');
 
 router.use('/user', user);
 router.use('/history', history);
+router.use('/search', search);
 
 router.get('/', function(req, res) {
     console.log("c");
@@ -117,23 +119,5 @@ router.get('/song/:artist', function (req, res) {
 });
 
 
-router.get('/search', function (req, res) {
-
-    
-    request("http://localhost:3000/search/music" , function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            //있는 경우
-            res.render('./pages/search', {
-                param: req.params,
-                data: JSON.parse(Fetch.unfetch(body)),
-                search: ""
-            });
-        }
-        else
-        {
-            res.render('./pages/404');
-        }
-    });
-});
 
 module.exports = router;

@@ -102,19 +102,15 @@
 			<div class="bs-component">
 				<% if (mypage == true) { %>
 				<a href="/user/<%=data.id%>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">프로필 편집</a>
-				<% } %>
-				
-														
-									<div class="panel panel-success">
-											<div class="panel-heading">
-													<h3 class="panel-title">소개</h3>
-											</div>
-											<div class="panel-body">
-													
-											</div>
-									</div>
-
-
+				<% } %>	
+				<div class="panel panel-success">
+					<div class="panel-heading">
+							<h3 class="panel-title">소개</h3>
+					</div>
+					<div class="panel-body">
+							
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -127,9 +123,7 @@
 				var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 				return results[1] || 0;
 		}
-
 	});
-	//youtube_to_layout();
 </script>
 
 <% if (data.description) { %> 
@@ -137,43 +131,43 @@
 		$(function(){ 
 			$("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
 		});
-		youtube_to_layout();
 	</script>
 <% } %> 
 
 <script>
 	$(function(){
 		$("#tab_history").click(function() {
-			history();
+			getHistory();
 		});
 	});
 </script>
 
 <script language="javascript">
-function history()
-{
-	var url = "/view/history/<%=data.id%>";
-	
-    $.ajax({
-        url: url,
-        type: 'GET',
-        dataType: 'html',
-        success: function(result) {
-            $('#history').html(result);
-        }
-    });	
-}
-function nowplaying()
-{
-	var url = "/view/nowplaying/<%=data.id%>";
-	
-    $.ajax({
-        url: url,
-        type: 'GET',
-        dataType: 'html',
-        success: function(result) {
-            $('#history').html(result);
-        }
-    });	
-}
+	function getHistory()
+	{
+		var url = "/view/history/<%=data.id%>";
+		
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+				$('#history').html(result);
+			}
+		});	
+	}
+
+	function getNowplaying()
+	{
+		var url = "/view/nowplaying/<%=data.id%>";
+		
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+				$('#history').html(result);
+			}
+		});	
+	}
 </script>

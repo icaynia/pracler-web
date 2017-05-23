@@ -3,6 +3,7 @@ const Fetch = require('../util/fetch')
 var request = require('request')
 
 router.get('/:search', function(req, res) {
+    console.log(req.params.search);
     var string = Fetch.fetch("/search/"+req.params.search)
     content(req, res, string);
 });

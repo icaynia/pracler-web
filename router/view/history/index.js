@@ -1,7 +1,7 @@
 const router = require('express').Router()
 var request = require('request');
-
 const Fetch = require('../../util/fetch');
+
 router.get('/:userid', function(req, res) {
     var string = encodeURIComponent(Fetch.fetch(req.params.userid));
     

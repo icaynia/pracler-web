@@ -57,10 +57,7 @@
 <script language="javascript">
   document.title = "'<%= search %>'에 대한 검색 결과 :: pracler" ;
     $('#side-tab a').click(function (e) {
-        
         e.preventDefault();
-        
-        
         $('a').removeClass('active');
         $(this).addClass('active');
     })
@@ -69,18 +66,13 @@
 <script>
   $(function(){ 
     var search = "<%= search %>";
-    var urlmusic = "/viewcall/search/music/"+search;
-    var urlalbum = "/viewcall/search/album/"+search;
-    var urlartist = "/viewcall/search/artist/"+search;
-    var urluser = "/viewcall/search/user/"+search;
-
+    var urlmusic = "/view/search/form/music/"+search;
     $.ajax({
         url: urlmusic,
         type: 'GET',
         dataType: 'html',
         success: function(result) {
             $('#res_music_simple').html(result);
-            $('#res_music').html(result);
         }
     });	
     // $.ajax({
