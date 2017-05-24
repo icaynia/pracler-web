@@ -68,3 +68,6 @@ exports.index = (req, res) => {
 }
 
 
+exports.nowplaying = (req, res) => {
+    res.render('./pages/user/nowplaying', {});
+}
