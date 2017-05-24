@@ -18,7 +18,7 @@ router.get('/:artist', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    var string = Fetch.fetch("/search/")
+    var string = Fetch.fetch("/song")
     content(req, res, string);
 });
 

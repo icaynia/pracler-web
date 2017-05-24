@@ -5,11 +5,13 @@ var request = require('request');
 const user = require('./user');
 const history = require('./history');
 const search = require('./search');
+const song = require('./song');
 //const auth = require('./auth');
 
 router.use('/user', user);
 router.use('/history', history);
 router.use('/search', search);
+router.use('/song', song);
 
 router.get('/', function(req, res) {
     console.log("c");
