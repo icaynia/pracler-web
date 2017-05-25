@@ -69,5 +69,18 @@ exports.index = (req, res) => {
 
 
 exports.nowplaying = (req, res) => {
-    res.render('./pages/user/nowplaying', {});
+    request("http://localhost:3000/api/history/nowplaying/"+req.params.username , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+
+        
+            //있는 경우
+            res.render('./pages/user/nowplaying', {
+                data: JSON.parse(body)
+            });
+        }
+        else
+        {
+            res.render('./pages/404');
+        }
+    });
 }
