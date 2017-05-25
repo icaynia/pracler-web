@@ -157,6 +157,21 @@
 		});	
 	}
 
+	function getHistoryCount()
+	{
+		var url = "/view/history/<%=data.id%>";
+		
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+				$('#history').html(result);
+			}
+		});	
+	}
+
+
 	function getNowplaying()
 	{
 		var url = "/view/user/<%=data.id%>/nowplaying";

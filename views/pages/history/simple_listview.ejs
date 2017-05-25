@@ -2,17 +2,24 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
-      <th>Column heading</th>
+      <th>날짜</th>
+      <th>음악</th>
+      <th><center>삭제</center></th>
     </tr>
   </thead>
   <tbody>
+    <% for(var i=0; i < data.length; i++) {%>
     <tr>
-      <td>1</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td></td>
+      <td id="date<%=i%>"></td>
+      <td><a href="/song/<%=data[i].artist%>/<%=data[i].album%>/<%=data[i].music%>"> <%=data[i].artist%> - <%=data[i].music%></a></td>
+      <td><center><a href="#"> X </a></center></td>
     </tr>
+    <script>
+      date = new Date("<%=data[i].publish_date%>");
+      date = date.toLocaleString("ko-KR");
+      $('#date<%=i%>').html(date);
+    </script>
+    <% }; %>
   </tbody>
 </table> 
