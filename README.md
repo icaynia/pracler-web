@@ -1,10 +1,11 @@
 # pracler-web
 
-pracler official web page.
+pracler 공식 홈페이지입니다. Node.js 기반으로 실행되고 있으며 api 서버단 코드는 포함되어 있지 않습니다.
+
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) installed.
+아래 코드로 웹을 실행할 수 있습니다.
 
 ```sh
 $ cd pracler-web
@@ -12,4 +13,7 @@ $ npm install
 $ npm start
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+하지만 api 서버 코드가 포함되어 있지 않으므로 사용에 많은 제한이 있을 것입니다.
+
+개인 프로젝트이고 라즈베리파이를 이용한 외부접속 전용 서버를 만드는 도중 홈 네트워크 통신사 측에서 80번 포트를 허용하고 있지 않으므로,
+개발의 편의를 위해 웹은 5000 포트를 사용하고 있습니다.
