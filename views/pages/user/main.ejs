@@ -25,7 +25,7 @@
 							<a href="" data-target="#info" data-toggle="tab" aria-expanded="true">정보</br><%=data.nickname%></a>
 						</li>
 						<li class="">
-							<a href="" id="tab_history" data-target="#history" data-toggle="tab" aria-expanded="false">청취</br>100</a>
+							<a href="" id="tab_history" data-target="#history" data-toggle="tab" aria-expanded="false">청취</br><div id="count">0</div></a>
 						</li>
 						<li class="">
 							<a href="" data-target="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
@@ -143,6 +143,7 @@
 <script>
 	$(function(){
 		getNowplaying();
+		getHistoryCount();
 		$("#tab_history").click(function() {
 			getHistory();
 		});
@@ -166,14 +167,14 @@
 
 	function getHistoryCount()
 	{
-		var url = "/view/history/<%=data.id%>";
+		var url = "/view/history/count/<%=data.id%>";
 		
 		$.ajax({
 			url: url,
 			type: 'GET',
 			dataType: 'html',
 			success: function(result) {
-				$('#history').html(result);
+				$('#count').html(result);
 			}
 		});	
 	}
