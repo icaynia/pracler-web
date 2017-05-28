@@ -10,11 +10,11 @@
   </thead>
   <tbody>
     <% for(var i=0; i < data.length; i++) {%>
-    <tr>
+    <tr oid="<%=data[i]._id%>">
       <td></td>
       <td id="date<%=i%>"></td>
       <td><a href="/song/<%=data[i].artist%>/<%=data[i].album%>/<%=data[i].music%>"> <%=data[i].artist%> - <%=data[i].music%></a></td>
-      <td><center><a href="#"> X </a></center></td>
+      <td><center><a href="#" class="btn_delete" oid="<%=data[i]._id%>"> X </a></center></td>
     </tr>
     <script>
       date = new Date("<%=data[i].publish_date%>");
@@ -24,3 +24,31 @@
     <% }; %>
   </tbody>
 </table> 
+
+
+<script>
+  $(function(){ 
+    $(".btn_delete").click(function(){ 
+      event.preventDefault();
+
+      var oid = $(this).attr('oid');
+      alert(oid);
+
+      var url = "/api/history/delete/"+oid;
+
+      $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'json',
+        data: {
+          
+        },
+        success: function(result) {
+          $("tr[oid='"+oid+"']").css('display', 'none');
+        }
+      });
+    })	
+  })
+
+
+</script>

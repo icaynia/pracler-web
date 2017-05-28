@@ -38,4 +38,22 @@ router.get('/:userid', function (req, res) {
     });
 });
 
+// 인증 필요
+router.put('/delete/:oid', function(req, res) {
+    request({
+        url: "http://localhost:3000/api/history/delete/"+req.params.oid, 
+        method: 'PUT'
+    }, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                res.json(JSON.parse(body));
+            }
+            else
+            {
+                //없는 경우
+                res.send({result:0});
+            }
+    });
+})
+
 module.exports = router;
