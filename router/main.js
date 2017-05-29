@@ -14,6 +14,7 @@ module.exports = function(app)
     app.use('/song', require('./song'));
     app.use('/add', require('./add'));
     app.use('/search', require('./search'));
+    app.use('/playlist', require('./playlist'));
     app.use('/view', require('./view'));
     app.use('/user', require('./user'));
 

@@ -18,7 +18,8 @@
     </tr>
     <script>
       date = new Date("<%=data[i].publish_date%>");
-      date = date.toLocaleString("ko-KR");
+      date = date.toLocaleString("ko-KR")
+
       $('#date<%=i%>').html(date);
     </script>
     <% }; %>
