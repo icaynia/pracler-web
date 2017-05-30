@@ -2,21 +2,18 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img class="music_image" src="<%= data.music_image_url %>"></div>
-      </div>
-      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <div style="margin-left: 30px">
-          <h4 style="word-break: keep-all;"><a href="/song/<%= param.artist %>"><%= data.artist %></a>
-          <% if (data.album != '_') { %>
-          &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
-          <% } %></h4>
-          <h2 style="word-break: keep-all;"><%= data.title %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
-        </div>
+        <img class="music_image" src="<%= data.music_image_url %>">
       </div>
     </div>
-
-    </br>
-
+    <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+      <div style="margin-left: 30px">
+        <h4 style="word-break: keep-all;"><a href="/song/<%= param.artist %>"><%= data.artist %></a>
+        <% if (data.album != '_') { %>
+        &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
+        <% } %></h4>
+        <h2 style="word-break: keep-all;"><%= data.title %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
+      </div>
+    </div>
   </div>
 </div>
 <div class="song-stats">
@@ -24,7 +21,6 @@
     <div>
       <div style="float:left; float: bottom;">
           <ul class="nav nav-tabs">
-            
             <li class="active">
               <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
             </li>
@@ -72,7 +68,12 @@
 						<div id="contentplayer"></div>
 						</div>-->
 
-						<div id="description" class="description view-markup">
+      <div style="float:right;">
+        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=description" class="btn btn-default btn-xs">설명 편집</a>
+			
+        </div>
+            
+            <div id="description" class="description view-markup">
 						
 						</div>
 						<!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
@@ -92,6 +93,7 @@
 	</div>
     <div class="col-lg-4">
       <div class="bs-component">
+        <h4>이 곡의 내 재생 회수 : <strong>3</strong></h4>
         <% if (data.youtube_code != "null") { %>
             <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
         <% } else if (data.soundcloud_code != "null" ){ %>

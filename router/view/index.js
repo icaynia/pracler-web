@@ -32,10 +32,13 @@ router.get('/song/:artist/:album/:music', function (req, res) {
         case "edit":
             view_layout = './pages/song_music_edit';
             break;
+        case "description":
+            view_layout = './pages/song/description';
+            break;
         default:
             view_layout = './pages/song_music';
     }
-
+   
     var string = Fetch.fetch(artist_encode+"/"+album_encode+"/"+title_encode);
     
     request("http://localhost:3000/song/"+string , function (error, response, body) {

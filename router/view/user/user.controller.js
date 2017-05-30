@@ -7,35 +7,36 @@ exports.index = (req, res) => {
     if (req.param('mode') == 'edit')
     {
         request("http://localhost:3000/api/user/"+username , function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            //있는 경우
-            var mypage = false;
-            authChecker.check(req, function(fsv) {
-                // 프로필이 본인 것일때
-                if (fsv == JSON.parse(body).id) mypage = true;
+            if (!error && response.statusCode == 200) {
+                //있는 경우
+                var mypage = false;
+                authChecker.check(req, function(fsv) {
+                    // 프로필이 본인 것일때
+                    if (fsv == JSON.parse(body).id) mypage = true;
+                        
+                    res.render('./pages/user/edit', {
+                            param: req.params,
+                            data: JSON.parse(Fetch.unfetch(body)),
+                            search: "",
+                            mypage: mypage
+                    });
+                }, function() {
                     
-                res.render('./pages/user/edit', {
-                        param: req.params,
-                        data: JSON.parse(Fetch.unfetch(body)),
-                        search: "",
-                        mypage: mypage
-                });
-            }, function() {
-                
-                res.render('./pages/user/edit', {
-                        param: req.params,
-                        data: JSON.parse(Fetch.unfetch(body)),
-                        search: "",
-                        mypage: mypage
-                });
-            })
-        }
-        else
-        {
-            res.render('./pages/404');
-        }
-    });
+                    res.render('./pages/user/edit', {
+                            param: req.params,
+                            data: JSON.parse(Fetch.unfetch(body)),
+                            search: "",
+                            mypage: mypage
+                    });
+                })
+            }
+            else
+            {
+                res.render('./pages/404');
+            }
+        });
     } 
+    else {
     request("http://localhost:3000/api/user/"+username , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우
@@ -65,6 +66,7 @@ exports.index = (req, res) => {
             res.render('./pages/404');
         }
     });
+    }
 }
 
 
