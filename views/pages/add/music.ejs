@@ -93,7 +93,9 @@
 
 <script>
   $(function(){ 
-    var simplemde = new SimpleMDE({ element: document.getElementById("description") });
+    var simplemde = new SimpleMDE({ element: document.getElementById("description"),
+        hideIcons: ["preview", "side-by-side", "fullscreen", "guide"]
+       });
     $("#btn_save").click(function(){ 
       event.preventDefault();
 
