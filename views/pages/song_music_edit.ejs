@@ -79,7 +79,7 @@
                   <input class="form-control" id="soundcloud_code" type="text" value="<% if(data.soundcloud_code != 'null') { %>https://soundcloud.com/<%= data.soundcloud_code %><% } %>" >
                 </div>
                 <div class="form-group">
-                  <label class="control-label" for="focusedInput">노트</label>
+                  <label class="control-label" for="focusedInput">설명</label>
                   <textarea class="v" id="description"><%= data.description %></textarea>
                   <label class="control-label" for="focusedInput"></label>
                 </div>
@@ -116,13 +116,16 @@
 <script>
   $(function(){ 
     var simplemde = new SimpleMDE({ element: document.getElementById("description") });
+
     $("#btn_save").click(function(){ 
       event.preventDefault();
+
       var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
       var youtube = $('#youtube_code').val();
       var youtube_code = getUrlVars(youtube);
       var soundcloud = $('#soundcloud_code').val();
       var soundcloud_code = getUrlVars_soundcloud(soundcloud);
+
       $.ajax({
         url: url,
         type: 'PUT',
@@ -131,7 +134,7 @@
           "music_image_url": $('#music_image_url').val(), 
           "youtube_code": youtube_code, 
           "soundcloud_code": soundcloud_code, 
-          "description": simplemde.value() 
+          "description": simplemde.value()
         },
         success: function(result) {
           goto(url);
