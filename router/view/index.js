@@ -7,6 +7,7 @@ const history = require('./history');
 const search = require('./search');
 const song = require('./song');
 const playlist = require('./playlist');
+const donate = require('./donate');
 //const auth = require('./auth');
 
 router.use('/user', user);
@@ -14,6 +15,7 @@ router.use('/history', history);
 router.use('/search', search);
 router.use('/playlist', playlist);
 router.use('/song', song);
+router.use('/donate', donate);
 
 router.get('/', function(req, res) {
     console.log("c");

@@ -17,6 +17,7 @@ module.exports = function(app)
     app.use('/playlist', require('./playlist'));
     app.use('/view', require('./view'));
     app.use('/user', require('./user'));
+    app.use('/donate', require('./donate'));
 
 
     app.get('/data/sesv', function(req, res) {

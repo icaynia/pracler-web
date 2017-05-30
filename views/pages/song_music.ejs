@@ -2,18 +2,23 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img class="music_image" src="<%= data.music_image_url %>">
+        <img class="music_image" src="<%= data.music_image_url %>"></div>
+      </div>
+      <div style="width:100px; height:100px;"></div>
+      <div style="width:150px; height:50px;"></div>
+      <div class="title_data">
+        <div style="margin-left: 30px">
+          <h4 style="word-break: keep-all;"><a href="/song/<%= data.artist %>"><%= data.artist %></a>
+          <% if (data.album != '_') { %>
+          &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
+          <% } %></h4>
+          <h2 style="word-break: keep-all;"><%= data.title %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2></h2>
+        </div>
       </div>
     </div>
-    <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-      <div style="margin-left: 30px">
-        <h4 style="word-break: keep-all;"><a href="/song/<%= param.artist %>"><%= data.artist %></a>
-        <% if (data.album != '_') { %>
-        &nbsp; ー&nbsp; <a href="/song/<%= data.artist %>/<%= data.album %>"><%= data.album %></a>
-        <% } %></h4>
-        <h2 style="word-break: keep-all;"><%= data.title %> <% if (data.verified) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2>
-      </div>
-    </div>
+
+    </br>
+
   </div>
 </div>
 <div class="song-stats">
@@ -27,12 +32,12 @@
             <li class="">
               <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
             </li>
-            <li class="">
+            <!--<li class="">
               <a href="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
             </li>
             <li class="">
               <a href="#today" data-toggle="tab" aria-expanded="false">오늘</br>13</a>
-            </li>
+            </li>-->
           </ul>
       </div>
       <!--<div class="stat" style="float:left">
