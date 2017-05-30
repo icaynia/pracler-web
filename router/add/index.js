@@ -1,25 +1,15 @@
 const router = require('express').Router()
 const Fetch = require('../util/fetch')
+const authChecker = require('../util/authChecker');
 
-router.get('/artist', function(req, res) {
-    var string = Fetch.fetch("/add/artist");
-    res.render('./layouts/layout', {
-        param: string
-    });
-});
-
-router.get('/album', function(req, res) {
-    var string = Fetch.fetch("/add/album");
-    res.render('./layouts/layout', {
-        param: string
-    });
+router.get('/', function(req, res) {
+    var param = "/donate"
+    authChecker.content(req, res, param)
 });
 
 router.get('/music', function(req, res) {
-    var string = Fetch.fetch("/add/music");
-    res.render('./layouts/layout', {
-        param: string
-    });
+    var param = "/add/music"
+    authChecker.content(req, res, param)
 });
 
 module.exports = router;
