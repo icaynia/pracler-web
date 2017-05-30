@@ -31,9 +31,7 @@
           </ul>
       </div>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-      </ul>
+      
       <!--<div class="stat" style="float:left">
           <p class="stat-name">재생 회수</h6>
           <p class="stat-value">10</h6>
@@ -107,18 +105,11 @@
     $("#btn_save").click(function(){ 
       event.preventDefault();
       var url = "/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>";
-      var youtube = $('#youtube_code').val();
-      var youtube_code = getUrlVars(youtube);
-      var soundcloud = $('#soundcloud_code').val();
-      var soundcloud_code = getUrlVars_soundcloud(soundcloud);
       $.ajax({
         url: url,
         type: 'PUT',
         dataType: 'json',
         data: {
-          "music_image_url": $('#music_image_url').val(), 
-          "youtube_code": youtube_code, 
-          "soundcloud_code": soundcloud_code, 
           "description": simplemde.value() 
         },
         success: function(result) {

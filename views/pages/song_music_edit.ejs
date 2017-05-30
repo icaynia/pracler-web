@@ -4,7 +4,11 @@
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
         <img class="music_image" src="<%= data.music_image_url %>"></div>
       </div>
-      <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
+      <div style="width:100px; height:100px; background:red;"></div>
+      <div class="picture_edit">
+        <div style="position:relative; top:-33px; right:-11px;"><i class="fa fa-2x fa-pencil-square" aria-hidden="true"></i><span style="position:relative; top:-5px; left:5px;">사진 편집</span></div>
+      </div>
+      <div class="title_data">
         <div style="margin-left: 30px">
           <h4 style="word-break: keep-all;"><%= data.artist %>
           <% if (data.album != '_') { %>
