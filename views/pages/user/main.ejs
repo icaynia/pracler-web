@@ -69,6 +69,10 @@
 							
 							</div>
 
+							<div id="album_popular" class="description view-markup">
+							
+							</div>
+
 							<!--<small>From <cite title="Source Title">https://ja.wikipedia.org/wiki/%E6%81%8B_(%E6%98%9F%E9%87%8E%E6%BA%90%E3%81%AE%E6%9B%B2)</cite></small>-->
 						</div>
 						<div class="tab-pane fade" id="history">
@@ -123,6 +127,8 @@
 	$(function(){
 		getNowplaying();
 		getHistoryCount();
+		getAlbumPopular();
+
 		$("#tab_history").click(function() {
 			getHistory();
 		});
@@ -169,6 +175,20 @@
 			dataType: 'html',
 			success: function(result) {
 				$('#nowplaying').html(result);
+			}
+		});	
+	}
+
+	function getAlbumPopular()
+	{
+		var url = "/view/user/<%=data.id%>/album_popular";
+		
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+				$('#album_popular').html(result);
 			}
 		});	
 	}

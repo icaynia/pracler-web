@@ -87,6 +87,11 @@ exports.nowplaying = (req, res) => {
     });
 }
 
+exports.album_popular = (req, res) => {
+    res.render('./pages/user/panel/album_popular', {
+    });
+}
+
 exports.count = (req, res) => {
     request("http://localhost:3000/api/history/count/"+req.params.username , function (error, response, body) {
         if (!error && response.statusCode == 200) {
