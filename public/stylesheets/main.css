@@ -323,3 +323,21 @@ a .verify_true
 {
     color: #21b633;
 }
+
+/* panel */
+
+.v-panel
+{
+    padding:15px;
+}
+
+.v-panel .col-lg-3
+{
+    width: 25%;
+    float: left;
+}
+
+.panel-album-popular .alb
+{
+    padding:0;
+}
