@@ -92,6 +92,12 @@ exports.album_popular = (req, res) => {
     });
 }
 
+exports.history_popular = (req, res) => {
+    res.render('./pages/user/panel/history_popular', {
+
+    });
+}
+
 exports.count = (req, res) => {
     request("http://localhost:3000/api/history/count/"+req.params.username , function (error, response, body) {
         if (!error && response.statusCode == 200) {
