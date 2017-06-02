@@ -132,7 +132,11 @@
   opacity: 0.9;
 }
 
-html,body{height:100%;}
+html,body{height:100%; }
+
+body {
+    overflow-x:hidden;
+}
 
 .background 
 {
@@ -228,15 +232,15 @@ html,body{height:100%;}
     background-color: #f7f7f7;
     position:relative; 
     height: 40px;
-    border-left: thick solid #B01302;
-    border-right: thick solid #B01302;
+    border-left: thick solid #2196f3;
+    border-right: thick solid #2196f3;
 }
 
 .user_nowplaying .icon
 { 
   position:absolute;
   height:40px; top: 0; bottom: -14px; left: 10px;margin-top:auto; margin-bottom:auto;
-  color: #B01302
+  color: #2196f3
 }
 
 .user_nowplaying .txt
