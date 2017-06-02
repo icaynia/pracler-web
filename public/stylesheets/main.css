@@ -346,6 +346,25 @@ a .verify_true
     padding:0;
 }
 
+.view-panel h1
+{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.view-panel h2
+{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.view-panel h3
+{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+
 /* panel - history_popular */
 
 .history_popular_plays

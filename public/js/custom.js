@@ -10,13 +10,23 @@ $(function(){
             // custom handling here
             e.preventDefault();
             var href = $(this).attr('href') || $(this).attr('href-hidden');
+
             if (href == '#')
             {
                 return;
             }
-            if ( history.pushState )  history.pushState("","", href);
-            if (href)
-            refresh(href);
+
+            var def = document.location.href.match(/http[s]*:\/\/([a-zA-Z0-9\-\.]*)/)[1];
+            try {
+            if (href.match(/http[s]*:\/\/([a-zA-Z0-9\-\.]*)/)[1] != def) {
+                window.open(href, "_blank");
+            }
+            } catch (e)
+            {
+                if ( history.pushState )  history.pushState("","", href);
+                if (href)
+                refresh(href);
+            }
     });
 
 });

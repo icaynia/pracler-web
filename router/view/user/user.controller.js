@@ -88,7 +88,17 @@ exports.nowplaying = (req, res) => {
 }
 
 exports.album_popular = (req, res) => {
-    res.render('./pages/user/panel/album_popular', {
+    request("http://localhost:3000/api/user/"+req.params.username+"/album_popular" , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.render('./pages/user/panel/album_popular', {
+                data: JSON.parse(body)
+            });
+        }
+        else
+        {
+            res.render('./pages/404');
+        }
     });
 }
 
@@ -99,7 +109,7 @@ exports.history_popular = (req, res) => {
 }
 
 exports.count = (req, res) => {
-    request("http://localhost:3000/api/history/count/"+req.params.username , function (error, response, body) {
+    request("http://localhost:3000/api/user/"+req.params.username+"/album_popular" , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우
             res.render('./pages/user/nowplaying', {
