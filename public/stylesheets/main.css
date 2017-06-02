@@ -341,3 +341,11 @@ a .verify_true
 {
     padding:0;
 }
+
+/* panel - history_popular */
+
+.history_popular_plays
+{
+    float:left;
+    margin-left:5px;
+}
