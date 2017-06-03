@@ -2,6 +2,8 @@ const router = require('express').Router();
 const auth = require('./auth');
 const history = require('./history');
 const music = require('./music');
+const song = require('./song');
+
 
 var ursa = require('ursa');
 var fs = require('fs');
@@ -19,6 +21,7 @@ router.post('/rsa/encrypt', function(req, res) {
 router.use('/auth', auth);
 router.use('/history', history);
 router.use('/music', music);
+router.use('/song', song);
 
 
 module.exports = router;

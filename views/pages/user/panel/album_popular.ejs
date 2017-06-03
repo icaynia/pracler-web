@@ -1,16 +1,16 @@
 <div class="v-panel panel-album-popular">
     <div class="row">
         <div class="col-lg-3 alb">
-            <img style="width:100%" src="http://www.designformusic.com/wp-content/uploads/2015/10/insurgency-digital-album-cover-design.jpg"/>
+            <img id="album-popular-image-0" style="width:100%" src="http://www.designformusic.com/wp-content/uploads/2015/10/insurgency-digital-album-cover-design.jpg"/>
         </div>
         <div class="col-lg-3 alb">
-            <img style="width:100%" src="http://aiko.com/_shared/img/discography/15036_02.jpg"/>
+            <img id="album-popular-image-1" style="width:100%" src="http://aiko.com/_shared/img/discography/15036_02.jpg"/>
         </div>
         <div class="col-lg-3 alb">
-            <img style="width:100%" src="http://hikarinoakariost.info/wp-content/uploads/2015/04/QWCE-400.jpg"/>
+            <img id="album-popular-image-2" style="width:100%" src="http://hikarinoakariost.info/wp-content/uploads/2015/04/QWCE-400.jpg"/>
         </div>
         <div class="col-lg-3 alb">
-            <img style="width:100%" src="http://www.fuse.tv/image/5682ea90ac0e76bd68000055/768/512/brown-eyed-girls-basic-album-cover-full-size.jpg"/>
+            <img id="album-popular-image-3" style="width:100%" src="http://www.fuse.tv/image/5682ea90ac0e76bd68000055/768/512/brown-eyed-girls-basic-album-cover-full-size.jpg"/>
         </div>
     </div>
 </br></br>
@@ -19,4 +19,28 @@
     <%=data[2].key%></br>
     <%=data[3].key%></br>
 
+    
 </div>
+
+<script>
+    $(function() {
+        "<% for(var i = 0; i < 4; i++) {%>"
+            getAlbumGrid("<%=data[i].key%>", "<%=i%>");
+        "<% } %>"
+    });
+
+    var getAlbumGrid = (key, id) => 
+    {
+        var url = "/api/song/image/" + key;
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+				$('#album-popular-image-'+id).attr('src', result);
+			}
+		});	
+        return key;
+    }
+
+</script>
