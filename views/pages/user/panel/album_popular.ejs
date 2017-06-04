@@ -37,7 +37,14 @@
 			type: 'GET',
 			dataType: 'html',
 			success: function(result) {
-				$('#album-popular-image-'+id).attr('src', result);
+                if (!result)
+                {
+				    $('#album-popular-image-'+id).attr('src', "https://www.tunefind.com/i/album-art-empty.png");
+                }
+                else
+                {
+				    $('#album-popular-image-'+id).attr('src', result);
+                }
 			}
 		});	
         return key;
