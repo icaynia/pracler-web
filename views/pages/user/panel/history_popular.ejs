@@ -33,3 +33,33 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        
+    });
+    var getHistory = (key, id) => 
+    {
+        var url = "/api/song/image/" + key;
+		$.ajax({
+			url: url,
+			type: 'GET',
+			dataType: 'html',
+			success: function(result) {
+                if (!result)
+                {
+				    $('#album-popular-image-'+id).attr('src', "https://www.tunefind.com/i/album-art-empty.png");
+                
+                }
+                else
+                {
+				    $('#album-popular-image-'+id).attr('src', result);
+
+                }
+                $('#album-popular-image-'+id).height($('#album-popular-image-'+id).width());
+			}
+		});	
+        return key;
+    }
+
+</script>

@@ -103,8 +103,17 @@ exports.album_popular = (req, res) => {
 }
 
 exports.history_popular = (req, res) => {
-    res.render('./pages/user/panel/history_popular', {
-
+    request("http://localhost:3000/api/user/"+req.params.username+"/history_popular" , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.render('./pages/user/panel/history_popular', {
+                data: JSON.parse(body)
+            });
+        }
+        else
+        {
+            res.render('./pages/404');
+        }
     });
 }
 
