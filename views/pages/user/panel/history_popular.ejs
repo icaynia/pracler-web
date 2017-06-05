@@ -1,65 +1,24 @@
 <div class="v-panel panel-album-popular">
+    <% for (var i = 0; i < 5; i++) {%>
+    <% var res = data[i].key.split("/"); %>
     <div class="row">
-        <div class="col-lg-1 alb">1</div>
-        <div class="col-lg-5 alb">やなぎなぎ - 星々の渡り鳥</div>
+        <div class="col-lg-1 alb"><%=i + 1%></div>
+        <div class="col-lg-5 alb"><a href="/song/<%=res[0]%>"><%=res[0]%></a> - <a href="/song/<%=res[0]%>/<%=res[1]%>/<%=res[2]%>"><%=res[2]%></a></div>
         <div class="col-lg-6 alb">
             <div class="progress" style="height: 20px;">
-                <div class="progress-bar" style="width: 60%; height: 20px;">
-                    <div class="history_popular_plays">7 plays</div>
+                <% var percentage = data[i].value / data[1].value * 55; %>
+                <div class="progress-bar" style="width: <%=percentage%>%; height: 20px;">
+                    <div class="history_popular_plays"><%=data[i].value%></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-1 alb">2</div>
-        <div class="col-lg-5 alb">やなぎなぎ - 星々の渡り鳥</div>
-        <div class="col-lg-6 alb">
-            <div class="progress" style="height: 20px;">
-                <div class="progress-bar" style="width: 40%; height: 20px;">
-                    <div class="history_popular_plays">5 plays</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-1 alb">3</div>
-        <div class="col-lg-5 alb">やなぎなぎ - 星々の渡り鳥</div>
-        <div class="col-lg-6 alb">
-            <div class="progress" style="height: 20px;">
-                <div class="progress-bar" style="width: 30%; height: 20px;">
-                    <div class="history_popular_plays">3 plays</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <% } %>
 </div>
 
 <script>
     $(function() {
-        
-    });
-    var getHistory = (key, id) => 
-    {
-        var url = "/api/song/image/" + key;
-		$.ajax({
-			url: url,
-			type: 'GET',
-			dataType: 'html',
-			success: function(result) {
-                if (!result)
-                {
-				    $('#album-popular-image-'+id).attr('src', "https://www.tunefind.com/i/album-art-empty.png");
-                
-                }
-                else
-                {
-				    $('#album-popular-image-'+id).attr('src', result);
 
-                }
-                $('#album-popular-image-'+id).height($('#album-popular-image-'+id).width());
-			}
-		});	
-        return key;
-    }
+    });
 
 </script>

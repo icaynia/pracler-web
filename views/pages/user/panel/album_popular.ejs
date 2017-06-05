@@ -19,6 +19,7 @@
     $(function() {
         "<% for(var i = 0; i < 4; i++) {%>"
             getAlbumGrid("<%=data[i].key%>", "<%=i%>");
+            console.log("<%=data[i].key%>" + " - <%=i%>")
         "<% } %>"
     });
     var getAlbumGrid = (key, id) => 
@@ -28,19 +29,21 @@
 			url: url,
 			type: 'GET',
 			dataType: 'html',
+            timeout: 5000,
 			success: function(result) {
                 if (!result)
                 {
 				    $('#album-popular-image-'+id).attr('src', "https://www.tunefind.com/i/album-art-empty.png");
-                
                 }
                 else
                 {
 				    $('#album-popular-image-'+id).attr('src', result);
-
                 }
                 $('#album-popular-image-'+id).height($('#album-popular-image-'+id).width());
-			}
+			},
+            error: function (jqXHR, textStatus, errorThrown) {
+                return;
+            },
 		});	
         return key;
     }
