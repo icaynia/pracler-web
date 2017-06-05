@@ -1,25 +1,18 @@
 <div class="v-panel panel-album-popular">
     <div class="row">
-        <div class="col-lg-3 alb">
-            <img id="album-popular-image-0" style="width:100%" src="http://www.designformusic.com/wp-content/uploads/2015/10/insurgency-digital-album-cover-design.jpg"/>
-        </div>
-        <div class="col-lg-3 alb">
-            <img id="album-popular-image-1" style="width:100%" src="http://aiko.com/_shared/img/discography/15036_02.jpg"/>
-        </div>
-        <div class="col-lg-3 alb">
-            <img id="album-popular-image-2" style="width:100%" src="http://hikarinoakariost.info/wp-content/uploads/2015/04/QWCE-400.jpg"/>
-        </div>
-        <div class="col-lg-3 alb">
-            <img id="album-popular-image-3" style="width:100%" src="http://www.fuse.tv/image/5682ea90ac0e76bd68000055/768/512/brown-eyed-girls-basic-album-cover-full-size.jpg"/>
-        </div>
+        <% for (var i = 0; i < 4; i++) {%>
+            <% var res = data[i].key.split("/"); %>
+            <div class="col-lg-3 alb">
+                <img id="album-popular-image-<%=i%>" style="width:100%" src=""/>
+                <div class="txtbox" >
+                    <p class="txt-plays"><%=res[0]%></p>
+                    <p class="txt-album-name"><%=res[1]%></p>
+                </div>
+            </div>
+        <% } %>
     </div>
 </br></br>
-    <%=data[0].key%></br>
-    <%=data[1].key%></br>
-    <%=data[2].key%></br>
-    <%=data[3].key%></br>
 
-    
 </div>
 
 <script>

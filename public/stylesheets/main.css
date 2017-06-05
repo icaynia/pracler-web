@@ -346,6 +346,41 @@ a .verify_true
     padding:0;
 }
 
+.panel-album-popular .alb .txtbox
+{/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+    position:relative; 
+    top:-62px;
+    height: 61px;
+}
+.panel-album-popular .alb .txtbox .txt-plays
+{
+    line-height:0.5%;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    left: 10px;
+    bottom: 28px;
+    white-space:nowrap;
+}
+.panel-album-popular .alb .txtbox .txt-album-name
+{
+    line-height:0.5%;
+    font-weight: 700;
+    font-size: 17px;
+    color: white;
+    position: absolute;
+    left: 10px;
+    bottom:5px;
+    white-space:nowrap;
+}
+
+
+
 .view-panel h1
 {
     font-weight: 700;
