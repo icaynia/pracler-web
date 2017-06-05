@@ -21,7 +21,6 @@
             getAlbumGrid("<%=data[i].key%>", "<%=i%>");
         "<% } %>"
     });
-
     var getAlbumGrid = (key, id) => 
     {
         var url = "/api/song/image/" + key;
@@ -33,11 +32,14 @@
                 if (!result)
                 {
 				    $('#album-popular-image-'+id).attr('src', "https://www.tunefind.com/i/album-art-empty.png");
+                
                 }
                 else
                 {
 				    $('#album-popular-image-'+id).attr('src', result);
+
                 }
+                $('#album-popular-image-'+id).height($('#album-popular-image-'+id).width());
 			}
 		});	
         return key;
