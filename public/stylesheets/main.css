@@ -361,10 +361,10 @@ a .verify_true
     line-height:0.5%;
     font-weight: 700;
     font-size: 12px;
-    color: white;
+    color: #ffffff;
     position: absolute;
     left: 10px;
-    bottom: 28px;
+    bottom: 37px;
     white-space:nowrap;
 }
 .panel-album-popular .alb .txtbox .txt-album-name
@@ -372,10 +372,10 @@ a .verify_true
     line-height:0.5%;
     font-weight: 700;
     font-size: 17px;
-    color: white;
+    color: #FFFFFF;
     position: absolute;
     left: 10px;
-    bottom:5px;
+    bottom:20px;
     white-space:nowrap;
 }
 
