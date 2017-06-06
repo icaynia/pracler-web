@@ -3,6 +3,7 @@ const auth = require('./auth');
 const history = require('./history');
 const music = require('./music');
 const song = require('./song');
+const autoget = require('./autoget');
 
 
 var ursa = require('ursa');
@@ -22,6 +23,7 @@ router.use('/auth', auth);
 router.use('/history', history);
 router.use('/music', music);
 router.use('/song', song);
+router.use('/autoget', autoget);
 
 
 module.exports = router;
