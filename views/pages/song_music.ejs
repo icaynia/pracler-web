@@ -99,9 +99,9 @@
     <div class="col-lg-4">
       <div class="bs-component">
         <!--<h4>이 곡의 내 재생 회수 : <strong>3</strong></h4>-->
-        <% if (data.youtube_code != "null") { %>
+        <% if (data.youtube_code && data.youtube_code != "null") { %>
             <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
-        <% } else if (data.soundcloud_code != "null" ){ %>
+        <% } else if (data.soundcloud_code && data.soundcloud_code != "null"){ %>
             <a href="#" id="soundcloud-play-layout" class="btn btn-warning btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
 
         <% } %>

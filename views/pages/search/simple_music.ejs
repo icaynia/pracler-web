@@ -41,9 +41,9 @@
                 <td></td>
             <% } %>
             <td>
-                <% if (data[i].youtube_code != "null") { %>
+                <% if (data[i].soundcloud_code && data[i].youtube_code != "null") { %>
                     <a href="" class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                <% } else if (data[i].soundcloud_code != "null" ){ %>
+                <% } else if (data[i].soundcloud_code && data[i].soundcloud_code != "null"){ %>
                     <a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
                 <% } else { %>
                 <% } %> <a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a> 
