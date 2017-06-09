@@ -89,9 +89,36 @@ function youtube_content_to_float()
 
 function youtube_setContentPlayer_autoplay(code)
 {
-    $( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
+    //$( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
     $( "div.floatplayerbox" ).removeClass("hidden");
+
+    player = new YT.Player('floatplayer', {
+        height: '360',
+        width: '640',
+        videoId: code,
+        events: {
+            'onReady' : onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
 }
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+function onPlayerStateChange(event) {
+    // 終わりを表す。
+    if (event.data == 0)
+    {
+        console.log(event.data + " - end!");
+        event.target.loadVideoById("qcnUDxocQko");
+        event.target.playVideo();
+    }
+}
+
+
+
 
 function soundcloud_setContentPlayer_autoplay(code)
 {
