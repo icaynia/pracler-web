@@ -41,7 +41,7 @@
                 <td></td>
             <% } %>
             <td>
-                <% if (data[i].soundcloud_code && data[i].youtube_code != "null") { %>
+                <% if (data[i].youtube_code && data[i].youtube_code != "null") { %>
                     <a href="" class="youtube-play-bt" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].youtube_code %>"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                 <% } else if (data[i].soundcloud_code && data[i].soundcloud_code != "null"){ %>
                     <a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
@@ -68,7 +68,14 @@
                             <li><a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>">재생(soundcloud)</a></li>
                             <% } else { %>
                             <% } %>-->
-                            <li><a href="#">재생목록에 추가</a></li>
+                            <li><% if (data[i].youtube_code && data[i].youtube_code != "null") { %>
+                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-youtube="<%= data[i].youtube_code %>">재생목록에 추가a</a>
+                            <% } else if (data[i].soundcloud_code && data[i].soundcloud_code != "null"){ %>
+                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-soundcloud="<%= data[i].soundcloud_code %>">재생목록에 추가b</a>
+                            <% } else {%>
+                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>">재생목록에 추가v</a>
+                            <% } %>
+                            </li>
                             <!--<li><a href="#">트래킹</a></li>
                             <li class="divider"></li>
                             <li><a href="#" id="logout">로그아웃</a></li>-->
@@ -87,6 +94,27 @@
 </ul>
 
 <script language="javascript">
+
+    $('.addToPlaylist').click(function (e) {
+        e.preventDefault();
+        var source;
+        if ($(this).attr('qu-youtube'))
+        {
+            source = {
+                "source": "youtube",
+                "code": $(this).attr('qu-youtube')
+            }
+        }
+        else if ($(this).attr('qu-soundcloud'))
+        {
+            source = {
+                "source": "soundcloud",
+                "code": $(this).attr('qu-soundcloud')
+            }
+        }
+        console.log(source);
+        addToNowPlaylist($(this).attr('art'), $(this).attr('alb'), $(this).attr('tit'), source);
+    });
 
     $('.youtube-play-bt').click(function (e) {
         e.preventDefault();

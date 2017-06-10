@@ -26,8 +26,22 @@ router.get('/image/:artist/:album', function (req, res) {
                 res.send({result:0});
             }
     });
-
-
 });
+
+router.get('/playsource/:artist/:album/:title', function (req, res) {
+    
+    var artist = encodeURIComponent(req.params.artist);
+    var album = encodeURIComponent(req.params.album);
+    var title = encodeURIComponent(req.params.title);
+
+    var url = (Fetch.fetch("http://localhost:3000/api/song/playsource/"+artist+"/"+album+"/"+title));
+    
+    request({
+        url : url,
+        method: 'GET',
+    }, function (error, response, body) {
+        res.json(JSON.parse(body));
+    })
+})
 
 module.exports = router;
