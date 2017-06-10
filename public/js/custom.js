@@ -158,7 +158,7 @@ function youtube_content_to_float()
 
 function youtube_setContentPlayer_autoplay(code)
 {
-    //$( "div.floatplayerbox" ).html('<div class="youtube"><iframe src="https://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe></div>');
+    $( "div.floatplayerbox" ).html('<div class="floatplayer" id="floatplayer"></div>');
     $( "div.floatplayerbox" ).removeClass("hidden");
 
     player = new YT.Player('floatplayer', {
@@ -180,13 +180,16 @@ function onPlayerStateChange(event) {
     // 終わりを表す。
     if (event.data == 0)
     {
-
+        var obj = nowplaying.list[0];
         event.target.loadVideoById(nowplaying.list[0].code);
+        addhistory(obj.artist, obj.album, obj.title, function() {
+            console.log("added - " + obj.artist + " - " + obj.album + " - " +  obj.title );
+        });
+
         nowplaying.list.shift();
         event.target.playVideo();
     }
 }
-
 
 function soundcloud_setContentPlayer_autoplay(code)
 {
