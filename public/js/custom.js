@@ -38,7 +38,11 @@ $(function(){
 function NowPlaying()
 {
     this.list = [];
+}
 
+NowPlaying.prototype.getList = function ()
+{
+    return this.list;
 }
 
 NowPlaying.prototype.addList = function (artist, album, title, source)
