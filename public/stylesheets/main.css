@@ -193,13 +193,15 @@ body {
         height:135px ;
         bottom: 0px;
         right: 0px;
-}
+    }
     .floatplayerbox .youtube {
         background-color: #000;
         position: static;
         width:240px !important;
         height:135px !important;
     }
+
+
 }
 @media (min-width: 1200px) {
 
@@ -225,6 +227,26 @@ body {
         height:270px !important;
     }
 
+}
+
+.playlistbox
+{
+    position:fixed;
+    width:240px ;
+    bottom: 40px;
+    left: 10px;
+    z-index: 9999;
+}
+
+.playlistbox .panel-body
+{
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.playlist-toggle
+{
+    width:20px;
+    background: #EEE;
 }
 
 .user_nowplaying
