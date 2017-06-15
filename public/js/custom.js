@@ -129,9 +129,10 @@ function addhistory(artist, album, title, func)
           "title": title
         },
         success: function(result) {
-          func();
-        }
-    });
+            func();
+        },
+      
+   });
 }
 
 function refresh_important(url)

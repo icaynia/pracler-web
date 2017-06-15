@@ -188,6 +188,11 @@
 			dataType: 'html',
 			success: function(result) {
 				$('#nowplaying').html(result);
+			},
+			statusCode: {
+				500: function() {
+					$('#nowplaying').html("");
+				}
 			}
 		});	
 	}
@@ -202,6 +207,11 @@
 			dataType: 'html',
 			success: function(result) {
 				$('#album_popular').html(result);
+			},
+			statusCode: {
+				500: function() {
+					$('#album_popular').html("분석하기 위한 음악 청취 수가 충분하지 않습니다.</br>서로 다른 앨범 4개 이상이 되어야 확인해 볼 수 있습니다.");
+				}
 			}
 		});	
 	}
@@ -217,6 +227,11 @@
 			success: function(result) 
 			{
 				$('#history_popular').html(result);
+			},
+			statusCode: {
+				500: function() {
+					$('#history_popular').html("분석하기 위한 음악 청취 수가 충분하지 않습니다.</br>서로 다른 노래 5개 이상이 되어야 확인해 볼 수 있습니다.");
+				}
 			}
 		})
 	}
