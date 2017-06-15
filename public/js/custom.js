@@ -42,7 +42,7 @@ function NowPlaying()
 
 NowPlaying.prototype.pushToFloatBox = function(artist, album, title)
 {
-    $(".playlistbox .panel").append('<div class="panel-body"><a href="/song/'+artist+'">'+artist+'</a> - <a href="/song/'+artist+'/'+album+'/'+title+'">'+title+'</a></br></div>')
+    $(".playlistbox .panel #list").append('<div class="panel-body"><a href="/song/'+artist+'">'+artist+'</a> - <a href="/song/'+artist+'/'+album+'/'+title+'">'+title+'</a></br></div>')
 }
 
 NowPlaying.prototype.getList = function ()
@@ -78,7 +78,7 @@ NowPlaying.prototype.addList = function (artist, album, title, source)
                     "code": result.code
                 }
                 this.list.push(fn);
-                this.pushToFloatBox();
+                this.pushToFloatBox(artist, album, title);
                 console.log(fn);
         
             }
@@ -197,8 +197,15 @@ function onPlayerStateChange(event) {
             console.log("added - " + obj.artist + " - " + obj.album + " - " +  obj.title );
         });
 
+        if (nowplaying.list[0].source == "youtube")
+        {
+            event.target.playVideo();
+        }
+        else
+        {
+            soundcloud_setContentPlayer_autoplay(nowplaying.list[0].code);
+        }
         nowplaying.list.shift();
-        event.target.playVideo();
     }
 }
 
