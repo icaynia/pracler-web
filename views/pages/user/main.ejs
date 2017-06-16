@@ -89,7 +89,8 @@
 						</div>
 						<div class="tab-pane fade" id="history">
 							<div style="width:100%; height:1000px">
-									<div id="history"></div>
+								<h4><strong><%=data.nickname%></strong> 님의 청취 리스트입니다.</h4>
+									<div id="content_history"></div>
 							</div>
 						</div>
 						<div class="tab-pane fade" id="like">
@@ -158,7 +159,7 @@
 			type: 'GET',
 			dataType: 'html',
 			success: function(result) {
-				$('#history').html(result);
+				$('#content_history').html(result);
 			}
 		});	
 	}
