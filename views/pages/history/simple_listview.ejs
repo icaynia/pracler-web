@@ -33,7 +33,6 @@
       event.preventDefault();
 
       var oid = $(this).attr('oid');
-      alert(oid);
 
       var url = "/api/history/delete/"+oid;
 
@@ -45,7 +44,7 @@
           
         },
         success: function(result) {
-          $("tr[oid='"+oid+"']").css('display', 'none');
+          $("tr[oid='"+oid+"']").html('<td></td><td colspan="3">삭제되었습니다</td>');
         }
       });
     })	
