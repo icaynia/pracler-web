@@ -58,9 +58,7 @@ module.exports = function(app)
 
     app.get('/signup', function(req, res) {
         var string = Fetch.fetch("/signup");
-        res.render('./layouts/layout', {
-            param: string
-        });
+        authChecker.content(req, res, string);
     });
 
 
