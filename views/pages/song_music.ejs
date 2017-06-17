@@ -101,7 +101,7 @@
         <!--<h4>이 곡의 내 재생 회수 : <strong>3</strong></h4>-->
         <% if (data.youtube_code && data.youtube_code != "null") { %>
             <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
-            <a href="#" id="youtube-addToPlaylist" art="<%=param.artist %>" alb="<%=param.album %>" tit="<%=param.music %>"  class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">재생목록에 추가</a>
+            <a href="#" id="youtube-addToPlaylist" art="<%=data.artist %>" alb="<%=data.album %>" tit="<%=data.title %>"  class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">재생목록에 추가</a>
 
         <% } else if (data.soundcloud_code && data.soundcloud_code != "null"){ %>
             <a href="#" id="soundcloud-play-layout" class="btn btn-warning btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
@@ -109,7 +109,7 @@
         <% } %>
         
         
-        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
+        <a href="/song/<%= data.artist %>/<%= data.album %>/<%= data.title %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         
                             
                     <% if(data.lyrics) { %>
