@@ -69,11 +69,11 @@
                             <% } else { %>
                             <% } %>-->
                             <li><% if (data[i].youtube_code && data[i].youtube_code != "null") { %>
-                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-youtube="<%= data[i].youtube_code %>">재생목록에 추가a</a>
+                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-youtube="<%= data[i].youtube_code %>">재생목록에 추가</a>
                             <% } else if (data[i].soundcloud_code && data[i].soundcloud_code != "null"){ %>
-                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-soundcloud="<%= data[i].soundcloud_code %>">재생목록에 추가b</a>
+                                <!--<a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" qu-soundcloud="<%= data[i].soundcloud_code %>">재생목록에 추가b</a>-->
                             <% } else {%>
-                                <a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>">재생목록에 추가v</a>
+                                <!--<a href="#" class="addToPlaylist" art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>">재생목록에 추가v</a>-->
                             <% } %>
                             </li>
                             <!--<li><a href="#">트래킹</a></li>

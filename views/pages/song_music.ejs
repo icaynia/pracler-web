@@ -101,10 +101,14 @@
         <!--<h4>이 곡의 내 재생 회수 : <strong>3</strong></h4>-->
         <% if (data.youtube_code && data.youtube_code != "null") { %>
             <a href="#" id="youtube-play-layout" class="btn btn-danger btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
+            <a href="#" id="youtube-addToPlaylist" art="<%=param.artist %>" alb="<%=param.album %>" tit="<%=param.music %>"  class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">재생목록에 추가</a>
+
         <% } else if (data.soundcloud_code && data.soundcloud_code != "null"){ %>
             <a href="#" id="soundcloud-play-layout" class="btn btn-warning btn-lg btn-block" style="margin-bottom: 25px">재생 </a>
 
         <% } %>
+        
+        
         <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         
                             
@@ -158,11 +162,19 @@
     }
     $('#youtube-play-layout').click(function (e) {
         youtube_setContentPlayer_autoplay("<%= data.youtube_code %>");
+        
         createHistory();
     });
     $('#soundcloud-play-layout').click(function (e) {
         soundcloud_setContentPlayer_autoplay("<%= data.soundcloud_code %>");
         createHistory();
+    });
+    $('#youtube-addToPlaylist').click(function (e) {
+        source = {
+          "source": "youtube",
+          "code": "<%= data.youtube_code %>"
+        }
+        addToNowPlaylist($(this).attr('art'), $(this).attr('alb'), $(this).attr('tit'), source);
     
     });
   });
