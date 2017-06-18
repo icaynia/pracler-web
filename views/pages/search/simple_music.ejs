@@ -15,19 +15,17 @@
     <% for(var i=0; i < data.length; i++) {%>
     <% var var_artist, var_album, var_music; %>
     <% 
-    if (data[i].artist)
-    if (data[i].artist.length > 15) var_artist = data[i].artist.substring(0, 15) + " ...";
-    else var_artist = data[i].artist;
+        if (data[i].artist)
+        if (data[i].artist.length > 15) var_artist = data[i].artist.substring(0, 15) + " ...";
+        else var_artist = data[i].artist;
 
-    if (data[i].album)
-    if (data[i].album.length > 15) var_album = data[i].album.substring(0, 15) + " ...";
-    else var_album = data[i].album;
+        if (data[i].album)
+        if (data[i].album.length > 15) var_album = data[i].album.substring(0, 15) + " ...";
+        else var_album = data[i].album;
 
-    if (data[i].title)
-    if (data[i].title.length > 25) var_music = data[i].title.substring(0, 25) + " ...";
-    else var_music = data[i].title;
-
-
+        if (data[i].title)
+        if (data[i].title.length > 25) var_music = data[i].title.substring(0, 25) + " ...";
+        else var_music = data[i].title;
     %>
         <tr>
             <td> &nbsp;&nbsp;

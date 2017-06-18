@@ -14,7 +14,9 @@
       <td></td>
       <td id="date<%=i%>"></td>
       <td><a href="/song/<%=data[i].artist%>/<%=data[i].album%>/<%=data[i].music%>"> <%=data[i].artist%> - <%=data[i].music%></a></td>
-      <td><center><a href="#" class="btn_delete" oid="<%=data[i]._id%>"> X </a></center></td>
+      <td>
+        <center><a href="#" class="btn_delete" oid="<%=data[i]._id%>"> X </a></center>
+      </td>
     </tr>
     <script>
       date = new Date("<%=data[i].publish_date%>");
