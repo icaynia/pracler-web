@@ -2,7 +2,7 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img class="music_image" src="<%= data.music_image_url %>"></div>
+        <img id="music_image" class="music_image" src="<%= data.music_image_url %>"></div>
       </div>
       <div style="width:100px; height:100px;"></div>
       <div class="picture_edit">
@@ -146,3 +146,14 @@
   })
 
 </script>
+<% if (!data.music_image_url) { %> 
+  <script language="javascript">
+    $(function(){ 
+      getAlbumImage("<%= data.artist %>", "<%= data.album %>", function (result) {
+          $("#music_image").attr('src', result);
+      });
+      
+    });
+    //youtube_to_layout();
+  </script>
+<% } %> 
