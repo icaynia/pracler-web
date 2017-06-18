@@ -314,3 +314,18 @@ function leadingZeros(n, digits) {
   }
   return zero + n;
 }
+
+
+function getAlbumImage(artist, album, callback)
+{
+    $.ajax({
+        url: "/api/song/image/"+artist+"/"+album,
+        type: 'GET',
+        dataType: 'html',
+        timeout: 5000,
+        success: function(result)
+        {
+            callback(result);
+        }
+    })
+}

@@ -2,7 +2,7 @@
   <div class="container">
     <div style="white-space: nowrap;">
       <div style="float:left;min-width:100px; width: auto !important; width: 100px;">
-        <img class="music_image" src="<%= data.music_image_url %>"></div>
+        <img id="music_image" class="music_image" src="<%= data.music_image_url %>"></div>
       </div>
       <div style="width:100px; height:100px;"></div>
       <div style="width:150px; height:50px;"></div>
@@ -130,6 +130,15 @@
   </div>
 </div>
 
+<% if (data.description) { %> 
+  <script language="javascript">
+    $(function(){ 
+      $("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
+    });
+    //youtube_to_layout();
+  </script>
+<% } %> 
+
 <script language="javascript">
   document.title = "<%= data.title %> - <%= data.artist %>" ;
   $(function(){ 
@@ -187,10 +196,13 @@
   //youtube_to_layout();
 </script>
 
-<% if (data.description) { %> 
+<% if (!data.music_image_url) { %> 
   <script language="javascript">
     $(function(){ 
-      $("#description").html(marked("<%-data.description.replaceAll('\n', '  \\n')%>"));
+      getAlbumImage("<%= data.artist %>", "<%= data.album %>", function (result) {
+          $("#music_image").attr('src', result);
+      });
+      
     });
     //youtube_to_layout();
   </script>
