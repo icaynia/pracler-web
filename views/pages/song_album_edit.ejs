@@ -99,7 +99,7 @@
     });
     $("#btn_save").click(function(){ 
       event.preventDefault();
-      var url = "/song/<%= param.artist %>/<%= param.album %>";
+      var url = "/song/<%= data.artist %>/<%= data.album %>";
 
       $.ajax({
         url: url,
