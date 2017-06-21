@@ -1,3 +1,24 @@
+
+
+<script>
+
+    date = new Date("<%=data.publish_date%>");
+    date2 = date.getMinutes();
+
+    var startTime = new Date("<%=data.publish_date%>");
+    var startMsec = startTime.getMilliseconds();
+    startTime.setTime(5000000);
+    var elapsed = (startTime.getTime() - startMsec) / 1000; 
+    alert(elapsed);
+
+    alert(date2);
+    
+
+</script>
+
+<% if (data.publish_date) { %>
+
+
 <div class="user_nowplaying"> 
     <span class="icon">
         <i class="fa fa-spinner fa-pulse fa-2x fa-fw">
@@ -5,4 +26,8 @@
     </span>
     <span class="txt">지금 듣고 있습니다 : <a href="/song/<%=data.artist%>"><%=data.artist%></a> - <a href="/song/<%=data.artist%>/<%=data.album%>/<%=data.music%>"><%=data.music%></a>
     </span> 
+
+    
 </div>
+
+<% } %>
