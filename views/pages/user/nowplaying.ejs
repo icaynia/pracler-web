@@ -1,23 +1,5 @@
 
 
-<script>
-
-    date = new Date("<%=data.publish_date%>");
-    date2 = date.getMinutes();
-
-    var startTime = new Date("<%=data.publish_date%>");
-    var startMsec = startTime.getMilliseconds();
-    startTime.setTime(5000000);
-    var elapsed = (startTime.getTime() - startMsec) / 1000; 
-    alert(elapsed);
-
-    alert(date2);
-    
-
-</script>
-
-<% if (data.publish_date) { %>
-
 
 <div class="user_nowplaying"> 
     <span class="icon">
@@ -30,4 +12,21 @@
     
 </div>
 
-<% } %>
+
+<script>
+        date = new Date("<%=data.publish_date%>");
+        date2 = new Date();
+
+        elapsed = addMinutes(date, 6);
+        console.log("<%=data.music%>");
+        console.log(elapsed);
+        console.log(date2);
+        if (elapsed < date2)
+        {
+            $('.user_nowplaying').css('display', 'none')
+        }
+        
+        function addMinutes(date, minutes) {
+            return new Date(date.getTime() + minutes*60000);
+        }
+</script>
