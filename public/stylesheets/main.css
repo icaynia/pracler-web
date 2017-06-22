@@ -233,7 +233,7 @@ body {
 {
     position:fixed;
     width:240px ;
-    bottom: 40px;
+    bottom: 120px;
     left: 10px;
     z-index: 9999;
 }

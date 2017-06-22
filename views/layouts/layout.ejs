@@ -112,11 +112,8 @@
 
 
 <div class="playlistbox">
-  <!--<div class="playlist-toggle">
-    &nbsp;<i class="fa fa-chevron-left" aria-hidden="true"></i>
-  </div>-->
   <div class="panel panel-default">
-    <div class="panel-heading">지금 재생중인 목록</div>
+    <div class="panel-heading" id="panel-heading">지금 재생 중</div>
     <div id="list">
    </div>
   </div>
@@ -142,6 +139,21 @@
 
     $("#logout").off().click(function() {
       refresh_important('/api/auth/logout');
+    });
+
+    var nowplayingPanelState = true;
+    $("#panel-heading").off().click(function() {
+        nowplayingPanelState = !nowplayingPanelState;
+        if (!nowplayingPanelState)
+        {
+          hideNowPlayingList();
+        }
+        else
+        {
+          showNowPlayingList();
+        }
+
+
     });
 
     $(document).keydown(function(e) {

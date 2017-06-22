@@ -315,7 +315,6 @@ function leadingZeros(n, digits) {
   return zero + n;
 }
 
-
 function getAlbumImage(artist, album, callback)
 {
     $.ajax({
@@ -328,4 +327,19 @@ function getAlbumImage(artist, album, callback)
             callback(result);
         }
     })
+}
+
+function hideNowPlayingList()
+{
+    $('.playlistbox').animate({
+        left:-220
+    });
+
+}
+
+function showNowPlayingList()
+{
+    $('.playlistbox').animate({
+        left:10
+    });
 }
