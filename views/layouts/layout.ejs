@@ -113,7 +113,8 @@
 
 <div class="playlistbox">
   <div class="panel panel-default">
-    <div class="panel-heading" id="panel-heading">지금 재생 중</div>
+    <div class="panel-heading" style="cursor: pointer;" id="panel-heading" data-toggle="tooltip" data-html="true" data-placement="top" title="Hooray!">지금 재생 중</div>
+    
     <div id="list">
    </div>
   </div>
@@ -124,6 +125,7 @@
 </script>
 <script>
   $(function(){ 
+    $('[data-toggle="tooltip"]').tooltip(); 
     $("#search_bt").off().click(function(){ 
       event.preventDefault();
 
