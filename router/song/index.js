@@ -3,7 +3,12 @@ const Fetch = require('../util/fetch')
 var request = require('request');
 
 router.get('/:artist/:album/:title', function(req, res) {
-    var string = Fetch.fetch("/song/"+req.params.artist+"/"+req.params.album+"/"+req.params.title+"?mode="+req.param('mode'));
+    
+    var artist_encode = encodeURIComponent(req.params.artist);
+    var album_encode = encodeURIComponent(req.params.album);
+    var title_encode = encodeURIComponent(req.params.title);
+    var string = Fetch.fetch("/song/"+artist_encode+"/"+album_encode+"/"+title_encode);
+    console.log(string);
     content(req, res, string);
 });
 
