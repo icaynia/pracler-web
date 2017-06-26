@@ -195,54 +195,6 @@ module.exports = function(app)
         res.render('./pages/404');
     });
 
-
-    app.post('/signup/user', function (req, res) {
-        // 더이상 사용하지 않습니다.
-
-        // request({ 
-        //     url: "http://localhost:3000/signup", 
-        //     method: 'POST', 
-        //     form: req.body
-        // }, function (error, response, body) {
-        //     if (!error && response.statusCode == 200) {
-        //         //있는 경우
-        //         res.send({result:1});
-        //     }
-        //     else
-        //     {
-        //         //없는 경우
-        //         res.send({result:0});
-        //     }
-        // });
-
-    });
-
-    app.post('/signin/user', function (req, res) {
-        // 더 이상 사용하지 않습니다.
-        // request({    
-        //     url: "http://localhost:3000/signin", 
-        //     method: 'POST', 
-        //     form: req.body
-        // }, function (error, response, body) {
-        //     if (!error && response.statusCode == 200) {
-        //         //성공
-        //         res.send({result:1});
-        //         console.log("성공 : " + req.body.inputEmail);
-        //         req.session.email = req.body.inputEmail;
-        //         req.session.save(function() {
-        //             console.log("저장 성공");
-        //         });
-        //         console.log("sess : " + req.session.email);
-        //     }
-        //     else
-        //     {
-        //         //실패
-        //         res.send({result:0});
-        //         console.log("\x1b[31m", "실패 : " + req.body.inputEmail);
-        //     }
-        // });
-    });
-
     app.put('/regist/:artist/:album/:music', function (req, res) {
         //compute data here
 
