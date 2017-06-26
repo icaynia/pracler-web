@@ -57,10 +57,22 @@
                 </fieldset>
             </form>
         </div>
+
+        <textarea style="display: none;"id="pubkey" rows="15" cols="65">-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0GpTz9IR/GrDQrWjJSRC
+jWleM+kKv3t/GsISxOjeycgbgSr6C3fylTLS2yWyUC8csVFNZDjTDUckobI+9gti
+Wrt6lFnME1Sno9D0ogaf33CDbdhNAinT7/DVaoxQwFBr9gBomVhjxS6yOiAQQcb0
+yob5XYq1f/NjPI8ywZwBT+Ho0wdOUZKVHCdKA4diCHCSEQnqVYHZZA5QOsQuAQXs
+hH6HKUWKmlMvtohNTVzRqTNM6ajWDO7bedbke3zQbhWutGRbmzR23/yCQTK6X8Qv
+wqn/TaeoJzFUWyrf9L3gDQ69FJJSifvnQBwkV+KQs6Fdst1RSx5QHAX+Hs0rJIDp
+cQIDAQAB
+-----END PUBLIC KEY-----
+</textarea>
         <div class="col-lg-3">
 
         </div>
     </div>
+
 </div>
 
 
@@ -70,7 +82,6 @@
 
 <script>
     $(function(){ 
-        var encrypt = new JSEncrypt();
         $("#btn_login").click(function(){ 
             event.preventDefault();
 
@@ -84,28 +95,23 @@
 
             /* request */
 
+
+            var encrypt = new JSEncrypt({default_key_size: 2048});
+            encrypt.setKey($('#pubkey').val());
+            var encrypted = encrypt.encrypt(inputPassword);
+            console.log(encrypted);
+
             $.ajax({
-                url: "/api/rsa/encrypt",
+                url: "/api/auth/login",
                 type: 'POST',
                 dataType: 'json',
                 data: {
-                    "inputPassword": inputPassword, 
+                    "email": inputEmail, 
+                    "password": encrypted,
                 },
                 success: function(result) {
-
-                    $.ajax({
-                        url: "/api/auth/login",
-                        type: 'POST',
-                        dataType: 'json',
-                        data: {
-                            "email": inputEmail, 
-                            "password": result.pw,
-                        },
-                        success: function(result) {
-                            alert('정상적으로 로그인되었습니다.');
-                            refresh_important('/');
-                        }
-                    });
+                    alert('정상적으로 로그인되었습니다.');
+                    refresh_important('/');
                 }
             });
         })	

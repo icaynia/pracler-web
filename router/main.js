@@ -18,7 +18,11 @@ module.exports = function(app)
     app.use('/view', require('./view'));
     app.use('/user', require('./user'));
     app.use('/support', require('./support'));
-
+    
+    // login
+    app.get('/login', function(req, res) {
+        authChecker.content(req, res, "/login");
+    });
 
     app.get('/data/sesv', function(req, res) {
         req.session.email = "vv";
@@ -43,10 +47,6 @@ module.exports = function(app)
 
     app.get('/cast', function(req, res) {
         res.render('./layouts/layout', {param: "/cast"});
-    });
-    // login
-    app.get('/login', function(req, res) {
-        authChecker.content(req, res, "/login");
     });
     
     app.get('/add', function(req, res) {
