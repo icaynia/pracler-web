@@ -46,7 +46,7 @@ module.exports = function(app)
     });
     // login
     app.get('/login', function(req, res) {
-        res.render('./layouts/layout', {param: "/login"});
+        authChecker.content(req, res, "/login");
     });
     
     app.get('/add', function(req, res) {
