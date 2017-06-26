@@ -8,12 +8,18 @@
 				<div style="margin-left: 30px">
 					<h4 style="word-break: keep-all;">
 						<a href="/song/1"></a>
-						<i class="fa fa-user" aria-hidden="true"></i> &nbsp;<%=data.id%> &nbsp; <a href="/song/1/1"></a> &nbsp; 
-						<span><h2 style="word-break: keep-all; "><%=data.nickname%> <% if (false) { %><i class="fa fa-check" aria-hidden="true"></i><% } %></h2></span>
-						<div style="display:inline">
-						<span><a href="/user/<%=data.id%>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">+ 친구 추가</a></span>
-
-						</div>
+						 <%=data.id%> &nbsp; 
+						<span>
+							<h2 style="word-break: keep-all; "><%=data.nickname%> 
+							<a href="/song/1/1" style="font-size:26px">
+								<i class="fa fa-user-plus" aria-hidden="true"></i>
+							</a>
+							
+							<% if (false) { %>
+							<i class="fa fa-check" aria-hidden="true"></i>
+							<% } %>
+							</h2>
+						</span>
 
 				</div>
 			</div>
