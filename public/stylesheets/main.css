@@ -357,9 +357,27 @@ a .verify_true
     padding:15px;
 }
 
+.v-panel .col-lg-1
+{
+    width: 8.333333333%;
+    float: left;
+}
+
 .v-panel .col-lg-3
 {
     width: 25%;
+    float: left;
+}
+
+.v-panel .col-lg-5
+{
+    width: 41.66666667%;
+    float: left;
+}
+
+.v-panel .col-lg-6
+{
+    width: 50%;
     float: left;
 }
 
