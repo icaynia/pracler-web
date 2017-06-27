@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
     <meta content='width=device-width, initial-scale=0.75, maximum-scale=0.75, user-scalable=0' name='viewport' >
     <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+    
 <script>
 </script>
 
@@ -32,7 +33,27 @@
 </script>
 </head>
 
-<body >
+<body>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1214515208675702',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <nav class="navbar navbar-default navbar-static-top navbar-fix-top" style="margin-bottom: 0px;">
   <div class="container">
       <div class="navbar-header" style="opacity:0.95">
@@ -125,6 +146,7 @@
 </script>
 <script>
   $(function(){ 
+    
     $('[data-toggle="tooltip"]').tooltip(); 
     $("#search_bt").off().click(function(){ 
       event.preventDefault();
