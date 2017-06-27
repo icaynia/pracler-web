@@ -11,9 +11,12 @@
 						 <%=data.id%> &nbsp; 
 						<span>
 							<h2 style="word-break: keep-all; "><%=data.nickname%> 
-							<a href="/song/1/1" style="font-size:26px">
+
+							<% if (mypage == false) { %>
+							<a href="" style="font-size:26px">
 								<i class="fa fa-user-plus" aria-hidden="true"></i>
 							</a>
+							<% } %>
 							
 							<% if (false) { %>
 							<i class="fa fa-check" aria-hidden="true"></i>
