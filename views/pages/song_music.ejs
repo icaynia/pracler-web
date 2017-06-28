@@ -30,7 +30,7 @@
               <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= data.title %></a>
             </li>
             <li class="">
-              <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br>100</a>
+              <a href="#profile" data-toggle="tab" aria-expanded="false">청취</br><div id="count"><i class="fa fa-spinner fa-pulse fa fa-fw"></i></div></a>
             </li>
             <!--<li class="">
               <a href="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
@@ -141,10 +141,28 @@
 
 <script language="javascript">
   document.title = "<%= data.title %> - <%= data.artist %>" ;
+  
   $(function(){ 
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         return results[1] || 0;
+    }
+
+    getHistoryCount();
+    
+    function getHistoryCount()
+    {
+      var url = "/api/history/count/music/<%= data.artist %>/<%= data.album %>/<%= data.title %>";
+      
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        success: function(result) {
+          $('#count').html(result);
+          
+        }
+      });	
     }
 
     try

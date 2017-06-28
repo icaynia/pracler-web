@@ -37,7 +37,10 @@
                         <label for="inputEmail" class="col-lg-2 control-label"></label>
                         <div class="col-lg-10">
                             <div style="float:left; margin-top:40px">
-                                <button type="submit" id="btn_login_fb" class="btn btn-primary">Facebook 로그인</button>
+                                <!--<fb:login-button 
+                                    scope="public_profile,email"
+                                    onlogin="checkLoginState();">
+                                </fb:login-button>-->
                             </div>
                             <div style="float:right; margin-top:40px">
                                 <a href="#">잊어 버리셨나요? </a> &nbsp;&nbsp;
@@ -56,10 +59,7 @@
                     </div>  
                 </fieldset>
             </form>
-        </div><fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
+        </div>
 
         <textarea style="display: none;"id="pubkey" rows="15" cols="65">-----BEGIN PUBLIC KEY-----
 MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0GpTz9IR/GrDQrWjJSRC
@@ -85,18 +85,17 @@ cQIDAQAB
 
 <script>
     function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-    $(function(){ 
         FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-            $("#btn_login_fb").html('ff');
-            
+            if (response.status === 'connected') {
+                console.log('Logged in.');
+				console.log(response.authResponse);
+            }
+            else {
+                FB.login();
+            }
         });
-        $("#btn_login_fb").click(function () {
-        });
+    }
+    $(function(){ 
         $("#btn_login").click(function(){ 
             event.preventDefault();
 
