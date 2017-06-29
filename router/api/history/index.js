@@ -40,16 +40,19 @@ router.get('/:userid', function (req, res) {
 });
 
 router.get('/count/music/:artist/:album/:music', function (req, res) {
-    var string = encodeURIComponent(Fetch.fetch(req.params.artist+"/"+req.params.album+"/"+req.params.music));
+
+    var artist = encodeURIComponent(Fetch.fetch(req.params.artist));
+    var album = encodeURIComponent(Fetch.fetch(req.params.album));
+    var music = encodeURIComponent(Fetch.fetch(req.params.music));
+    var string = artist + '/' + album + '/' + music;
     request({ 
-            url: "http://localhost:3000/api/history/count/music/"+req.params.artist+"/"+req.params.album+"/"+req.params.music, 
+            url: "http://localhost:3000/api/history/count/music/"+string, 
             method: 'GET', 
             form: req.body
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 //있는 경우
-                console.log(body);
-                res.json(JSON.parse(body));
+                res.send(JSON.parse(body).count+"");
             }
             else
             {
@@ -61,6 +64,7 @@ router.get('/count/music/:artist/:album/:music', function (req, res) {
 
 // 인증 필요
 router.put('/delete/:oid', function(req, res) {
+    
     request({
         url: "http://localhost:3000/api/history/delete/"+req.params.oid, 
         method: 'PUT'
