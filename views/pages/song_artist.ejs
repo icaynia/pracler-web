@@ -27,14 +27,14 @@
               <a href="#info" data-toggle="tab" aria-expanded="true">정보</br><%= param.artist %> </a>
             </li>
             <li class="">
-              <a href="#listen" data-toggle="tab" aria-expanded="false">청취</br>100</a>
+              <a href="#listen" data-toggle="tab" aria-expanded="false">청취</br><div id="count"><i class="fa fa-spinner fa-pulse fa fa-fw"></i></div></a>
             </li>
-            <li class="">
+            <!--<li class="">
               <a href="#like" data-toggle="tab" aria-expanded="false">좋아요</br>72</a>
             </li>
             <li class="">
               <a href="#today" data-toggle="tab" aria-expanded="false">오늘</br>13</a>
-            </li>
+            </li>-->
           </ul>
       </div>
       <!--<div class="stat" style="float:left">
@@ -104,7 +104,26 @@
 </div>
 
 <script language="javascript">
-  document.title = "<%= data.artist %>";
+  document.title = "<%= data.artist %> :: pracler";
+
+  $(function() {
+    getHistoryCount();
+    
+    function getHistoryCount()
+    {
+      var url = "/api/history/count/music/<%= data.artist %>/<%= data.album %>/<%= data.title %>";
+      
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        success: function(result) {
+          $('#count').html(result);
+          
+        }
+      });	
+    }
+  })
 </script>
 
 <% if (data.description) { %> 
@@ -115,3 +134,5 @@
     //youtube_to_layout();
   </script>
 <% } %> 
+
+
