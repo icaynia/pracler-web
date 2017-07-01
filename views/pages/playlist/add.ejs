@@ -1,6 +1,7 @@
 <div class="view-markup" style="background-color: darkgoldenrod">
   <div class="container">
-    <div style="padding-top:30px; padding-bottom:80px; "><h1 style="color:aliceblue">재생목록을 추가</h1></div>
+    <div style="padding-top:30px; padding-bottom:80px; "><h1 id="ListName" style="color:aliceblue">재생목록을 추가</h1><h4 style="color:aliceblue; font-weight:700">0개의 음악</h4></div>
+    
     
   </div>
 </div>
@@ -12,9 +13,9 @@
         <form class="form-horizontal">
   <fieldset>
     <div class="form-group">
-      <label for="inputEmail" class="col-lg-3 control-label">새로운 이름</label>
+      <label for="inputName" class="col-lg-3 control-label">새로운 이름</label>
       <div class="col-lg-9">
-        <input type="text" class="form-control" id="inputEmail" placeholder="새로운 재생목록 1">
+        <input type="text" class="form-control"  id="inputName" placeholder="새로운 재생목록 1">
         <div class="checkbox">
           <label>
             <input type="checkbox"> 이 재생목록을 비공개로 사용합니다.
@@ -83,6 +84,17 @@
               else
               {
                   $("#findv").css("display", "none");
+              }
+          })
+          $( "#inputName" ).keyup(function() {
+              var val = $(this).val();
+              if (val.length > 0)
+              {
+                  $("#ListName").text(val);
+              }
+              else
+              {
+                  $("#ListName").text("재생목록을 추가");
               }
           })
         } );
