@@ -171,6 +171,10 @@ body {
     margin-bottom: 64px;
 }
 
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 10px; padding-left: 1.2em; background: #FFF; border: 1px solid #dddddd;}
+#sortable li span { position: absolute; margin-left: -1.3em; }
+
 .footer 
 {
     position: absolute;
@@ -345,6 +349,11 @@ body {
 .view-markup h3
 {
     font-size: 20px;
+}
+
+.view-markup h4
+{
+    font-size: 18px;
 }
 
 

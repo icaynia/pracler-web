@@ -1,1 +1,100 @@
-add page
+<div class="view-markup" style="background-color: darkgoldenrod">
+  <div class="container">
+    <div style="padding-top:30px; padding-bottom:80px; "><h1 style="color:aliceblue">재생목록을 추가</h1></div>
+    
+  </div>
+</div>
+
+<div class="container view-markup" style="padding-top:60px; ">
+    <div class="row">
+      <div class="col-lg-5">
+        <h2 style="padding-bottom:30px; font-weight:700">정보</h2>
+        <form class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-3 control-label">새로운 이름</label>
+      <div class="col-lg-9">
+        <input type="text" class="form-control" id="inputEmail" placeholder="새로운 재생목록 1">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> 이 재생목록을 비공개로 사용합니다.
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-lg-3 control-label">재생목록 설명</label>
+      <div class="col-lg-9">
+        <textarea class="form-control" id="textArea" placeholder="예시: 게임 음악을 모아둔 재생목록 또는 조용한 음악 "style="max-width:336px;max-height:600px;height:200px;"></textarea>
+        <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
+      </div>
+    </div>
+<!--    
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>-->
+  </fieldset>
+</form>
+        
+      </div>
+      <div class="col-lg-6 col-lg-offset-1">
+        <div style="margin-bottom:90px">
+          <div style="float:left;"><h2 style="padding-bottom:00px; font-weight:700">음악 추가</h2></div>
+
+          <div style="float:right;">
+          <input type="text" class="form-control" id="search" placeholder="추가할 음악 검색" style="margin-top:15px; min-width: 250px;margin-bottom:20px;">
+          
+          <div id="findv" class="list-group" style="position:absolute; z-index: 100; width:250px; top: 60px; display:none;">
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">雪のように</h4>
+              <p class="list-group-item-text">AKINO with bless4</p>
+            </a>
+            <a href="#" class="list-group-item">
+              <h4 class="list-group-item-heading">歌に形はないけれど</h4>
+              <p class="list-group-item-text">花たん</p>
+            </a>
+          </div>
+          </div>
+        </div>
+        <div style="clear:both">
+        </div>
+        <div>
+          <ul id="sortable" class=" list-group table-of-contents">
+            <li class="ui-state-default list-group-item">麻枝 准×やなぎなぎ - Last Smile</li>
+            <li class="ui-state-default list-group-item">Item 2</li>
+            <li class="ui-state-default list-group-item">Item 3</li>
+            <li class="ui-state-default list-group-item">Item 4</li>
+            <li class="ui-state-default list-group-item">Item 5</li>
+          </ul>
+        </div>
+      </div>
+
+      <script>
+        $( function() {
+          $( "#search" ).keyup(function() {
+              var searchVal = $(this).val();
+              if (searchVal.length > 0)
+              {
+                  $("#findv").css("display", "block");
+              }
+              else
+              {
+                  $("#findv").css("display", "none");
+              }
+          })
+        } );
+
+      </script>
+          
+        <script>
+        $( function() {
+          $( "#sortable" ).sortable();
+          $( "#sortable" ).disableSelection();
+        } );
+        </script>
+</div>
+  
+</div>
