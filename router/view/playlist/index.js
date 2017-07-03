@@ -19,7 +19,12 @@ router.get('/:userid', function(req, res) {
     else
     {
         authChecker.check(req, function(frv) {
-            res.render('./pages/playlist/main', {});
+            res.render('./pages/playlist/main', {
+                data:
+                {
+                    nickname: frv
+                }
+            });
         }, function() {
 
         })
