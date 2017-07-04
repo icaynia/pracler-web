@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="container view-markup" style="padding-top:60px; ">
+<div class="container view-markup" style="padding-top:60px; margin-bottom:120px;">
     <div class="row">
       <div class="col-lg-5">
         <h2 style="padding-bottom:30px; font-weight:700">정보</h2>
@@ -18,7 +18,7 @@
         <input type="text" class="form-control"  id="inputName" placeholder="새로운 재생목록 1">
         <div class="checkbox">
           <label>
-            <input type="checkbox"> 이 재생목록을 비공개로 사용합니다.
+            <input type="checkbox" id="private"> 이 재생목록을 비공개로 사용합니다.
           </label>
         </div>
       </div>
@@ -26,7 +26,7 @@
     <div class="form-group">
       <label class="col-lg-3 control-label">재생목록 설명</label>
       <div class="col-lg-9">
-        <textarea class="form-control" id="textArea" placeholder="예시: 게임 음악을 모아둔 재생목록 또는 조용한 음악 "style="max-width:336px;max-height:600px;height:200px;"></textarea>
+        <textarea class="form-control" id="description" placeholder="예시: 게임 음악을 모아둔 재생목록 또는 조용한 음악 "style="max-width:336px;max-height:600px;height:200px;"></textarea>
         <!--<span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>-->
       </div>
     </div>
@@ -72,7 +72,7 @@
           </ul>
         </div>
       </div>
-
+      
       <script>
         $( function() {
           $( "#search" ).keyup(function() {
@@ -97,7 +97,30 @@
                   $("#ListName").text("재생목록을 추가");
               }
           })
-        } );
+          
+          $( "#submit" ).click(function() {
+            var url = "/api/playlist/add/"+$("#inputName").val();
+            $.ajax({
+              url: url,
+              type: 'POST',
+              dataType: 'json',
+              data: {
+                "frv": "auth",
+                "listname": $("#ListName").val(), 
+                "description": $("#description").val(), 
+                "private": $("private").val()
+              },
+              success: function(result) {
+                alert("재생목록이 생성되었습니다.");
+                goto("/playlist/"+result.userid+"/"+result.uid);
+              },
+              error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+              }
+
+            });
+          });
+        });
 
       </script>
           
@@ -109,4 +132,5 @@
         </script>
 </div>
   
+        <a href="#" id="submit" class="btn btn-default" style="margin-top:30px; float:right;">저장</a>
 </div>
