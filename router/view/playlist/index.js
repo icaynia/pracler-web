@@ -18,16 +18,36 @@ router.get('/:userid', function(req, res) {
     // user
     else
     {
-        authChecker.check(req, function(frv) {
-            res.render('./pages/playlist/main', {
-                data:
-                {
-                    nickname: frv
-                }
-            });
-        }, function() {
+        request("http://localhost:3000/api/playlist/"+userid+"/list/5" , function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                var list = JSON.parse(body);
+                authChecker.check(req, function(frv) {
+                res.render('./pages/playlist/main', {
+                    data:
+                    {
+                        auth: frv,
+                        nickname: userid,
+                        playlist: list
+                    }
+                });
+            }, function() {
 
+                res.render('./pages/playlist/main', {
+                    data:
+                    {
+                        auth: "",
+                        nickname: userid,
+                        playlist: list
+                    }
+                });
+            })
+            }
+            else
+            {
+                res.render('./pages/404');
+            }
         })
+        
     }
 });
 
