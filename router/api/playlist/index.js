@@ -3,7 +3,8 @@ var request = require('request');
 
 
 router.post('/add/:listname', function (req, res) {
-    var listname = req.params.listname;
+    var listname = encodeURIComponent(req.params.listname);
+    console.log(listname);
     request({ 
             url: "http://localhost:3000/api/playlist/add/"+listname, 
             method: 'POST', 
