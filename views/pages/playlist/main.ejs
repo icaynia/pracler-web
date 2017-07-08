@@ -23,20 +23,20 @@
         <center><a href="/playlist/new" class="btn btn-default">새로운 재생목록 만들기</a></center>
       </div>
       <div class="col-lg-8 col-lg-offset-1">
-        <h2 style="padding-bottom:30px; font-weight:700"><i class="fa fa-bars" aria-hidden="true"></i> &nbsp; <%=pl.name %></h2>
+        <div ><h2 style="padding-bottom:30px; font-weight:700"><i class="fa fa-bars" aria-hidden="true" style="float: left; padding-right:10px;"></i> &nbsp; <span id="sel_listname"  style="float: left;"><%=pl.name %></span></h2></div>
         <table class="table table-striped table-hover ">
           <thead>
             <tr>
               <th>#</th>
-              <th>Column heading</th>
-              <th>Column heading</th>
+              <th>음악</th>
+              <th>ㅍ</th>
               <th>Column heading</th>
             </tr>
           </thead>
           <tbody>
           <% for(var i=0; i < 4; i++) {%>
             <tr>
-              <td>1</td>
+              <td><%=i%></td>
               <td>Column content</td>
               <td>Column content</td>
               <td>Column content</td>
@@ -50,3 +50,13 @@
 </div>
   
 </div>
+
+<script>
+  $(function() {
+    $("#sel_listname").on("click", function () {
+      $(this).html('<input type="text" class="form-control" placeholder="Search" style="height: 26px; font-size: 24px;" value="<%=pl.name %>">');
+      $(this).off("click");
+    })
+  })
+
+</script>
