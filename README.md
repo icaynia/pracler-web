@@ -37,4 +37,4 @@ $ npm start
 개인 프로젝트이고 라즈베리파이를 이용한 외부접속 전용 서버를 만드는 도중 홈 네트워크 통신사 측에서 80번 포트를 허용하고 있지 않으므로,
 개발의 편의를 위해 웹은 5000 포트를 사용하고 있습니다.
 
-(http://pracler.icaynia.com:5000/)[http://pracler.icaynia.com:5000/]
+http://pracler.icaynia.com:5000/
