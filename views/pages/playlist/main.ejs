@@ -29,15 +29,13 @@
             <tr>
               <th>#</th>
               <th>음악</th>
-              <th>ㅍ</th>
-              <th>Column heading</th>
+              <th>바로 재생</th>
             </tr>
           </thead>
           <tbody>
           <% for(var i=0; i < 4; i++) {%>
             <tr>
-              <td><%=i%></td>
-              <td>Column content</td>
+              <td><%=i+1%></td>
               <td>Column content</td>
               <td>Column content</td>
             </tr>
@@ -54,7 +52,8 @@
 <script>
   $(function() {
     $("#sel_listname").on("click", function () {
-      $(this).html('<input type="text" class="form-control" placeholder="Search" style="height: 26px; font-size: 24px;" value="<%=pl.name %>">');
+      $(this).html('<input type="text" class="form-control" placeholder="Search" style="height: 30px; font-size: 24px;" value="<%=pl.name %>">');
+      $(this).after( '<a href="#" style="float: left; padding-right:10px; margin-left:10px;" class="btn btn-default btn-sm">수정</a>');
       $(this).off("click");
     })
   })
