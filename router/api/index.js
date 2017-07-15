@@ -4,8 +4,6 @@ const history = require('./history');
 const music = require('./music');
 const song = require('./song');
 const playlist = require('./playlist');
-const autoget = require('./autoget');
-
 
 var ursa = require('ursa');
 var fs = require('fs');
@@ -24,7 +22,6 @@ router.use('/auth', auth);
 router.use('/history', history);
 router.use('/music', music);
 router.use('/song', song);
-router.use('/autoget', autoget);
 router.use('/playlist', playlist);
 
 
