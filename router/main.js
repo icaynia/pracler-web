@@ -75,65 +75,6 @@ module.exports = function(app)
         });
     });
 
-
-    
-    // app.get('/viewcall/search/music/', function (req, res) {
-        
-
-    //     request("http://localhost:3000/search/music/" , function (error, response, body) {
-    //         if (!error && response.statusCode == 200) {
-    //             //있는 경우
-    //             res.render('./pages/search/simple_music.ejs', {
-    //                 param: req.params,
-    //                 data: JSON.parse(body)
-    //             });
-    //         }
-    //         else
-    //         {
-    //             //없는 경우
-    //             res.render('./pages/404');
-    //         }
-    //     })
-    // });
-
-    // app.get('/viewcall/search/artist/:search', function (req, res) {
-    //     console.log(req.params.search);
-    //     var string = encodeURIComponent(fetch(req.params.search));
-        
-    //     req.params.search = Fetch.unfetch(req.params.search);
-
-    //     request("http://localhost:3000/search/artist/"+string , function (error, response, body) {
-    //         if (!error && response.statusCode == 200) {
-    //             //있는 경우
-    //             res.render('./pages/search/simple_artist.ejs', {
-    //                 param: req.params,
-    //                 data: JSON.parse(body)
-    //             });
-    //         }
-    //         else
-    //         {
-    //             //없는 경우
-    //             res.render('./pages/404');
-    //         }
-    //     })
-    // });
-    
-    // app.get('/viewcall/search/album/:search', function (req, res) {
-
-    //     var string = Fetch.fetch(req.params.search);
-        
-    //     req.params.search = Fetch.unfetch(req.params.search);
-    //     res.render('./pages/search/simple_album.ejs');
-    // });
-
-    // app.get('/viewcall/search/user/:search', function (req, res) {
-
-    //     var string = Fetch.fetch(req.params.search);
-        
-    //     req.params.search = Fetch.unfetch(req.params.search);
-    //     res.render('./pages/search/simple_user.ejs');
-    // });
-
     app.get('/view/now', function (req, res) {
         //compute data here
         res.render('./pages/home', {
