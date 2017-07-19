@@ -88,6 +88,7 @@ exports.nowplaying = (req, res) => {
 }
 
 exports.album_popular = (req, res) => {
+    console.log('c');
     request("http://localhost:3000/api/user/"+req.params.username+"/album_popular" , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우

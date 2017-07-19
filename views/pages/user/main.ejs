@@ -197,7 +197,7 @@
 
 	function getNowplaying()
 	{
-		var url = "/view/user/<%=data.id%>/nowplaying";
+		var url = "/view/<%=data.id%>/sub/nowplaying";
 		
 		$.ajax({
 			url: url,
@@ -216,7 +216,7 @@
 
 	function getAlbumPopular()
 	{
-		var url = "/view/user/<%=data.id%>/album_popular";
+		var url = "/view/<%=data.id%>/sub/album_popular";
 		
 		$.ajax({
 			url: url,
@@ -235,7 +235,7 @@
 
 	function getHistoryPopular()
 	{
-		var url = "/view/user/<%=data.id%>/history_popular";
+		var url = "/view/<%=data.id%>/sub/history_popular";
 
 		$.ajax({
 			url:url,

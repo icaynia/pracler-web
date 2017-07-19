@@ -9,16 +9,22 @@ const authChecker = require('./util/authChecker');
 module.exports = function(app)
 {
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
-
-    // app.use('/api', require('./api'));
+    app.use('/', function (req, res, next) {
+        console.log('Request Url:', req.originalUrl);
+        next();
+    });
+    app.use('/api', require('./api'));
     // app.use('/song', require('./song'));
     // app.use('/add', require('./add'));
     // app.use('/search', require('./search'));
     // app.use('/playlist', require('./playlist'));
     app.use('/view', require('./view'));
-    // app.use('/user', require('./user'));
     // app.use('/support', require('./support'));
     
+    app.get('/', function(req, res) {
+        content(req, res, '/')
+    });
+    app.use('/', require('./user'));
     // login
     app.get('/login', function(req, res) {
         authChecker.content(req, res, "/login");
@@ -37,9 +43,6 @@ module.exports = function(app)
         });
     });
 
-    app.get('/', function(req, res) {
-        content(req, res, '/')
-    });
 
     app.get('/now', function(req, res) {
         res.render('./layouts/layout', {param: "/now"});

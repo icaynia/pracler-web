@@ -10,9 +10,8 @@ const playlist = require('./playlist');
 const support = require('./support');
 //const auth = require('./auth');
 
-// router.use('/user', user);
+
 // router.use('/history', history);
-// router.use('/search', search);
 // router.use('/playlist', playlist);
 // router.use('/song', song);
 // router.use('/support', support);
@@ -22,15 +21,10 @@ router.get('/', function(req, res) {
 });
 
 /* module */
-router.get('/search', function(req, res) {
-    res.render('./pages/cast');
-})
+router.use('/search', search);
 
 /* userpage */
-router.get('/:id', function(req, res) {
-    res.render('./pages/login');
-});
-
+router.use('/', user);
 
 /*
 router.get('/song/:artist/:album/:music', function (req, res) {

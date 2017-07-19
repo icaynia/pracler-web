@@ -4,7 +4,7 @@ var request = require('request');
 
 router.get('/:useruid', function(req, res) {
     var useruid = req.params.useruid;
-    var view = '/user/'+useruid+"?mode="+req.param('mode')
+    var view = '/'+useruid+"?mode="+req.param('mode')
 
     authChecker.content(req, res, view);
 });
