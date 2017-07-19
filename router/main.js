@@ -10,14 +10,14 @@ module.exports = function(app)
 {
     var crt = ursa.createPublicKey(fs.readFileSync('utils/server.pub'));
 
-    app.use('/api', require('./api'));
-    app.use('/song', require('./song'));
-    app.use('/add', require('./add'));
-    app.use('/search', require('./search'));
-    app.use('/playlist', require('./playlist'));
+    // app.use('/api', require('./api'));
+    // app.use('/song', require('./song'));
+    // app.use('/add', require('./add'));
+    // app.use('/search', require('./search'));
+    // app.use('/playlist', require('./playlist'));
     app.use('/view', require('./view'));
-    app.use('/user', require('./user'));
-    app.use('/support', require('./support'));
+    // app.use('/user', require('./user'));
+    // app.use('/support', require('./support'));
     
     // login
     app.get('/login', function(req, res) {
@@ -56,10 +56,10 @@ module.exports = function(app)
         });
     });
 
-    app.get('/signup', function(req, res) {
-        var string = Fetch.fetch("/signup");
-        authChecker.content(req, res, string);
-    });
+    // app.get('/signup', function(req, res) {
+    //     var string = Fetch.fetch("/signup");
+    //     authChecker.content(req, res, string);
+    // });
 
 
     app.get('/data/music/count', function (req, res) {

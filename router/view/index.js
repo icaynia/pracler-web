@@ -10,18 +10,29 @@ const playlist = require('./playlist');
 const support = require('./support');
 //const auth = require('./auth');
 
-router.use('/user', user);
-router.use('/history', history);
-router.use('/search', search);
-router.use('/playlist', playlist);
-router.use('/song', song);
-router.use('/support', support);
+// router.use('/user', user);
+// router.use('/history', history);
+// router.use('/search', search);
+// router.use('/playlist', playlist);
+// router.use('/song', song);
+// router.use('/support', support);
 
 router.get('/', function(req, res) {
-    console.log("c");
     res.render('./pages/home');
 });
 
+/* module */
+router.get('/search', function(req, res) {
+    res.render('./pages/cast');
+})
+
+/* userpage */
+router.get('/:id', function(req, res) {
+    res.render('./pages/login');
+});
+
+
+/*
 router.get('/song/:artist/:album/:music', function (req, res) {
     //compute data here
     var artist_encode = encodeURIComponent(req.params.artist);
@@ -127,6 +138,6 @@ router.get('/song/:artist', function (req, res) {
     
 });
 
-
+*/
 
 module.exports = router;
