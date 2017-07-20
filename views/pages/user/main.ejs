@@ -182,7 +182,7 @@
 
 	function getHistoryCount()
 	{
-		var url = "/view/history/count/<%=data.id%>";
+		var url = "/api/history/<%=data.id%>/count";
 		
 		$.ajax({
 			url: url,

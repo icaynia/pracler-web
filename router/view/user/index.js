@@ -8,4 +8,7 @@ router.get('/:username/sub/history', controller.history);
 router.get('/:username/sub/album_popular', controller.album_popular);
 router.get('/:username/sub/history_popular', controller.history_popular);
 
+router.get('/:userid/playlist', controller.playlist);
+router.get('/:userid/playlist/:playlistuid', controller.playlist);
+
 module.exports = router;

@@ -74,7 +74,7 @@
 						</div>-->
 
       <div style="float:right;">
-        <a href="/song/<%= param.artist %>/<%= param.album %>/<%= param.music %>?mode=description" class="btn btn-default btn-xs">설명 편집</a>
+        <a href="/music/<%=data.uid %>/edit/description" class="btn btn-default btn-xs">설명 편집</a>
 			
         </div>
             
@@ -109,7 +109,7 @@
         <% } %>
         
         
-        <a href="/song/<%= data.artist %>/<%= data.album %>/<%= data.title %>?mode=edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
+        <a href="/music/<%=data.uid %>/edit" id="btn_edit" class="btn btn-default btn-lg btn-block" style="margin-bottom: 25px">편집</a>
         
                             
                     <% if(data.lyrics) { %>

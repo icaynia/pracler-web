@@ -39,6 +39,22 @@ router.get('/:userid', function (req, res) {
     });
 });
 
+router.get('/:userid/count', function (req, res) {
+
+    var userid = req.params.userid;
+    request("http://localhost:3000/api/history/count/"+userid , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.json(JSON.parse(body).count);
+        }
+        else
+        {
+            //없는 경우
+            res.render('./pages/404');
+        }
+    })
+});
+
 router.get('/count/music/:artist/:album/:music', function (req, res) {
 
     var artist = encodeURIComponent(Fetch.fetch(req.params.artist));

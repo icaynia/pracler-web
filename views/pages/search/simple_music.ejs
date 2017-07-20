@@ -31,10 +31,10 @@
             <td> &nbsp;&nbsp;
                 
             </td>
-            <td><a href="/song/<%=data[i].artist %>"><%= var_artist %></a></td>
+            <td><a href="/artist/<%=data[i].artist %>"><%= var_artist %></a></td>
 
             <% if (data[i].album != "_") { %>
-                <td><a href="/song/<%=data[i].artist %>/<%=data[i].album %>"><%=var_album %></a></td>
+                <td><a href="/album/<%=data[i].artist %>/<%=data[i].album %>"><%=var_album %></a></td>
             <% } else { %>
                 <td></td>
             <% } %>
@@ -44,7 +44,7 @@
                 <% } else if (data[i].soundcloud_code && data[i].soundcloud_code != "null"){ %>
                     <a href="" class="soundcloud-play-bt"  art="<%=data[i].artist %>" alb="<%=data[i].album %>" tit="<%=data[i].title %>" code="<%= data[i].soundcloud_code %>"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
                 <% } else { %>
-                <% } %> <a href="/song/<%=data[i].artist %>/<%=data[i].album %>/<%=data[i].title %>"><%=var_music %></a> 
+                <% } %> <a href="/music/<%=data[i].uid %>"><%=var_music %></a> 
                 
                 </td>
             <!--<td>-</td>

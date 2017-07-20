@@ -13,7 +13,7 @@
         <div class="list-group table-of-contents">
           <% var pl; %>
           <% for(var i=0; i < data.playlist.length; i++) {%>
-            <a class="list-group-item" href="/playlist/<%=data.nickname%>/<%=data.playlist[i].uid%>"><i class="fa fa-bars" aria-hidden="true"></i> &nbsp; <%=data.playlist[i].name%><span class="badge">14개 곡</span></a>
+            <a class="list-group-item" href="/<%=data.nickname%>/playlist/<%=data.playlist[i].uid%>"><i class="fa fa-bars" aria-hidden="true"></i> &nbsp; <%=data.playlist[i].name%><span class="badge">14개 곡</span></a>
             <% if (data.playlist[i].uid == data.uid) { %>
             <% pl = data.playlist[i]; %>
             <% } %>

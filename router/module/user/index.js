@@ -9,6 +9,13 @@ router.get('/:useruid', function(req, res) {
     CONTEXT.point(req, res, view);
 });
 
+router.get('/:useruid/playlist', function(req, res) {
+    var useruid = req.params.useruid;
+    var view = '/'+useruid+"/playlist";
+    
+    CONTEXT.point(req, res, view);
+});
+
 router.put('/:username', function(req, res)
 {
     edit(req,res);

@@ -1,5 +1,5 @@
 var request = require('request');
-var authChecker = require('../../util/context');
+var CONTEXT = require('../../util/context');
 const Fetch = require('../../util/fetch');
 
 exports.index = (req, res) => {
@@ -8,7 +8,7 @@ exports.index = (req, res) => {
         if (!error && response.statusCode == 200) {
             //있는 경우
             var mypage = false;
-            authChecker.check(req, function(fsv) {
+            CONTEXT.check(req, function(fsv) {
                 // 프로필이 본인 것일때
                 if (fsv == JSON.parse(body).id) mypage = true;
                     
@@ -104,6 +104,45 @@ exports.history_popular = (req, res) => {
             res.render('./pages/404');
         }
     });
+}
+
+exports.playlist = (req, res) => {
+    var userid = req.params.userid;
+    var playlistuid = req.params.playlistuid;
+
+    request("http://localhost:3000/api/playlist/"+userid+"/list/5" , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var list = JSON.parse(body);
+            if (!req.params.playlistuid) {
+                playlistuid = list[0].uid;
+            }
+            CONTEXT.check(req, function(frv) {
+            res.render('./pages/playlist/main', {
+                data:
+                {
+                    auth: frv,
+                    nickname: userid,
+                    playlist: list,
+                    uid: playlistuid
+                }
+            });
+        }, function() {
+
+            res.render('./pages/playlist/main', {
+                data:
+                {
+                    auth: "",
+                    nickname: userid,
+                    playlist: list
+                }
+            });
+        })
+        }
+        else
+        {
+            res.render('./pages/404');
+        }
+    })
 }
 
 exports.count = (req, res) => {
