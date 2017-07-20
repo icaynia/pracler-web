@@ -17,7 +17,7 @@ router.post('/rsa/encrypt', function(req, res) {
     });
 });
 
-
+router.use('/data', require('./data'));
 router.use('/auth', auth);
 router.use('/history', history);
 router.use('/music', music);

@@ -50,10 +50,10 @@ app.listen(app.get('port'), function() {
 app.use(function (req,res) {
     authChecker.check(req, function(frv) {
         res.status(404).render('./layouts/layout', {param:'/404', auth: frv});
-        console.log("404 : yes");
+        console.log("statusCode='404', verify='"+frv+"'");
     }, function(frv) {
         res.status(404).render('./layouts/layout', {param:'/404', auth: frv});
-        console.log("404 : no");
+        console.log("statusCode='404', verify='null' ");
     });
     //res.status(404).render('./layouts/layout', {param:'/404'});
 });

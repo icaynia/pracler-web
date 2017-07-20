@@ -39,6 +39,8 @@ function checkAuth(req, func, nofunc)
     });
 }
 
+exports.request = request;
+
 exports.point = (req, res, point) =>
 {
     content(req, res, point);

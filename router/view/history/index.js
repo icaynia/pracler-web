@@ -3,9 +3,9 @@ var request = require('request');
 const Fetch = require('../../util/fetch');
 
 router.get('/:userid', function(req, res) {
-    var string = encodeURIComponent(Fetch.fetch(req.params.userid));
+    var string = encodeURIComponent(Fetch.fetch(req.params.username));
     
-    var userid = Fetch.unfetch(req.params.userid);
+    var userid = Fetch.unfetch(req.params.username);
 
     request("http://localhost:3000/api/history/"+userid , function (error, response, body) {
         if (!error && response.statusCode == 200) {

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Fetch = require('../util/fetch')
+const Fetch = require('../../util/fetch')
 var request = require('request')
 
 router.get('/:search', function(req, res) {

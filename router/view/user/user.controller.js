@@ -35,6 +35,28 @@ exports.index = (req, res) => {
     });
 }
 
+exports.history = (req, res) => {
+    console.log('??');
+    var string = encodeURIComponent(Fetch.fetch(req.params.username));
+    
+    var userid = Fetch.unfetch(req.params.username);
+
+    request("http://localhost:3000/api/history/"+userid , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.render('./pages/history/simple_listview.ejs', {
+                param: req.params,
+                data: JSON.parse(body)
+            });
+        }
+        else
+        {
+            //없는 경우
+            res.render('./pages/404');
+        }
+    })
+}
+
 
 exports.nowplaying = (req, res) => {
     request("http://localhost:3000/api/history/nowplaying/"+req.params.username , function (error, response, body) {
