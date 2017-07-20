@@ -11,7 +11,7 @@ var fs = require('fs');
 var redis = require('redis').createClient();
 var RedisStore = require('connect-redis')(session);
 
-const authChecker = require('./router/util/authChecker');
+const authChecker = require('./router/util/context');
 
 app.set('port', (process.env.PORT || 5000));
 var port2 = 443;

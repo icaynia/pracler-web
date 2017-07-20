@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const request = require('request');
 const Fetch = require('../../util/fetch');
-var authChecker = require('../../util/authChecker');
+var authChecker = require('../../util/context');
 
 router.get('/form/music/:search', function (req, res) {
     var string = encodeURIComponent(Fetch.fetch(req.params.search));

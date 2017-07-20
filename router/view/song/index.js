@@ -1,5 +1,5 @@
 const router = require('express').Router();
-var authChecker = require('../../util/authChecker');
+var authChecker = require('../../util/context');
 
 router.get('/', function(req, res) {
     authChecker.check(req, function(frv) {

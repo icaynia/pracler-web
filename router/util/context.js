@@ -39,12 +39,19 @@ function checkAuth(req, func, nofunc)
     });
 }
 
+exports.point = (req, res, point) =>
+{
+    content(req, res, point);
+} 
+
 exports.check = (req, func, nofunc) =>
 {
+    // deprecated 
     checkAuth(req, func, nofunc);
 }
 
 exports.content = (req, res, param) =>
 {
+    // deprecated
     content(req, res, param);
 }

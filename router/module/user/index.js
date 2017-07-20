@@ -1,16 +1,16 @@
 const router = require('express').Router();
-const authChecker = require('../util/authChecker');
+const CONTEXT = require('../../util/context');
 var request = require('request');
 
 router.get('/:useruid', function(req, res) {
     var useruid = req.params.useruid;
     var view = '/'+useruid+"?mode="+req.param('mode')
-
-    authChecker.content(req, res, view);
+    
+    CONTEXT.point(req, res, view);
 });
 
 router.get('/', function (req, res) {
-    res.send("<script> window.location.href = '/';</script>");
+    res.send("error");
 });
 
 router.put('/:username', function(req, res)

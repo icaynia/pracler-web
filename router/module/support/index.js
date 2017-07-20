@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const authChecker = require('../util/authChecker');
+const authChecker = require('../util/context');
 
 router.get('/', function(req, res) {
     var param = "/support"

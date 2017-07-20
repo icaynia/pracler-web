@@ -4,10 +4,7 @@ var request = require('request');
 
 const user = require('./user');
 const history = require('./history');
-const search = require('./search');
-const song = require('./song');
-const playlist = require('./playlist');
-const support = require('./support');
+//const playlist = require('./playlist');
 //const auth = require('./auth');
 
 
@@ -21,7 +18,11 @@ router.get('/', function(req, res) {
 });
 
 /* module */
-router.use('/search', search);
+router.use('/search', require('./search'));
+router.use('/song', require('./song'));
+router.use('/music', require('./music'));
+router.use('/support', require('./support'));
+router.use('/login', require('./login'));
 
 /* userpage */
 router.use('/', user);

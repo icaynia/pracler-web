@@ -1,7 +1,7 @@
 const router = require('express').Router()
 var request = require('request');
 const Fetch = require('../../util/fetch');
-var authChecker = require('../../util/authChecker');
+var authChecker = require('../../util/context');
 
 router.get('/:userid', function(req, res) {
     var userid = req.params.userid;

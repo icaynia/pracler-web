@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const authChecker = require('../util/authChecker');
+const authChecker = require('../util/context');
 
 router.get('/:userid', function(req, res) {
     var param = "/playlist/"+req.params.userid
