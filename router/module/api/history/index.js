@@ -1,6 +1,6 @@
 const router = require('express').Router()
 var request = require('request');
-const Fetch = require('../../util/fetch');
+const Fetch = require('../../../util/fetch');
 
 
 router.post('/add', function (req, res) {

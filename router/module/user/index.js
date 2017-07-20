@@ -4,13 +4,9 @@ var request = require('request');
 
 router.get('/:useruid', function(req, res) {
     var useruid = req.params.useruid;
-    var view = '/'+useruid+"?mode="+req.param('mode')
+    var view = '/'+useruid+"?mode="+req.param('mode');
     
     CONTEXT.point(req, res, view);
-});
-
-router.get('/', function (req, res) {
-    res.send("error");
 });
 
 router.put('/:username', function(req, res)

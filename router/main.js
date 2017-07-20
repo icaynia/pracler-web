@@ -13,6 +13,6 @@ module.exports = function(app)
         next();
     });
 
-    app.use('/', require('./module'));
     app.use('/view', require('./view'));
+    app.use('/', require('./module'));
 }
