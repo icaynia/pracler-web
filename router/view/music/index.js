@@ -2,6 +2,14 @@ const router = require('express').Router();
 var request = require('request');
 const Fetch = require('../../util/fetch');
 
+router.get('/add', function (req, res) {
+    //compute data here
+    res.render('./pages/add/music', {
+        title: ""
+    });
+});
+
+
 router.get('/:uid', function (req, res) {
     //compute data here
     var uid = encodeURIComponent(req.params.uid);
@@ -18,6 +26,7 @@ router.get('/:uid', function (req, res) {
         default:
             view_layout = './pages/song_music';
     }
+        
     request("http://localhost:3000/api/music/"+uid , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우
