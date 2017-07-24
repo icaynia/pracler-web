@@ -58,6 +58,11 @@ exports.fetch = (string) =>
     return fetch.fetch(string);
 }
 
+exports.unfetch = (string) =>
+{
+    return fetch.unfetch(string);
+}
+
 exports.content = (req, res, param) =>
 {
     // deprecated

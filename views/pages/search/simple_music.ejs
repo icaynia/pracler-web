@@ -31,10 +31,10 @@
             <td> &nbsp;&nbsp;
                 
             </td>
-            <td><a href="/artist/<%=data[i].artist %>"><%= var_artist %></a></td>
+            <td><a href="/artist/<%=data[i].artist_uid %>"><%= var_artist %></a></td>
 
             <% if (data[i].album != "_") { %>
-                <td><a href="/album/<%=data[i].artist %>/<%=data[i].album %>"><%=var_album %></a></td>
+                <td><a href="/album/<%=data[i].album_uid %>"><%=var_album %></a></td>
             <% } else { %>
                 <td></td>
             <% } %>

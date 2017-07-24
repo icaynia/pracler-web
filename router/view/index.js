@@ -20,6 +20,8 @@ router.get('/', function(req, res) {
 /* module */
 router.use('/search', require('./search'));
 router.use('/song', require('./song'));
+router.use('/artist', require('./artist'));
+router.use('/album', require('./album'));
 router.use('/music', require('./music'));
 router.use('/support', require('./support'));
 router.use('/login', require('./login'));
