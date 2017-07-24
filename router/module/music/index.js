@@ -11,5 +11,10 @@ router.get('/:uid', function(req, res) {
     CONTEXT.point(req, res, param);
 });
 
+router.get('/:uid/edit', function(req, res) {
+    var param = "/music/"+req.params.uid+"/edit";
+    CONTEXT.point(req, res, param);
+})
+
 
 module.exports = router;

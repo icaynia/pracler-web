@@ -122,7 +122,7 @@
     $("#btn_save").click(function(){ 
       event.preventDefault();
 
-      var url = "/song/<%= data.artist %>/<%= data.album %>/<%= data.title %>";
+      var url = "/api/music/edit/<%= data.artist %>/<%= data.album %>/<%= data.title %>";
       var youtube = $('#youtube_code').val();
       var youtube_code = getUrlVars(youtube);
       var soundcloud = $('#soundcloud_code').val();
@@ -139,7 +139,7 @@
           "description": simplemde.value()
         },
         success: function(result) {
-          goto(url);
+          goto("/music/<%= data.uid%>");
         }
       });
     })	

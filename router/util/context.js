@@ -1,4 +1,5 @@
 const request = require('request');
+const fetch = require('./fetch.js');
 
 function content(req, res, param)
 {
@@ -50,6 +51,11 @@ exports.check = (req, func, nofunc) =>
 {
     // deprecated 
     checkAuth(req, func, nofunc);
+}
+
+exports.fetch = (string) =>
+{
+    return fetch.fetch(string);
 }
 
 exports.content = (req, res, param) =>

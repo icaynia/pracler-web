@@ -17,9 +17,6 @@ router.get('/:uid', function (req, res) {
     var view_layout;
     switch (req.param('mode'))
     {
-        case "edit":
-            view_layout = './pages/song_music_edit';
-            break;
         case "description":
             view_layout = './pages/song/description';
             break;
@@ -43,7 +40,20 @@ router.get('/:uid', function (req, res) {
 });  
 
 router.get('/:uid/edit', function (req, res) {
-    
+    var uid = encodeURIComponent(req.params.uid);
+    request("http://localhost:3000/api/music/"+uid , function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            //있는 경우
+            res.render('./pages/song_music_edit', {
+                param: req.params,
+                data: JSON.parse(Fetch.unfetch(body))
+            });
+        }
+        else
+        {
+            res.render('./pages/404');
+        }
+    })
 });
 
 router.get('/:uid/edit/description', function (req, res) {
