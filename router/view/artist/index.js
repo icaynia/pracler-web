@@ -23,6 +23,7 @@ router.get('/:uid', function(req, res) {
 });
 
 router.get('/:uid/edit', function(req, res) {
+    var uid = encodeURIComponent(req.params.uid);
     CONTEXT.request("http://localhost:3000/api/artist/"+uid , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             //있는 경우
