@@ -36,7 +36,6 @@ exports.index = (req, res) => {
 }
 
 exports.history = (req, res) => {
-    console.log('??');
     var string = encodeURIComponent(Fetch.fetch(req.params.username));
     
     var userid = Fetch.unfetch(req.params.username);

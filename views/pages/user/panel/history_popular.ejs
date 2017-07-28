@@ -3,7 +3,7 @@
     <% var res = data[i].key.split("/"); %>
     <div class="row">
         <div class="col-lg-1 alb"><%=i + 1%></div>
-        <div class="col-lg-5 alb"><a href="/song/<%=res[0]%>"><%=res[0]%></a> - <a href="/song/<%=res[0]%>/<%=res[1]%>/<%=res[2]%>"><%=res[2]%></a></div>
+        <div class="col-lg-5 alb"><a href="/music/<%=res[0]%>"><%=data[i].artist%></a> - <a href="/song/<%=res[0]%>/<%=res[1]%>/<%=res[2]%>"><%=data[i].title%></a></div>
         <div class="col-lg-6 alb">
             <div class="progress" style="height: 20px;">
                 <% var percentage = data[i].value / data[1].value * 45; %>

@@ -35,7 +35,7 @@ function checkAuth(req, func, nofunc)
         {
             //없는 경우
             console.log('check : false');
-            nofunc(body.frv);
+            nofunc();
         }
     });
 }

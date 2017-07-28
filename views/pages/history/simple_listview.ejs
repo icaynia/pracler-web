@@ -13,7 +13,7 @@
     <tr oid="<%=data[i]._id%>">
       <td></td>
       <td id="date<%=i%>"></td>
-      <td><a href="/song/<%=data[i].artist%>"><%=data[i].artist%></a> - <a href="/song/<%=data[i].artist%>/<%=data[i].album%>/<%=data[i].music%>"><%=data[i].music%></a></td>
+      <td><a href="/artist/<%=data[i].artist_uid%>"><%=data[i].artist%></a> - <a href="/song/<%=data[i].artist%>/<%=data[i].album%>/<%=data[i].music%>"><%=data[i].music%></a></td>
       <td>
         <center><a href="#" class="btn_delete" oid="<%=data[i]._id%>"> X </a></center>
       </td>
